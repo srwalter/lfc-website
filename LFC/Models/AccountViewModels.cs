@@ -49,8 +49,7 @@ namespace LFC.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "User ID")]
         public string Email { get; set; }
 
         [Required]
