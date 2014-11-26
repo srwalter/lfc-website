@@ -168,13 +168,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411261638521_InitialCreate.cs" />
-    <Compile Include="Migrations\201411261638521_InitialCreate.Designer.cs">
-      <DependentUpon>201411261638521_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411261655357_InitialCreate1.cs" />
-    <Compile Include="Migrations\201411261655357_InitialCreate1.Designer.cs">
-      <DependentUpon>201411261655357_InitialCreate1.cs</DependentUpon>
+    <Compile Include="Migrations\201411261730047_InitialCreate.cs" />
+    <Compile Include="Migrations\201411261730047_InitialCreate.Designer.cs">
+      <DependentUpon>201411261730047_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -185,14 +181,40 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\213DS_big.jpg" />
+    <Content Include="Content\213DS_panel.jpg" />
+    <Content Include="Content\213DS_t.jpg" />
+    <Content Include="Content\3001W_panel.jpg" />
+    <Content Include="Content\3001W_t.jpg" />
+    <Content Include="Content\6203F_panel.jpg" />
+    <Content Include="Content\6203F_t.jpg" />
+    <Content Include="Content\75903_panel.jpg" />
+    <Content Include="Content\75903_t.jpg" />
+    <Content Include="Content\89652_panel.jpg" />
+    <Content Include="Content\89652_t.jpg" />
+    <Content Include="Content\background.jpg" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Garmin430W.jpg" />
+    <Content Include="Content\instruct.html" />
+    <Content Include="Content\logo.gif" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\departure_form.pdf" />
+    <Content Include="Content\Republic Insurance Endorsement Sheets 20110525.pdf" />
+    <Content Include="Content\Republic Insurance Policy 20100515.pdf" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -255,18 +277,12 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411261638521_InitialCreate.resx">
-      <DependentUpon>201411261638521_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411261655357_InitialCreate1.resx">
-      <DependentUpon>201411261655357_InitialCreate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411261730047_InitialCreate.resx">
+      <DependentUpon>201411261730047_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

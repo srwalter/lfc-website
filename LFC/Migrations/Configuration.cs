@@ -10,7 +10,6 @@ namespace LFC.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "LFC.DAL.LFCContext";
         }
 
         protected override void Seed(LFC.DAL.LFCContext context)

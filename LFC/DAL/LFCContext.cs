@@ -10,7 +10,7 @@ namespace LFC.DAL
 {
     public class LFCContext : IdentityDbContext<ApplicationUser>
     {
-        public LFCContext() : base ("AirplaneContext")
+        public LFCContext() : base ("LFCContext")
         {
         }
 
