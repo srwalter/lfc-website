@@ -7,7 +7,6 @@
     @Styles.Render("~/Content/bootstrap/css/bootstrap.css")
     @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -20,7 +19,7 @@
         </div>
         <div class="navbar-collapse collapse container-fluid">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Join", "Join", "Home")</li>
                     <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
                     <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
@@ -45,6 +44,23 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = window.location.pathname;
+            if (url == '/') {
+                return;
+            }
+            var substr = url.split('/');
+            var urlaspx = substr[substr.length - 1];
+            $('.nav').find('.active').removeClass('active');
+            $('.nav li a').each(function () {
+                if (this.href.indexOf(urlaspx) >= 0) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
