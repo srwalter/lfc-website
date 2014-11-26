@@ -5,15 +5,15 @@ namespace LFC.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LFC.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LFC.DAL.LFCContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "LFC.Models.ApplicationDbContext";
+            ContextKey = "LFC.DAL.LFCContext";
         }
 
-        protected override void Seed(LFC.Models.ApplicationDbContext context)
+        protected override void Seed(LFC.DAL.LFCContext context)
         {
             //  This method will be called after migrating to the latest version.
 

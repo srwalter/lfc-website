@@ -8,6 +8,33 @@ namespace LFC.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Airplanes",
+                c => new
+                    {
+                        AirplaneID = c.String(nullable: false, maxLength: 128),
+                        Type = c.String(nullable: false),
+                        Description = c.String(),
+                        Rate = c.Single(nullable: false),
+                        Serial = c.String(),
+                        EngineMake = c.String(),
+                        EngineModel = c.String(),
+                        HP = c.Int(nullable: false),
+                        CruiseSpeed = c.Int(nullable: false),
+                        CruiseAlt = c.Int(nullable: false),
+                        Range = c.Int(nullable: false),
+                        RangeAlt = c.Int(nullable: false),
+                        EmptyWt = c.Single(nullable: false),
+                        GrossWt = c.Single(nullable: false),
+                        TotalFuel = c.Single(nullable: false),
+                        UsableFuel = c.Single(nullable: false),
+                        Moment = c.Single(nullable: false),
+                        Arm = c.Single(nullable: false),
+                        Voltage = c.Int(nullable: false),
+                        OilSump = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.AirplaneID);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -41,15 +68,15 @@ namespace LFC.Migrations
                         FirstName = c.String(),
                         HomeTel = c.String(),
                         OfficeTel = c.String(),
-                        Email = c.String(maxLength: 256),
                         Address = c.String(),
                         City = c.String(),
                         State = c.String(),
                         ZipCode = c.String(),
-                        Certificate = c.Int(nullable: false),
+                        Certificate = c.Int(),
                         Instrument = c.Boolean(nullable: false),
-                        MemberType = c.Int(nullable: false),
+                        MemberType = c.Int(),
                         Safety = c.Boolean(nullable: false),
+                        Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
@@ -108,6 +135,7 @@ namespace LFC.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Airplanes");
         }
     }
 }

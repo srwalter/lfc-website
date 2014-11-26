@@ -7,13 +7,13 @@ namespace LFC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class NullableFields : IMigrationMetadata
+    public sealed partial class InitialCreate1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NullableFields));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201411250511358_NullableFields"; }
+            get { return "201411261655357_InitialCreate1"; }
         }
         
         string IMigrationMetadata.Source

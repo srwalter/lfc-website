@@ -13,7 +13,7 @@ namespace LFC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201411250506222_InitialCreate"; }
+            get { return "201411261638521_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
