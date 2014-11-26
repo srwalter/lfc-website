@@ -1,44 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LFC.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
-
-    public class ExternalLoginListViewModel
-    {
-        public string ReturnUrl { get; set; }
-    }
-
-    public class SendCodeViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
-    }
-
-    public class VerifyCodeViewModel
-    {
-        [Required]
-        public string Provider { get; set; }
-
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-        public string ReturnUrl { get; set; }
-
-        [Display(Name = "Remember this browser?")]
-        public bool RememberBrowser { get; set; }
-
-        public bool RememberMe { get; set; }
-    }
-
     public class ForgotViewModel
     {
         [Required]
@@ -113,6 +78,118 @@ namespace LFC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class EditUserViewModel
+    {
+        public EditUserViewModel ()
+        {
+        }
+
+        public EditUserViewModel (ApplicationUser user)
+        {
+            this.Email = user.Email;
+            this.UserName = user.UserName;
+            this.ShortName = user.ShortName;
+            this.LastName = user.LastName;
+            this.MiddleInitial = user.MiddleInitial;
+            this.FirstName = user.FirstName;
+            this.HomeTel = user.HomeTel;
+            this.OfficeTel = user.OfficeTel;
+            this.Address = user.Address;
+            this.City = user.City;
+            this.State = user.State;
+            this.ZipCode = user.ZipCode;
+            this.Certificate = user.Certificate;
+        }
+
+        [Required]
+        [Display(Name = "Member ID")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Short Name")]
+        public string ShortName { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [StringLength(1, ErrorMessage = "The {0} must be at most 1 character log")]
+        [Display(Name = "Middle Initial")]
+        public string MiddleInitial { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Home Telephone")]
+        public string HomeTel { get; set; }
+
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Office Telephone")]
+        public string OfficeTel { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [RegularExpression("\\d\\d\\d\\d\\d")]
+        public string ZipCode { get; set; }
+
+        public LFC.Models.ApplicationUser.CertificateType? Certificate { get; set; }
+    }
+
+    public class SelectUserRolesViewModel
+    {
+        public SelectUserRolesViewModel ()
+        {
+        }
+
+        public SelectUserRolesViewModel (ApplicationUser user) : this ()
+        {
+            this.UserName = user.UserName;
+
+            var db = new ApplicationDbContext();
+            var allRoles = db.Roles;
+            foreach (var role in allRoles)
+            {
+                var rvm = new SelectRoleEditorViewModel(role);
+                this.Roles.Add(rvm);
+            }
+
+            foreach (var userRole in user.Roles)
+            {
+                var checkUserRole = this.Roles.Find(r => r.RoleName == userRole.RoleId);
+                checkUserRole.Selected = true;
+            }
+        }
+
+        public string UserName {get; set;}
+        public List<SelectRoleEditorViewModel> Roles { get; set; }
+    }
+
+    public class SelectRoleEditorViewModel
+    {
+        public SelectRoleEditorViewModel()
+        {
+        }
+
+        public SelectRoleEditorViewModel(IdentityRole role)
+        {
+            this.RoleName = role.Name;
+        }
+
+        public bool Selected {get; set;}
+
+        [Required]
+        public string RoleName {get; set;}
     }
 
     public class ResetPasswordViewModel
