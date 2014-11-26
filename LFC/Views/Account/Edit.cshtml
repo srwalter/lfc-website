@@ -120,6 +120,22 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Instrument, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Instrument, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Instrument, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SafetyPilot, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SafetyPilot, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SafetyPilot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.MemberType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EnumDropDownListFor(model => model.MemberType, new { @class = "form-control" })

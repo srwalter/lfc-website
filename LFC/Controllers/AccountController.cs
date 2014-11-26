@@ -100,6 +100,8 @@ namespace LFC.Controllers
                 user.ZipCode = model.ZipCode;
                 user.Certificate = model.Certificate;
                 user.MemberType = model.MemberType;
+                user.Safety = model.SafetyPilot;
+                user.Instrument = model.Instrument;
 
                 db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();

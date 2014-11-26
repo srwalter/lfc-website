@@ -102,6 +102,8 @@ namespace LFC.Models
             this.ZipCode = user.ZipCode;
             this.Certificate = user.Certificate;
             this.MemberType = user.MemberType;
+            this.Instrument = user.Instrument;
+            this.SafetyPilot = user.Safety;
         }
 
         [Required]
@@ -145,6 +147,11 @@ namespace LFC.Models
         public string ZipCode { get; set; }
 
         public LFC.Models.ApplicationUser.CertificateType? Certificate { get; set; }
+        [Display(Name="Instrument Rated?")]
+        public bool Instrument { get; set; }
+
+        [Display(Name="Safety Pilot?")]
+        public bool SafetyPilot { get; set; }
 
         [Display(Name = "Membership Type")]
         public LFC.Models.ApplicationUser.MembershipType? MemberType { get; set; }
