@@ -1,17 +1,83 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<h2>Contact Us</h2>
+<p>
+    You can reach the club by email at <a href="mailto:info@lexingtonflyingclub.org">info@lexingtonflyingclub.org</a>,
+    or by using this form.  The club can also be reached at the postal address at
+    the bottom of this page.
+</p>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            <input type="text" id="name">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="replyAddr">Reply Email Address</label>
+        <div class="controls">
+            <input type="text" id="replyAddr">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="subject">Subject</label>
+        <div class="controls">
+            <input type="text" id="subject">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="message">Message</label>
+        <div class="controls">
+            <textarea class="span5" rows="5" id="message"></textarea>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+<h3>Officers</h3>
+<table class="table">
+    <tr>
+        <td>President</td>
+        <td>Mike Proctor</td>
+        <td><a href="mailto:mmproctor@roadrunner.com">mmproctor@roadrunner.com</a></td>
+    </tr>
+    <tr>
+        <td>Treasurer</td>
+        <td>Tony Baxter</td>
+        <td><a href="mailto:tony@uky.edu">tony@uky.edu</a></td>
+    </tr>
+    <tr>
+        <td>Secretary</td>
+        <td>Russell Bell</td>
+        <td><a href="mailto:russbell@rhr.com">russbell@rhr.com</a></td>
+    </tr>
+    <tr>
+        <td>Safety Officer</td>
+        <td>Linda Sturde Huff</td>
+        <td><a href="mailto:nikki391@yahoo.com">nikki391@yahoo.com</a></td>
+    </tr>
+    <tr>
+        <td>Maintenance Officer for N89652</td>
+        <td>Mike Smith</td>
+        <td><a href="mailto:mike@photonetcafe.com">mike@photonetcafe.com</a></td>
+    </tr>
+    <tr>
+        <td>Maintenance Officer for N75903</td>
+        <td>Mike Holbrook</td>
+        <td><a href="mailto:mhkynalcde@aol.com">mhkynalcde@aol.com</a></td>
+    </tr>
+    <tr>
+        <td>Maintenance Officer for N6203F</td>
+        <td>John Olsen</td>
+        <td><a href="mailto:olsen172@gmail.com">olsen172@gmail.com</a></td>
+    </tr>
+    <tr>
+        <td>Maintenance Officer for N213DS</td>
+        <td>Larry Sward</td>
+        <td><a href="mailto:lwsward53@yahoo.com">lwsward53@yahoo.com</a></td>
+    </tr>
+    <tr>
+        <td>Maintenance Officer for N3001W</td>
+        <td>Bill Allen</td>
+        <td><a href="mailto:wallen@insightbb.com">wallen@insightbb.com</a></td>
+    </tr>
+</table>
