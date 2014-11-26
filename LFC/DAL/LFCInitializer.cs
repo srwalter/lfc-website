@@ -7,9 +7,9 @@ using LFC.Models;
 
 namespace LFC.DAL
 {
-    public class AirplaneInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<AirplaneContext>
+    public class LFCInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<LFCContext>
     {
-        protected override void Seed(AirplaneContext context)
+        protected override void Seed(LFCContext context)
         {
             var planes = new List<Airplane>
             {

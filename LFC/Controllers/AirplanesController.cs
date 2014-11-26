@@ -14,7 +14,7 @@ namespace LFC.Controllers
     [Authorize]
     public class AirplanesController : Controller
     {
-        private AirplaneContext db = new AirplaneContext();
+        private LFCContext db = new LFCContext();
 
         // GET: Airplanes
         public ActionResult Index()

@@ -163,8 +163,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembersAreaController.cs" />
-    <Compile Include="DAL\AirplaneContext.cs" />
-    <Compile Include="DAL\AirplaneInitializer.cs" />
+    <Compile Include="DAL\LFCContext.cs" />
+    <Compile Include="DAL\LFCInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

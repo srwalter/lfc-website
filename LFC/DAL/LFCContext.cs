@@ -7,9 +7,9 @@ using LFC.Models;
 
 namespace LFC.DAL
 {
-    public class AirplaneContext : DbContext
+    public class LFCContext : DbContext
     {
-        public AirplaneContext() : base ("AirplaneContext")
+        public LFCContext() : base ("AirplaneContext")
         {
         }
 
