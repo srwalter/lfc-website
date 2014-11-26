@@ -98,6 +98,7 @@ namespace LFC.Controllers
                 user.City = model.City;
                 user.State = model.State;
                 user.ZipCode = model.ZipCode;
+                user.Certificate = model.Certificate;
 
                 db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
