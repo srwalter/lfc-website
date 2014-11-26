@@ -64,9 +64,44 @@ namespace LFC.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Member ID")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Short Name")]
+        public string ShortName { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [StringLength(1, ErrorMessage = "The {0} must be at most 1 character log")]
+        [Display(Name = "Middle Initial")]
+        public string MiddleInitial { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Home Telephone")]
+        public string HomeTel { get; set; }
+
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Office Telephone")]
+        public string OfficeTel { get; set; }
+
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public string Address {get; set; }
+        public string City {get; set; }
+        public string State {get; set; }
+
+        [Display(Name="Zip Code")]
+        [RegularExpression("\\d\\d\\d\\d\\d")]
+        public string ZipCode {get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

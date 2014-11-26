@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembersAreaController.cs" />
     <Compile Include="DAL\AirplaneContext.cs" />
     <Compile Include="DAL\AirplaneInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,6 +239,7 @@
     <Content Include="Views\Airplanes\Details.cshtml" />
     <Content Include="Views\Airplanes\Edit.cshtml" />
     <Content Include="Views\Airplanes\Index.cshtml" />
+    <Content Include="Views\MembersArea\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
