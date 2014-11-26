@@ -150,11 +150,13 @@ namespace LFC.Models
     {
         public SelectUserRolesViewModel ()
         {
+            this.Roles = new List<SelectRoleEditorViewModel>();
         }
 
         public SelectUserRolesViewModel (ApplicationUser user) : this ()
         {
             this.UserName = user.UserName;
+            this.ShortName = user.ShortName;
 
             var db = new ApplicationDbContext();
             var allRoles = db.Roles;
@@ -166,12 +168,13 @@ namespace LFC.Models
 
             foreach (var userRole in user.Roles)
             {
-                var checkUserRole = this.Roles.Find(r => r.RoleName == userRole.RoleId);
+                var checkUserRole = this.Roles.Find(r => r.RoleId == userRole.RoleId);
                 checkUserRole.Selected = true;
             }
         }
 
         public string UserName {get; set;}
+        public string ShortName { get; set; }
         public List<SelectRoleEditorViewModel> Roles { get; set; }
     }
 
@@ -184,12 +187,14 @@ namespace LFC.Models
         public SelectRoleEditorViewModel(IdentityRole role)
         {
             this.RoleName = role.Name;
+            this.RoleId = role.Id;
         }
 
         public bool Selected {get; set;}
 
         [Required]
         public string RoleName {get; set;}
+        public string RoleId { get; set; }
     }
 
     public class ResetPasswordViewModel

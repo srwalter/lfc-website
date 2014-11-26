@@ -1,0 +1,32 @@
+﻿@model LFC.Models.SelectUserRolesViewModel
+
+<h2>Change Member Permissions for @Html.DisplayFor(model => model.ShortName)</h2>
+
+@using (Html.BeginForm("UserRoles", "Account", FormMethod.Post, new { encType = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.UserName)
+            </div>
+        </div>
+
+        <h4>Select Permissions</h4>
+        <table>
+            <tr>
+                <th>Select</th>
+                <th>Permission</th>
+            </tr>
+            @Html.EditorFor(model => model.Roles)
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

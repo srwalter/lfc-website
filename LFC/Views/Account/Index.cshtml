@@ -53,8 +53,9 @@
             @{
                 if (User.IsInRole("Admin")) {
                     @:|
-                    Html.ActionLink("Edit", "Edit", new { id=item.UserName }); @:|
-                    Html.ActionLink("Delete", "Delete", new { id = item.UserName });
+                    @Html.ActionLink("Edit", "Edit", new { id=item.UserName }); @:|
+                    @Html.ActionLink("Permissions", "UserRoles", new { id = item.UserName }); @:|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserName });
                 }
             }
         </td>
