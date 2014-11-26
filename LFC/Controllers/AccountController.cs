@@ -148,6 +148,7 @@ namespace LFC.Controllers
         public ActionResult UserRoles(string id)
         {
             var db = new LFCContext();
+            //_roleManager.Create(new IdentityRole("Admin"));
             var user = db.Users.First(u => u.UserName == id);
             var model = new SelectUserRolesViewModel(user);
             return View(model);
@@ -229,6 +230,7 @@ namespace LFC.Controllers
 
         //
         // GET: /Account/Register
+        //[AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -237,6 +239,7 @@ namespace LFC.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
