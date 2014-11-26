@@ -22,7 +22,8 @@ namespace LFC.Models
         public enum MembershipType
         {
             Full,
-            Restricted
+            Restricted,
+            Inactive
         };
         public String ShortName { get; set; }
         public String LastName { get; set; }

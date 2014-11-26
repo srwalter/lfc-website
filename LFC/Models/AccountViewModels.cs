@@ -101,6 +101,7 @@ namespace LFC.Models
             this.State = user.State;
             this.ZipCode = user.ZipCode;
             this.Certificate = user.Certificate;
+            this.MemberType = user.MemberType;
         }
 
         [Required]
@@ -144,6 +145,9 @@ namespace LFC.Models
         public string ZipCode { get; set; }
 
         public LFC.Models.ApplicationUser.CertificateType? Certificate { get; set; }
+
+        [Display(Name = "Membership Type")]
+        public LFC.Models.ApplicationUser.MembershipType? MemberType { get; set; }
     }
 
     public class SelectUserRolesViewModel

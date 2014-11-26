@@ -113,9 +113,17 @@
         <dd>
             @Html.DisplayFor(model => model.Certificate)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberType)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserName }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
