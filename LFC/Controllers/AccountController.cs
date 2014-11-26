@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LFC.Models;
+using LFC.DAL;
 
 namespace LFC.Controllers
 {
@@ -23,7 +24,7 @@ namespace LFC.Controllers
 
         public AccountController()
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new LFCContext()));
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager ) : this ()
@@ -58,7 +59,7 @@ namespace LFC.Controllers
         
         public ActionResult Index()
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var users = db.Users;
             var model = new List<EditUserViewModel>();
             foreach (var user in users)
@@ -72,7 +73,7 @@ namespace LFC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             var model = new EditUserViewModel(user);
             return View(model);
@@ -85,7 +86,7 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new ApplicationDbContext();
+                var db = new LFCContext();
                 var user = db.Users.First(u => u.UserName == model.UserName);
                 user.Email = model.Email;
                 user.ShortName = model.ShortName;
@@ -112,7 +113,7 @@ namespace LFC.Controllers
 
         public ActionResult Details(string id)
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             var model = new EditUserViewModel(user);
             return View(model);
@@ -121,7 +122,7 @@ namespace LFC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id = null)
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             var model = new EditUserViewModel(user);
             if (user == null)
@@ -136,7 +137,7 @@ namespace LFC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(string id)
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             db.Users.Remove(user);
             db.SaveChanges();
@@ -146,7 +147,7 @@ namespace LFC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult UserRoles(string id)
         {
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             var model = new SelectUserRolesViewModel(user);
             return View(model);
@@ -159,7 +160,7 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new ApplicationDbContext();
+                var db = new LFCContext();
                 var user = db.Users.First(u => u.UserName == model.UserName);
                 foreach (var r in UserManager.GetRoles(user.Id))
                 {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
+using LFC.DAL;
 
 namespace LFC.Models
 {
@@ -169,7 +170,7 @@ namespace LFC.Models
             this.UserName = user.UserName;
             this.ShortName = user.ShortName;
 
-            var db = new ApplicationDbContext();
+            var db = new LFCContext();
             var allRoles = db.Roles;
             foreach (var role in allRoles)
             {
