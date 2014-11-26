@@ -159,12 +159,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DAL\AirplaneContext.cs" />
+    <Compile Include="DAL\AirplaneInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,6 +233,11 @@
     <Content Include="Views\Home\Join.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\Bylaws.cshtml" />
+    <Content Include="Views\Airplanes\Create.cshtml" />
+    <Content Include="Views\Airplanes\Delete.cshtml" />
+    <Content Include="Views\Airplanes\Details.cshtml" />
+    <Content Include="Views\Airplanes\Edit.cshtml" />
+    <Content Include="Views\Airplanes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
