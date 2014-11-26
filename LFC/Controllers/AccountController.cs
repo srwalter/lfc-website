@@ -56,7 +56,6 @@ namespace LFC.Controllers
             }
         }
         
-        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var db = new ApplicationDbContext();
@@ -104,6 +103,14 @@ namespace LFC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            return View(model);
+        }
+
+        public ActionResult Details(string id)
+        {
+            var db = new ApplicationDbContext();
+            var user = db.Users.First(u => u.UserName == id);
+            var model = new EditUserViewModel(user);
             return View(model);
         }
 
