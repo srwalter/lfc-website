@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PagedList;
+
 using LFC.Models;
 using LFC.DAL;
 
@@ -57,17 +59,19 @@ namespace LFC.Controllers
             }
         }
         
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var db = new LFCContext();
             var users = db.Users;
             var model = new List<EditUserViewModel>();
-            foreach (var user in users)
+            foreach (var user in users.OrderBy(n => n.LastName))
             {
                 var u = new EditUserViewModel(user);
                 model.Add(u);
             }
-            return View(model);
+            int pagesize = 20;
+            int pagenumber = (page ?? 1);
+            return View(model.ToPagedList(pagenumber, pagesize));
         }
 
         [Authorize(Roles = "Admin")]

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<LFC.Models.EditUserViewModel>
+﻿@model PagedList.IPagedList<LFC.Models.EditUserViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>Members List</h2>
 
@@ -13,22 +15,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model[0].UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortName)
+            @Html.DisplayNameFor(model => model[0].ShortName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model[0].FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MiddleInitial)
+            @Html.DisplayNameFor(model => model[0].MiddleInitial)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model[0].LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model[0].Email)
         </th>
         <th></th>
     </tr>
@@ -68,3 +70,7 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
