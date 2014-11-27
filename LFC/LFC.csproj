@@ -334,6 +334,7 @@
     <Content Include="Views\AirworthinessDirectives\Details.cshtml" />
     <Content Include="Views\AirworthinessDirectives\Edit.cshtml" />
     <Content Include="Views\AirworthinessDirectives\Index.cshtml" />
+    <Content Include="Views\Shared\MaintenanceActions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

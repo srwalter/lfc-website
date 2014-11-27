@@ -78,7 +78,65 @@ namespace LFC.Models
         public DateTime Updated { get; set; }
         [Display(Name="Updated By")]
         public String UpdatedBy { get; set; }
+        [DataType(DataType.MultilineText)]
         public String Comments { get; set; }
+
+        public List<String> MaintenanceActions
+        {
+            get
+            {
+                var actions = new List<String>();
+                if (HundredHour > 0 && CurrentTach > HundredHour)
+                {
+                    actions.Add("Hundred hour inspection is due");
+                }
+                if (CurrentTach > OilChange)
+                {
+                    actions.Add("Oil change is due");
+                }
+                if (DateTime.Now >= AnnualDue)
+                {
+                    actions.Add("Annual inspection is due");
+                }
+                else if (DateTime.Now.AddDays(14) >= AnnualDue)
+                {
+                    actions.Add("Annual inspection is due soon");
+                }
+                if (DateTime.Now >= EltDue)
+                {
+                    actions.Add("ELT inspection is due");
+                }
+                else if (DateTime.Now.AddDays(14) >= EltDue)
+                {
+                    actions.Add("ELT inspection is due soon");
+                }
+                if (DateTime.Now >= EltBatteryDue)
+                {
+                    actions.Add("ELT battery is due for replacement");
+                }
+                else if (DateTime.Now.AddDays(14) >= EltBatteryDue)
+                {
+                    actions.Add("ELT battery is due for replacement soon");
+                }
+                if (DateTime.Now >= TransponderDue)
+                {
+                    actions.Add("Transponder inspection is due");
+                }
+                else if (DateTime.Now.AddDays(14) >= TransponderDue)
+                {
+                    actions.Add("Transponder inspection is due soon");
+                }
+                if (DateTime.Now >= StaticDue)
+                {
+                    actions.Add("Pitot/static inspection is due");
+                }
+                else if (DateTime.Now.AddDays(14) >= StaticDue)
+                {
+                    actions.Add("Pitot/static inspection is due soon");
+                }
+                return actions;
+            }
+        }
 
         public void UpdatedNow (ApplicationUser updatedBy)
         {

@@ -1,0 +1,11 @@
+﻿@if (Model.MaintenanceActions.Count > 0)
+{
+    <h3>Maintenance Actions</h3>
+    foreach (var action in Model.MaintenanceActions)
+    {
+        <h4 class="text-danger">
+            @Html.DisplayFor(actionItem => action)
+        </h4>
+    }
+    <hr />
+}
