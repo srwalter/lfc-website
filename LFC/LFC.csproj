@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembersAreaController.cs" />
     <Compile Include="DAL\LFCContext.cs" />
@@ -294,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Import\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
