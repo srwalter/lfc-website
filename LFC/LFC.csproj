@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AirplanesController.cs" />
+    <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
@@ -200,9 +201,22 @@
     <Compile Include="Migrations\201411270804209_MomentArmToDouble.Designer.cs">
       <DependentUpon>201411270804209_MomentArmToDouble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411270835051_ADsTable.cs" />
+    <Compile Include="Migrations\201411270835051_ADsTable.Designer.cs">
+      <DependentUpon>201411270835051_ADsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270839596_LastDoneOptional.cs" />
+    <Compile Include="Migrations\201411270839596_LastDoneOptional.Designer.cs">
+      <DependentUpon>201411270839596_LastDoneOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270850165_CompoundKey.cs" />
+    <Compile Include="Migrations\201411270850165_CompoundKey.Designer.cs">
+      <DependentUpon>201411270850165_CompoundKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
+    <Compile Include="Models\AirworthinessDirective.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -307,6 +321,11 @@
     <Content Include="Views\Equipment\Details.cshtml" />
     <Content Include="Views\Equipment\Edit.cshtml" />
     <Content Include="Views\Equipment\Index.cshtml" />
+    <Content Include="Views\AirworthinessDirectives\Create.cshtml" />
+    <Content Include="Views\AirworthinessDirectives\Delete.cshtml" />
+    <Content Include="Views\AirworthinessDirectives\Details.cshtml" />
+    <Content Include="Views\AirworthinessDirectives\Edit.cshtml" />
+    <Content Include="Views\AirworthinessDirectives\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +353,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411270804209_MomentArmToDouble.resx">
       <DependentUpon>201411270804209_MomentArmToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270835051_ADsTable.resx">
+      <DependentUpon>201411270835051_ADsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270839596_LastDoneOptional.resx">
+      <DependentUpon>201411270839596_LastDoneOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270850165_CompoundKey.resx">
+      <DependentUpon>201411270850165_CompoundKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

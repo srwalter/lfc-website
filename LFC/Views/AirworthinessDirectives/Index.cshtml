@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LFC.Models.AirworthinessDirective>
+
+<h2>Airworthiness Directives</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Airplane.AirplaneID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AirworthinessDirectiveID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LastDoneHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastDoneDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirworthinessDirectiveID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDoneHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDoneDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AirworthinessDirectiveID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AirworthinessDirectiveID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AirworthinessDirectiveID })
+        </td>
+    </tr>
+}
+
+</table>

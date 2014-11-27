@@ -13,8 +13,10 @@ using LFC.DAL;
 
 namespace LFC.Controllers
 {
+    [Authorize]
     public class ImportController : Controller
     {
+        [Authorize(Roles="Admin")]
         public ActionResult Airplanes()
         {
             var lfc = new LFCContext();
@@ -117,6 +119,7 @@ namespace LFC.Controllers
         }
 
         // GET: Import
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Users()
         {
             var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();

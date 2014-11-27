@@ -47,5 +47,6 @@ namespace LFC.Models
 
         [Display(Name="Equipment")]
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
+        public virtual ICollection<AirworthinessDirective> ADs { get; set; }
     }
 }

@@ -19,8 +19,18 @@ namespace LFC.DAL
             return new LFCContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<AirworthinessDirective>()
+                .HasKey(t => new { t.AirplaneID, t.AirworthinessDirectiveID });
+        }
+
         public DbSet<Airplane> Airplanes { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.Equipment> Equipments { get; set; }
+
+        public System.Data.Entity.DbSet<LFC.Models.AirworthinessDirective> AirworthinessDirectives { get; set; }
     }
 }
