@@ -69,6 +69,38 @@ namespace LFC.Controllers
                 }
                 reader.Close();
 
+                command = new OleDbCommand("SELECT acid, tach_add, engine_overhaul, cur_tach, hun_hour, oil_change, annual_mon, annual_year, elt_mon, elt_year, e_bat_mon, e_bat_year, xpndr_mon, xpndr_year, static_mon, static_year FROM acstats3");
+                command.Connection = db;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var acid = (String)reader[0];
+                    var airplane = lfc.Airplanes.Find(acid);
+                    airplane.TachAdd = (double)reader[1];
+                    airplane.EngineOverhaul = (double)reader[2];
+                    airplane.CurrentTach = (double)reader[3];
+                    airplane.HundredHour = (double)reader[4];
+                    airplane.OilChange = (int)reader[5];
+                    var mon = int.Parse((String)reader[6]);
+                    var year = (int)reader[7];
+                    airplane.AnnualDue = new DateTime(year, mon, 28);
+                    mon = int.Parse((String)reader[8]);
+                    year = (int)reader[9];
+                    airplane.EltDue = new DateTime(year, mon, 28);
+                    mon = int.Parse((String)reader[10]);
+                    year = int.Parse((String)reader[11]);
+                    airplane.EltBatteryDue = new DateTime(year, mon, 28);
+                    mon = int.Parse((String)reader[12]);
+                    year = (int)reader[13];
+                    airplane.TransponderDue = new DateTime(year, mon, 28);
+                    mon = int.Parse((String)reader[14]);
+                    year = (int)reader[15];
+                    airplane.StaticDue = new DateTime(year, mon, 28);
+                    var user = lfc.Users.First(u => u.UserName == User.Identity.Name);
+                    airplane.UpdatedNow(user);
+                }
+                reader.Close();
+
                 command = new OleDbCommand("SELECT acid, comm_a, comm_b, gps, transponder, autopilot, ic FROM equipment");
                 command.Connection = db;
                 reader = command.ExecuteReader();
