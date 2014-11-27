@@ -16,6 +16,7 @@ namespace LFC.Models
         [Required]
         public String Type { get; set; }
         public String Description { get; set; }
+        public int ModelYear { get; set; }
         public float Rate { get; set; }
         public String Serial { get; set; }
         [Display(Name="Engine Mfg.")]
@@ -38,8 +39,8 @@ namespace LFC.Models
         public float TotalFuel { get; set; }
         [Display(Name="Usable Fuel")]
         public float UsableFuel { get; set; }
-        public float Moment { get; set; }
-        public float Arm { get; set; }
+        public double Moment { get; set; }
+        public double Arm { get; set; }
         public int Voltage { get; set; }
         [Display(Name="Oil Sump Capacity (Qt.)")]
         public int OilSump { get; set; }

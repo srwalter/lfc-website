@@ -9,11 +9,113 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
 using LFC.Models;
+using LFC.DAL;
 
 namespace LFC.Controllers
 {
     public class ImportController : Controller
     {
+        public ActionResult Airplanes()
+        {
+            var lfc = new LFCContext();
+            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Steven\\Downloads\\LFC.mdb"))
+            {
+                var command = new OleDbCommand("SELECT acid, type, description, rate FROM Aircraft");
+                command.Connection = db;
+
+                db.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var airplane = new Airplane();
+                    airplane.AirplaneID = (String)reader[0];
+                    airplane.Type = (String)reader[1];
+                    airplane.Description = (String)reader[2];
+                    var rate = (Decimal)(reader[3] ?? 0.0f);
+                    airplane.Rate = (float)Decimal.ToDouble(rate);
+
+                    lfc.Airplanes.Add(airplane);
+                }
+                reader.Close();
+
+                command = new OleDbCommand("SELECT acid, year, serial, engine_type, engine_mfg, engine_hp, cruise_speed, cruise_alt, range, range_alt, empty_wt, gross_wt, total_fuel, usable_fuel, moment, arm, voltage, oil_sump FROM equipment");
+                command.Connection = db;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var acid = (String)reader[0];
+                    var airplane = lfc.Airplanes.Find(acid);
+                    airplane.ModelYear = (int)reader[1];
+                    airplane.Serial = (String)reader[2];
+                    airplane.EngineModel = (String)reader[3];
+                    airplane.EngineMake = (string)reader[4];
+                    airplane.HP = (int)reader[5];
+                    airplane.CruiseSpeed = (int)reader[6];
+                    airplane.CruiseAlt = (int)reader[7];
+                    airplane.Range = (int)reader[8];
+                    airplane.RangeAlt = (int)reader[9];
+                    airplane.EmptyWt = (int)reader[10];
+                    airplane.GrossWt = (int)reader[11];
+                    var total_fuel = (double)reader[12];
+                    var usable_fuel = (double)reader[13];
+                    airplane.TotalFuel = (float)total_fuel;
+                    airplane.UsableFuel = (float)usable_fuel;
+                    airplane.Moment = (double)reader[14];
+                    airplane.Arm = (float)reader[15];
+                    airplane.Voltage = (int)reader[16];
+                    airplane.OilSump = (int)reader[17];
+                }
+                reader.Close();
+
+                command = new OleDbCommand("SELECT acid, comm_a, comm_b, gps, transponder, autopilot, ic FROM equipment");
+                command.Connection = db;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.NAVComm;
+                    equip.Description = (String)reader[1];
+                    lfc.Equipments.Add(equip);
+
+                    equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.NAVComm;
+                    equip.Description = (String)reader[2];
+                    lfc.Equipments.Add(equip);
+
+                    equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.GPS;
+                    equip.Description = (String)reader[3];
+                    lfc.Equipments.Add(equip);
+
+                    equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.Transponder;
+                    equip.Description = (String)reader[4];
+                    lfc.Equipments.Add(equip);
+
+                    equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.Autopilot;
+                    equip.Description = (String)reader[5];
+                    lfc.Equipments.Add(equip);
+
+                    equip = new Equipment();
+                    equip.AirplaneID = (String)reader[0];
+                    equip.Type = Equipment.EquipmentType.Intercom;
+                    equip.Description = (String)reader[6];
+                    lfc.Equipments.Add(equip);
+                }
+                reader.Close();
+
+                db.Close();
+                lfc.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: Import
         public async Task<ActionResult> Users()
         {

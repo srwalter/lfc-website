@@ -192,6 +192,14 @@
     <Compile Include="Migrations\201411270130221_FixAirplaneKey.Designer.cs">
       <DependentUpon>201411270130221_FixAirplaneKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411270740037_ModelYear.cs" />
+    <Compile Include="Migrations\201411270740037_ModelYear.Designer.cs">
+      <DependentUpon>201411270740037_ModelYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270804209_MomentArmToDouble.cs" />
+    <Compile Include="Migrations\201411270804209_MomentArmToDouble.Designer.cs">
+      <DependentUpon>201411270804209_MomentArmToDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -320,6 +328,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411270130221_FixAirplaneKey.resx">
       <DependentUpon>201411270130221_FixAirplaneKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270740037_ModelYear.resx">
+      <DependentUpon>201411270740037_ModelYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270804209_MomentArmToDouble.resx">
+      <DependentUpon>201411270804209_MomentArmToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
