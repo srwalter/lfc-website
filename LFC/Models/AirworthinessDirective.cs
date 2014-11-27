@@ -8,6 +8,8 @@ namespace LFC.Models
 {
     public class AirworthinessDirective
     {
+        [Key]
+        public int KeyNum { get; set; }
         [Display(Name = "AD name")]
         public String AirworthinessDirectiveID { get; set; }
         [Display(Name = "Airplane")]

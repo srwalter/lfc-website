@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201411270850165_CompoundKey.Designer.cs">
       <DependentUpon>201411270850165_CompoundKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411270859401_integerkey.cs" />
+    <Compile Include="Migrations\201411270859401_integerkey.Designer.cs">
+      <DependentUpon>201411270859401_integerkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411270850165_CompoundKey.resx">
       <DependentUpon>201411270850165_CompoundKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270859401_integerkey.resx">
+      <DependentUpon>201411270859401_integerkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

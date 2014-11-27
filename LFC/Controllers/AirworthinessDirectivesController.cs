@@ -23,7 +23,7 @@ namespace LFC.Controllers
         }
 
         // GET: AirworthinessDirectives/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -63,7 +63,7 @@ namespace LFC.Controllers
         }
 
         // GET: AirworthinessDirectives/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace LFC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AirworthinessDirectiveID,AirplaneID,Description,FrequencyHours,FrequencyMonths,FrequencyMisc,LastDoneHours,LastDoneDate")] AirworthinessDirective airworthinessDirective)
+        public ActionResult Edit([Bind(Include = "KeyNum,AirworthinessDirectiveID,AirplaneID,Description,FrequencyHours,FrequencyMonths,FrequencyMisc,LastDoneHours,LastDoneDate")] AirworthinessDirective airworthinessDirective)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace LFC.Controllers
         }
 
         // GET: AirworthinessDirectives/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -113,7 +113,7 @@ namespace LFC.Controllers
         // POST: AirworthinessDirectives/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             AirworthinessDirective airworthinessDirective = db.AirworthinessDirectives.Find(id);
             db.AirworthinessDirectives.Remove(airworthinessDirective);

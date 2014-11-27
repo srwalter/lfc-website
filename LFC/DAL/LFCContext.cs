@@ -22,9 +22,6 @@ namespace LFC.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<AirworthinessDirective>()
-                .HasKey(t => new { t.AirplaneID, t.AirworthinessDirectiveID });
         }
 
         public DbSet<Airplane> Airplanes { get; set; }
