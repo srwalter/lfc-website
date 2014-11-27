@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AirplanesController.cs" />
+    <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembersAreaController.cs" />
@@ -179,6 +180,10 @@
     <Compile Include="Migrations\201411270113091_FixIDType.cs" />
     <Compile Include="Migrations\201411270113091_FixIDType.Designer.cs">
       <DependentUpon>201411270113091_FixIDType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270130221_FixAirplaneKey.cs" />
+    <Compile Include="Migrations\201411270130221_FixAirplaneKey.Designer.cs">
+      <DependentUpon>201411270130221_FixAirplaneKey.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +286,11 @@
     <Content Include="Views\Airplanes\Create.cshtml" />
     <Content Include="Views\Airplanes\Edit.cshtml" />
     <Content Include="Views\Airplanes\Details.cshtml" />
+    <Content Include="Views\Equipment\Create.cshtml" />
+    <Content Include="Views\Equipment\Delete.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
+    <Content Include="Views\Equipment\Edit.cshtml" />
+    <Content Include="Views\Equipment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411270113091_FixIDType.resx">
       <DependentUpon>201411270113091_FixIDType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270130221_FixAirplaneKey.resx">
+      <DependentUpon>201411270130221_FixAirplaneKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

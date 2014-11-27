@@ -169,8 +169,33 @@
             </div>
         </div>
 
+        <h4>Equipment</h4>
+        <table class="table">
+            <tr>
+                <td>Type</td>
+                <td>Description</td>
+                <td></td>
+            </tr>
+            @foreach (var item in Model.InstalledEquipment.OrderBy(n => n.Type))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Equipment", new { id = item.EquipmentID }, new { }) |
+                        @Html.ActionLink("Delete", "Delete", "Equipment", new { id = item.EquipmentID }, new { })
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Add Equipment", "Create", "Equipment", new { id = Model.AirplaneID }, new { })
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>

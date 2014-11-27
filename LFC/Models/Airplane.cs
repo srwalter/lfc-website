@@ -10,6 +10,8 @@ namespace LFC.Models
     public class Airplane
     {
         [Display(Name="N-number")]
+        [Required]
+        [Key]
         public String AirplaneID { get; set; }
         [Required]
         public String Type { get; set; }
