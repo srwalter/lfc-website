@@ -39,6 +39,7 @@ namespace LFC.Controllers
         }
 
         // GET: Equipment/Create
+        [Authorize(Roles="Admin")]
         public ActionResult Create(String id)
         {
             var equipment = new Equipment();
@@ -50,6 +51,7 @@ namespace LFC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipmentID,AirplaneID,Type,Description")] Equipment equipment)
         {
@@ -65,6 +67,7 @@ namespace LFC.Controllers
         }
 
         // GET: Equipment/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +87,7 @@ namespace LFC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipmentID,AirplaneID,Type,Description")] Equipment equipment)
         {
@@ -98,6 +102,7 @@ namespace LFC.Controllers
         }
 
         // GET: Equipment/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +119,7 @@ namespace LFC.Controllers
 
         // POST: Equipment/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

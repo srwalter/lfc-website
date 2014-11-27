@@ -3,7 +3,10 @@
 <h2>Airworthiness Directives</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
 </p>
 <table class="table">
     <tr>
@@ -44,9 +47,14 @@
             @Html.DisplayFor(modelItem => item.LastDoneDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KeyNum }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KeyNum }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KeyNum })
+            
+            @Html.ActionLink("Details", "Details", new { id=item.KeyNum })
+            @if (User.IsInRole("Admin"))
+            {
+                @:|
+                @Html.ActionLink("Edit", "Edit", new { id = item.KeyNum }) @:|
+                @Html.ActionLink("Delete", "Delete", new { id=item.KeyNum })
+            }
         </td>
     </tr>
 }

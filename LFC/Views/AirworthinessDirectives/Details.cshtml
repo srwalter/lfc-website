@@ -69,6 +69,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AirworthinessDirectiveID }) |
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AirworthinessDirectiveID }) @:|
+    }
+    
     @Html.ActionLink("Back to List", "Index")
 </p>

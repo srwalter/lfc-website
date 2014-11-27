@@ -2,7 +2,10 @@
 <h2>Members Area</h2>
 <ul>
     <li>@Html.ActionLink("Airplanes", "Index", "Airplanes")</li>
-    <li>@Html.ActionLink("Add Member", "Register", "Account")</li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li>@Html.ActionLink("Add Member", "Register", "Account")</li>
+    }
     <li>@Html.ActionLink("Airplane ADs", "Index", "AirworthinessDirectives")</li>
     <li>@Html.ActionLink("Member List", "Index", "Account")</li>
 </ul>
