@@ -45,6 +45,47 @@ namespace LFC.Models
         [Display(Name="Oil Sump Capacity (Qt.)")]
         public int OilSump { get; set; }
 
+        [Display(Name="Tach Add")]
+        public double TachAdd { get; set; }
+        [Display(Name="Last Overhaul")]
+        public double EngineOverhaul { get; set; }
+        [Display(Name="Current Tach")]
+        public double CurrentTach { get; set; }
+        [Display(Name="Next Hundred Hour")]
+        public double HundredHour { get; set; }
+        [Display(Name="Next Oil Change")]
+        public double OilChange { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name="Annual Due")]
+        public DateTime AnnualDue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name="ELT Due")]
+        public DateTime EltDue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name="ELT Battery Due")]
+        public DateTime EltBatteryDue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name="Transponder Due")]
+        public DateTime TransponderDue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name="Static Due")]
+        public DateTime StaticDue { get; set; }
+        public DateTime Updated { get; set; }
+        [Display(Name="Updated By")]
+        public String UpdatedBy { get; set; }
+        public String Comments { get; set; }
+
+        public void UpdatedNow (ApplicationUser updatedBy)
+        {
+            this.Updated = DateTime.Now;
+            this.UpdatedBy = updatedBy.ShortName;
+        }
+
         [Display(Name="Equipment")]
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }

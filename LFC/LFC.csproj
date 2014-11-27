@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201411270859401_integerkey.Designer.cs">
       <DependentUpon>201411270859401_integerkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411272020009_ACStats.cs" />
+    <Compile Include="Migrations\201411272020009_ACStats.Designer.cs">
+      <DependentUpon>201411272020009_ACStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411270859401_integerkey.resx">
       <DependentUpon>201411270859401_integerkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411272020009_ACStats.resx">
+      <DependentUpon>201411272020009_ACStats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -48,10 +48,12 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Airplane airplane)
+        public ActionResult Create([Bind(Exclude="Updated.UpdatedBy")] Airplane airplane)
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.First(u => u.UserName == User.Identity.Name);
+                airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -80,10 +82,12 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Airplane airplane)
+        public ActionResult Edit([Bind(Exclude="Updated,UpdatedBy")] Airplane airplane)
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.First(u => u.UserName == User.Identity.Name);
+                airplane.UpdatedNow(user);
                 db.Entry(airplane).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
