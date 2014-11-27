@@ -27,6 +27,30 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.InstalledEquipment)
+        </dt>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+                @foreach (var item in Model.InstalledEquipment)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Rate)
         </dt>
 

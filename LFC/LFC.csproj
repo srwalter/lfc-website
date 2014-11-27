@@ -172,9 +172,18 @@
     <Compile Include="Migrations\201411261730047_InitialCreate.Designer.cs">
       <DependentUpon>201411261730047_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411270111527_AddedEquipment.cs" />
+    <Compile Include="Migrations\201411270111527_AddedEquipment.Designer.cs">
+      <DependentUpon>201411270111527_AddedEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270113091_FixIDType.cs" />
+    <Compile Include="Migrations\201411270113091_FixIDType.Designer.cs">
+      <DependentUpon>201411270113091_FixIDType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
+    <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +292,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411261730047_InitialCreate.resx">
       <DependentUpon>201411261730047_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270111527_AddedEquipment.resx">
+      <DependentUpon>201411270111527_AddedEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270113091_FixIDType.resx">
+      <DependentUpon>201411270113091_FixIDType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

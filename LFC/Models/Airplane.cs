@@ -41,5 +41,8 @@ namespace LFC.Models
         public int Voltage { get; set; }
         [Display(Name="Oil Sump Capacity (Qt.)")]
         public int OilSump { get; set; }
+
+        [Display(Name="Equipment")]
+        public virtual ICollection<Equipment> InstalledEquipment { get; set; }
     }
 }
