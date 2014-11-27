@@ -260,10 +260,7 @@
     <Content Include="Views\Home\Join.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\Bylaws.cshtml" />
-    <Content Include="Views\Airplanes\Create.cshtml" />
     <Content Include="Views\Airplanes\Delete.cshtml" />
-    <Content Include="Views\Airplanes\Details.cshtml" />
-    <Content Include="Views\Airplanes\Edit.cshtml" />
     <Content Include="Views\Airplanes\Index.cshtml" />
     <Content Include="Views\MembersArea\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
@@ -272,6 +269,9 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
+    <Content Include="Views\Airplanes\Create.cshtml" />
+    <Content Include="Views\Airplanes\Edit.cshtml" />
+    <Content Include="Views\Airplanes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

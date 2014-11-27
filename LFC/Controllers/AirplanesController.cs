@@ -45,12 +45,10 @@ namespace LFC.Controllers
         }
 
         // POST: Airplanes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AirplaneID,Type,Description,Rate")] Airplane airplane)
+        public ActionResult Create(Airplane airplane)
         {
             if (ModelState.IsValid)
             {
@@ -79,12 +77,10 @@ namespace LFC.Controllers
         }
 
         // POST: Airplanes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AirplaneID,Type,Description,Rate")] Airplane airplane)
+        public ActionResult Edit(Airplane airplane)
         {
             if (ModelState.IsValid)
             {
