@@ -188,6 +188,63 @@
 
     </dl>
 </div>
+@if (Model.ADs.Count > 0) {
+<div class="dl-horizontal">
+    <h3>Airworthiness Directives</h3>
+    @foreach (var item in Model.ADs) {
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.FrequencyHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.FrequencyHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.FrequencyMonths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.FrequencyMonths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.FrequencyMisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.FrequencyMisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.LastDoneHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.LastDoneHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.LastDoneDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.LastDoneDate)
+        </dd>
+
+    </dl>
+    }
+</div>
+}
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.AirplaneID }) |
     @Html.ActionLink("Back to List", "Index")
