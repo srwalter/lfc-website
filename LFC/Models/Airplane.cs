@@ -80,6 +80,7 @@ namespace LFC.Models
         public String UpdatedBy { get; set; }
         [DataType(DataType.MultilineText)]
         public String Comments { get; set; }
+        public ApplicationUser MaintenanceOfficer { get; set; }
 
         public List<String> MaintenanceActions
         {
@@ -148,7 +149,7 @@ namespace LFC.Models
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }
 
-        public static List<AirworthinessDirective> PastDueADs (List<AirworthinessDirective> all_ads, double current_tach)
+        public static List<AirworthinessDirective> PastDueADs (ICollection<AirworthinessDirective> all_ads, double current_tach)
         {
                 var ads = new List<AirworthinessDirective>();
                 foreach (var ad in all_ads)

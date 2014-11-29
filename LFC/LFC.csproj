@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201411282347470_Stuff.Designer.cs">
       <DependentUpon>201411282347470_Stuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411290614581_Officer.cs" />
+    <Compile Include="Migrations\201411290614581_Officer.Designer.cs">
+      <DependentUpon>201411290614581_Officer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -384,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411282347470_Stuff.resx">
       <DependentUpon>201411282347470_Stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411290614581_Officer.resx">
+      <DependentUpon>201411290614581_Officer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

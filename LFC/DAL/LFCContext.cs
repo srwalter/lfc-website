@@ -29,5 +29,6 @@ namespace LFC.DAL
         public System.Data.Entity.DbSet<LFC.Models.Equipment> Equipments { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.AirworthinessDirective> AirworthinessDirectives { get; set; }
+        
     }
 }

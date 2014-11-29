@@ -25,6 +25,16 @@ namespace LFC.Models
             Restricted,
             Inactive
         };
+        public enum OfficerTitle
+        {
+            President,
+            Secretary,
+            Treasurer,
+            AsstTreasurer,
+            SafetyOfficer,
+            GPSProgrammer,
+        };
+
         public String ShortName { get; set; }
         public String LastName { get; set; }
         public String MiddleInitial { get; set; }
@@ -39,6 +49,8 @@ namespace LFC.Models
         public bool Instrument { get; set; }
         public MembershipType? MemberType { get; set; }
         public bool Safety { get; set; }
+        public OfficerTitle? Officer { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
