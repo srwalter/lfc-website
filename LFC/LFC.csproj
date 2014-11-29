@@ -229,6 +229,14 @@
     <Compile Include="Migrations\201411290614581_Officer.Designer.cs">
       <DependentUpon>201411290614581_Officer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411292302277_MaintenanceOfficer.cs" />
+    <Compile Include="Migrations\201411292302277_MaintenanceOfficer.Designer.cs">
+      <DependentUpon>201411292302277_MaintenanceOfficer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411292319438_MaintenanceOfficer2.cs" />
+    <Compile Include="Migrations\201411292319438_MaintenanceOfficer2.Designer.cs">
+      <DependentUpon>201411292319438_MaintenanceOfficer2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -393,6 +401,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411290614581_Officer.resx">
       <DependentUpon>201411290614581_Officer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411292302277_MaintenanceOfficer.resx">
+      <DependentUpon>201411292302277_MaintenanceOfficer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411292319438_MaintenanceOfficer2.resx">
+      <DependentUpon>201411292319438_MaintenanceOfficer2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.EquipmentID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AirplaneID, "AirplaneID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Airplane, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("AirplaneID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AirplaneID, "", new { @class = "text-danger" })

@@ -75,6 +75,7 @@ namespace LFC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.MaintenanceOfficerID = new SelectList(db.Users, "Id", "FullName", airplane.MaintenanceOfficerID);
             return View(airplane);
         }
 
