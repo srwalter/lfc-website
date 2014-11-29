@@ -81,6 +81,7 @@ namespace LFC.Models
         public String UpdatedBy { get; set; }
         [DataType(DataType.MultilineText)]
         public String Comments { get; set; }
+        [Display(Name="Maintenance Officer")]
         public ApplicationUser MaintenanceOfficer { get; set; }
 
         public List<String> MaintenanceActions

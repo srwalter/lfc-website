@@ -29,7 +29,7 @@ namespace LFC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Airplane airplane = db.Airplanes.Find(id);
+            Airplane airplane = db.Airplanes.Include("MaintenanceOfficer").First(x => x.AirplaneID == id);
             if (airplane == null)
             {
                 return HttpNotFound();
