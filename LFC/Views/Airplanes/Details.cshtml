@@ -42,22 +42,7 @@
                 {
                     <tr>
                         <td>
-                            @{
-                    var field = item.Type.GetType().GetMember(item.Type.ToString()).FirstOrDefault();
-                    if (field != null)
-                    {
-                        DisplayAttribute[] display = (DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false);
-                        if (display.Count() > 0)
-                        {
-                            @display.First().Name
-                        }
-                        else
-                        {
                             @Html.DisplayFor(x => item.Type)
-                        }
-                    }
-
-}
                         </td>
                         <td>
                             @Html.DisplayFor(x => item.Description)
