@@ -95,6 +95,7 @@ namespace LFC.Models
             this.LastName = user.LastName;
             this.MiddleInitial = user.MiddleInitial;
             this.FirstName = user.FirstName;
+            this.Officer = user.Officer;
             this.HomeTel = user.HomeTel;
             this.OfficeTel = user.OfficeTel;
             this.Address = user.Address;
@@ -126,6 +127,8 @@ namespace LFC.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public ApplicationUser.OfficerTitle? Officer;
 
         [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
         [Display(Name = "Home Telephone")]

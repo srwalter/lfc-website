@@ -50,6 +50,17 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
+        @if (Model.Officer != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Officer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Officer)
+            </dd>
+        }
+
         <dt>
             @Html.DisplayNameFor(model => model.HomeTel)
         </dt>
