@@ -101,6 +101,23 @@ namespace LFC.Controllers
                 }
                 reader.Close();
 
+                command = new OleDbCommand("SELECT officer.plane, members.user_id FROM officer INNER JOIN members ON officer.officer_id = members.officer_id");
+                command.Connection = db;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0] == DBNull.Value)
+                    {
+                        continue;
+                    }
+                    var acid = (String)reader[0];
+                    var airplane = lfc.Airplanes.Find(acid); ;
+                    var user_id = (int)reader[1];
+                    var officer = lfc.Users.First(u => u.UserName == user_id.ToString());
+                    airplane.MaintenanceOfficer = officer;
+                }
+                reader.Close();
+
                 command = new OleDbCommand("SELECT acid, comm_a, comm_b, gps, transponder, autopilot, ic FROM equipment");
                 command.Connection = db;
                 reader = command.ExecuteReader();
@@ -157,7 +174,7 @@ namespace LFC.Controllers
             var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Steven\\Downloads\\LFC.mdb"))
             {
-                var command = new OleDbCommand("SELECT user_id, password, m_id, last, first, middle, home_tel, office_tel, e_mail, address, city, state, zip, license, instrument, mbr_type, safety FROM members;");
+                var command = new OleDbCommand("SELECT user_id, password, m_id, last, first, middle, home_tel, office_tel, e_mail, address, city, state, zip, license, instrument, mbr_type, safety, officer_id FROM members;");
                 command.Connection = db;
 
                 db.Open();
@@ -219,6 +236,30 @@ namespace LFC.Controllers
                     }
                     var safety = (String)reader[16];
                     user.Safety = (safety == "yes");
+                    var officer = (int)((double)reader[17]);
+                    switch (officer)
+                    {
+                        case 99:
+                            break;
+                        case 1:
+                            user.Officer = ApplicationUser.OfficerTitle.President;
+                            break;
+                        case 2:
+                            user.Officer = ApplicationUser.OfficerTitle.Secretary;
+                            break;
+                        case 3:
+                            user.Officer = ApplicationUser.OfficerTitle.Treasurer;
+                            break;
+                        case 4:
+                            user.Officer = ApplicationUser.OfficerTitle.AsstTreasurer;
+                            break;
+                        case 5:
+                            user.Officer = ApplicationUser.OfficerTitle.SafetyOfficer;
+                            break;
+                        case 12:
+                            user.Officer = ApplicationUser.OfficerTitle.GPSProgrammer;
+                            break;
+                    }
                     var passwd = (int)reader[1];
                     var result = await UserManager.CreateAsync(user, passwd.ToString());
                 }
