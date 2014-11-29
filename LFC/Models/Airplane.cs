@@ -147,5 +147,24 @@ namespace LFC.Models
         [Display(Name="Equipment")]
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }
+
+        public static List<AirworthinessDirective> PastDueADs (List<AirworthinessDirective> all_ads, double current_tach)
+        {
+                var ads = new List<AirworthinessDirective>();
+                foreach (var ad in all_ads)
+                {
+                    if (ad.FrequencyHours != null && ad.LastDoneHours + ad.FrequencyHours < current_tach)
+                    {
+                        ads.Add(ad);
+                        continue;
+                    }
+                    if (ad.FrequencyMonths != null && ad.LastDoneDate.GetValueOrDefault().AddMonths(ad.FrequencyMonths.GetValueOrDefault()) < DateTime.Now)
+                    {
+                        ads.Add(ad);
+                        continue;
+                    }
+                }
+                return ads;
+        }
     }
 }

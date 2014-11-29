@@ -1,10 +1,18 @@
-﻿@if (Model.MaintenanceActions.Count > 0)
+﻿@TempData["PastDue"] = Airplane.PastDueADs(Model.ADs, Model.CurrentTach)
+@if (Model.MaintenanceActions.Count > 0 || TempData["PastDue"].Count > 0)
 {
     <h3>Maintenance Actions</h3>
     foreach (var action in Model.MaintenanceActions)
     {
         <h4 class="text-danger">
             @Html.DisplayFor(actionItem => action)
+        </h4>
+    }
+    foreach (var ad in TempData["PastDue") {
+        <h4 class="text-danger">
+            Airworthiness directive
+            @Html.DisplayFor(adTime => ad.AirworthinessDirectiveID)
+            is past due
         </h4>
     }
     <hr />
