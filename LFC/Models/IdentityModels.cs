@@ -51,6 +51,14 @@ namespace LFC.Models
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }
 
+        public String FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
