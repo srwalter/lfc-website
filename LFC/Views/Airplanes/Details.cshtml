@@ -1,4 +1,5 @@
 ﻿@model LFC.Models.Airplane
+@using System.ComponentModel.DataAnnotations;
 
 @{
     ViewBag.Title = "Details";
@@ -41,10 +42,25 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Type)
+                            @{
+                    var field = item.Type.GetType().GetMember(item.Type.ToString()).FirstOrDefault();
+                    if (field != null)
+                    {
+                        DisplayAttribute[] display = (DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false);
+                        if (display.Count() > 0)
+                        {
+                            @display.First().Name
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(x => item.Type)
+                        }
+                    }
+
+}
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
+                            @Html.DisplayFor(x => item.Description)
                         </td>
                     </tr>
                 }

@@ -9,7 +9,7 @@ namespace LFC.Models
     public class Equipment
     {
         public enum EquipmentType {
-            //[System.ComponentModel.Description("NAV/Comm")]
+            [Display(Name="NAV/Comm")]
             NAVComm,
             ADF,
             DME,
