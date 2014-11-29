@@ -3,14 +3,17 @@
 @model Enum
 
 @{
-    var field = Model.GetType().GetMember(Model.ToString()).FirstOrDefault();
-    DisplayAttribute[] display = (DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false);
-    if (display.Count() > 0)
+    if (Model != null)
     {
-        @display.First().Name
-    }
-    else
-    {
-        @Model.ToString()
+        var field = Model.GetType().GetMember(Model.ToString()).FirstOrDefault();
+        DisplayAttribute[] display = (DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false);
+        if (display.Count() > 0)
+        {
+            @display.First().Name
+        }
+        else
+        {
+            @Model.ToString()
+        }
     }
 }
