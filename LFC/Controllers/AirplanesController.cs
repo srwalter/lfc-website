@@ -53,6 +53,11 @@ namespace LFC.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Users.First(u => u.UserName == User.Identity.Name);
+                airplane.AnnualDue = DateTime.Now;
+                airplane.EltDue = DateTime.Now;
+                airplane.EltBatteryDue = DateTime.Now;
+                airplane.TransponderDue = DateTime.Now;
+                airplane.StaticDue = DateTime.Now;
                 airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
                 db.SaveChanges();
