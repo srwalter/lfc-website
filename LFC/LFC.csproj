@@ -270,6 +270,7 @@
     <Content Include="Content\instruct.html" />
     <Content Include="Content\logo.gif" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\logo_small.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
