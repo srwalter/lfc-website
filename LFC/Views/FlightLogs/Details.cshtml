@@ -1,0 +1,58 @@
+﻿@model LFC.Models.FlightLog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FlightLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Airplane.AirplaneID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Airplane.AirplaneID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pilot.ShortName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pilot.ShortName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FlightLogID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

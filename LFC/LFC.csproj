@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
+    <Compile Include="Controllers\FlightLogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -362,6 +363,11 @@
     <Content Include="Views\AirworthinessDirectives\Edit.cshtml" />
     <Content Include="Views\AirworthinessDirectives\Index.cshtml" />
     <Content Include="Views\Shared\MaintenanceActions.cshtml" />
+    <Content Include="Views\FlightLogs\Create.cshtml" />
+    <Content Include="Views\FlightLogs\Delete.cshtml" />
+    <Content Include="Views\FlightLogs\Details.cshtml" />
+    <Content Include="Views\FlightLogs\Edit.cshtml" />
+    <Content Include="Views\FlightLogs\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
