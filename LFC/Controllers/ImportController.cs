@@ -16,6 +16,51 @@ namespace LFC.Controllers
     [Authorize]
     public class ImportController : Controller
     {
+        [Authorize(Roles = "Admin")]
+        public ActionResult FlightLogs()
+        {
+            var lfc = new LFCContext();
+            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Steven\\Downloads\\LFC.mdb"))
+            {
+                var command = new OleDbCommand("SELECT m_id, flight_date, acid, start, stop FROM FlightLog");
+                command.Connection = db;
+
+                db.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var log = new FlightLog();
+                    var shortname = (String)reader[0];
+                    log.Date = (DateTime)reader[1];
+                    var acid = (String)reader[2];
+                    var plane = lfc.Airplanes.Where(x => x.AirplaneID == acid);
+                    if (plane.Count() == 0)
+                    {
+                        continue;
+                    }
+                    log.Airplane = plane.First();
+                    if (acid.IndexOf(shortname) >= 0)
+                    {
+                        continue;
+                    }
+                    var user = lfc.Users.Where(x => x.ShortName == shortname);
+                    if (user.Count() == 0)
+                    {
+                        continue;
+                    }
+                    log.Pilot = user.First();
+                    log.StartTach = (double)reader[3];
+                    log.EndTach = (double)reader[4];
+
+                    lfc.FlightLogs.Add(log);
+                }
+                reader.Close();
+                db.Close();
+                lfc.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         [Authorize(Roles="Admin")]
         public ActionResult Airplanes()
         {
