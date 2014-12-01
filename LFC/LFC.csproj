@@ -237,11 +237,20 @@
     <Compile Include="Migrations\201411292319438_MaintenanceOfficer2.Designer.cs">
       <DependentUpon>201411292319438_MaintenanceOfficer2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412010733456_FlightLog.cs" />
+    <Compile Include="Migrations\201412010733456_FlightLog.Designer.cs">
+      <DependentUpon>201412010733456_FlightLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412010735413_FlightLog2.cs" />
+    <Compile Include="Migrations\201412010735413_FlightLog2.Designer.cs">
+      <DependentUpon>201412010735413_FlightLog2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
     <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Models\FlightLog.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -408,6 +417,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411292319438_MaintenanceOfficer2.resx">
       <DependentUpon>201411292319438_MaintenanceOfficer2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010733456_FlightLog.resx">
+      <DependentUpon>201412010733456_FlightLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010735413_FlightLog2.resx">
+      <DependentUpon>201412010735413_FlightLog2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

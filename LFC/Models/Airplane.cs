@@ -18,6 +18,7 @@ namespace LFC.Models
         public String Type { get; set; }
         public String Description { get; set; }
         public int ModelYear { get; set; }
+        [DataType(DataType.Currency)]
         public float Rate { get; set; }
         public String Serial { get; set; }
         [Display(Name="Engine Mfg.")]
