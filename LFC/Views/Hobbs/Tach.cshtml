@@ -1,0 +1,33 @@
+﻿@model LFC.ViewModels.HobbsViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Tach Entry for @Model.AirplaneID</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Pilot</th>
+            <th>Start Tach</th>
+            <th>End Tach</th>
+        </tr>
+        @foreach (var t in Model.TachEntries) {
+        <tr>
+            <td>@Html.EditorFor(m => t.Date)</td>
+            <td>@Html.EditorFor(m => t.ApplicationUserID)</td>
+            <td>@Html.EditorFor(m => t.StartTach)</td>
+            <td>@Html.EditorFor(m => t.EndTach)</td>
+        </tr>
+        }
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+}

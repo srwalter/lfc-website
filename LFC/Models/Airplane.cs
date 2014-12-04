@@ -85,6 +85,14 @@ namespace LFC.Models
         public String MaintenanceOfficerID { get; set; }
         [Display(Name="Maintenance Officer")]
         public virtual ApplicationUser MaintenanceOfficer { get; set; }
+        [Display(Name="GPS DB Expires")]
+        public DateTime GPSExprires { get; set; }
+        [Display(Name="Engine Serial")]
+        public String EngineSerial { get; set; }
+        [Display(Name="Engine Total Time")]
+        public double EngineTT { get; set; }
+        [Display(Name="Airframe Total Time")]
+        public double AirframeTT { get; set; }
 
         public List<String> MaintenanceActions
         {

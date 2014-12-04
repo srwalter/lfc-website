@@ -169,6 +169,7 @@
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FlightLogsController.cs" />
+    <Compile Include="Controllers\HobbsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -245,17 +246,31 @@
     <Compile Include="Migrations\201412010735413_FlightLog2.Designer.cs">
       <DependentUpon>201412010735413_FlightLog2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412040843004_ExtraACStats.cs" />
+    <Compile Include="Migrations\201412040843004_ExtraACStats.Designer.cs">
+      <DependentUpon>201412040843004_ExtraACStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412040902133_foo.cs" />
+    <Compile Include="Migrations\201412040902133_foo.Designer.cs">
+      <DependentUpon>201412040902133_foo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412040916229_Foo2.cs" />
+    <Compile Include="Migrations\201412040916229_Foo2.Designer.cs">
+      <DependentUpon>201412040916229_Foo2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FlightLog.cs" />
+    <Compile Include="Models\HobbsTime.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\HobbsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\213DS_big.jpg" />
@@ -367,6 +382,8 @@
     <Content Include="Views\FlightLogs\Details.cshtml" />
     <Content Include="Views\FlightLogs\Edit.cshtml" />
     <Content Include="Views\FlightLogs\Index.cshtml" />
+    <Content Include="Views\Hobbs\Index.cshtml" />
+    <Content Include="Views\Hobbs\Tach.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -428,6 +445,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412010735413_FlightLog2.resx">
       <DependentUpon>201412010735413_FlightLog2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412040843004_ExtraACStats.resx">
+      <DependentUpon>201412040843004_ExtraACStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412040902133_foo.resx">
+      <DependentUpon>201412040902133_foo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412040916229_Foo2.resx">
+      <DependentUpon>201412040916229_Foo2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
