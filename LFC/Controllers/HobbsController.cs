@@ -46,6 +46,14 @@ namespace LFC.Controllers
                     flightlog.EndTach = entry.EndTach;
                     db.FlightLogs.Add(flightlog);
                 }
+
+                var hobbsTime = new HobbsTime();
+                hobbsTime.Date = hobbs.Date;
+                hobbsTime.AirplaneID = hobbs.AirplaneID;
+                hobbsTime.HobbsHours = hobbs.EndHobbs;
+                hobbsTime.TachHours = hobbs.EndTach;
+                db.HobbsTimes.Add(hobbsTime);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

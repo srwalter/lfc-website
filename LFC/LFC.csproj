@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201412040916229_Foo2.Designer.cs">
       <DependentUpon>201412040916229_Foo2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412050812346_HobbsTimes.cs" />
+    <Compile Include="Migrations\201412050812346_HobbsTimes.Designer.cs">
+      <DependentUpon>201412050812346_HobbsTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -454,6 +458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412040916229_Foo2.resx">
       <DependentUpon>201412040916229_Foo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412050812346_HobbsTimes.resx">
+      <DependentUpon>201412050812346_HobbsTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
