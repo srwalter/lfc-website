@@ -39,18 +39,26 @@ namespace LFC.Models
             GPSProgrammer,
         };
 
+        [Display(Name="Billing Name")]
         public String ShortName { get; set; }
+        [Display(Name="Last Name")]
         public String LastName { get; set; }
+        [Display(Name="Middle Initial")]
         public String MiddleInitial { get; set; }
+        [Display(Name="First Name")]
         public String FirstName { get; set; }
+        [Display(Name="Home Phone")]
         public String HomeTel { get; set; }
+        [Display(Name="Office Phone")]
         public String OfficeTel { get; set; }
         public String Address { get; set; }
         public String City { get; set; }
         public String State { get; set; }
+        [Display(Name="Zip Code")]
         public String ZipCode { get; set; }
         public CertificateType? Certificate { get; set; }
         public bool Instrument { get; set; }
+        [Display(Name="Membership Type")]
         public MembershipType? MemberType { get; set; }
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }

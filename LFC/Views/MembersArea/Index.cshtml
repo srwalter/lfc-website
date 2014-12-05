@@ -5,6 +5,8 @@
     @if (User.IsInRole("Admin"))
     {
         <li>@Html.ActionLink("Add Member", "Register", "Account")</li>
+        <li>@Html.ActionLink("Enter Flight Logs", "Index", "Hobbs")</li>
+        <li>@Html.ActionLink("View Flight Logs", "Index", "FlightLogs")</li>
     }
     <li>@Html.ActionLink("Airplane ADs", "Index", "AirworthinessDirectives")</li>
     <li>@Html.ActionLink("Member List", "Index", "Account")</li>
