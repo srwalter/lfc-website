@@ -69,6 +69,12 @@
 
 @section Scripts {
     <script type="text/javascript">
+        function updateStartTach(event) {
+            var tach = event.target.value;
+            $(event.target).off('blur');
+            $('input.data.starttach').val(tach);
+        }
+
         function updateTachDelta(event) {
             var input = event.target;
             var start = $(input).parent().parent().find('input.starttach');
@@ -86,28 +92,37 @@
             });
             $('#total').html(total);
         }
+
         function checkAddTableRow(event) {
             if (event.target.value == "") {
+                var row = $(event.target).parent().parent();
+                var date = $(row).find('input.date').val();
                 $('input.data').off('focus');
                 $('input.data').removeClass('data');
-                addTableRow();
+                addTableRow(date);
             }
         }
-        function addTableRow() {
+
+        function addTableRow(date) {
             var maxRow = 0;
             $('tr.data').each(function () {
                 maxRow++;
             });
             row = $("<tr class='data'>");
-            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].Date" type="datetime" /></td>');
+            row.append('<td><input class="data date" name="TachEntries[' + maxRow + '].Date" type="datetime" /></td>');
             row.append('<td><input class="data" list="pilots" name="TachEntries[' + maxRow + '].PilotName" /></td>');
             row.append('<td><input class="data starttach" name="TachEntries[' + maxRow + '].StartTach" /></td>');
             row.append('<td><input class="data endtach" name="TachEntries[' + maxRow + '].EndTach" /></td>');
             row.append('<td class="delta"></td>')
             $('table tr:last').before(row);
+            if (date)
+                $('input.data.date').val(date);
             $('input.endtach.data').focus(function (event) {
                 checkAddTableRow(event);
             });
+            $('input.endtach.data').blur(function (event) {
+                updateStartTach(event);
+            })
             $('input.starttach').add('input.endtach').off('change').change(function (event) {
                 updateTachDelta(event);
             });
@@ -131,6 +146,9 @@
         $('input.starttach').add('input.endtach').change(function (event) {
             updateTachDelta(event);
         }).change();
+        $('input.endtach.data').blur(function (event) {
+            updateStartTach(event);
+        })
     });
     </script>
 }
