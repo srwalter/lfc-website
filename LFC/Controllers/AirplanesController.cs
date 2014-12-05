@@ -48,7 +48,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude="Updated.UpdatedBy")] Airplane airplane)
+        public ActionResult Create([Bind(Exclude="Updated,UpdatedBy")] Airplane airplane)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +58,7 @@ namespace LFC.Controllers
                 airplane.EltBatteryDue = DateTime.Now;
                 airplane.TransponderDue = DateTime.Now;
                 airplane.StaticDue = DateTime.Now;
+                airplane.GPSExprires = DateTime.Now;
                 airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
                 db.SaveChanges();
