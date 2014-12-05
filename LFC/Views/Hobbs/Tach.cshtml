@@ -16,12 +16,13 @@
             <th>Start Tach</th>
             <th>End Tach</th>
         </tr>
-        @foreach (var t in Model.TachEntries) {
-        <tr>
-            <td>@Html.EditorFor(m => t.Date)</td>
-            <td>@Html.EditorFor(m => t.ApplicationUserID)</td>
-            <td>@Html.EditorFor(m => t.StartTach)</td>
-            <td>@Html.EditorFor(m => t.EndTach)</td>
+        @for (var i = 0; i < Model.TachEntries.Count(); i ++)
+        {
+        <tr class="data">
+            <td>@Html.EditorFor(m => m.TachEntries[i].Date)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].ApplicationUserID)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].StartTach)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].EndTach)</td>
         </tr>
         }
     </table>
@@ -30,4 +31,36 @@
             <input type="submit" value="Submit" class="btn btn-default" />
         </div>
     </div>
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        function checkAddTableRow(event) {
+            if (event.target.value != "") {
+                $('input.data').off('blur');
+                $('input.data').removeClass('data');
+                addTableRow();
+            }
+        }
+        function addTableRow() {
+            var maxRow = 0;
+            $('tr.data').each(function () {
+                maxRow++;
+            });
+            row = $("<tr>");
+            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].DateTime" type="datetime" /></td>');
+            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].ApplicationUserID" /></td>');
+            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].StartTach" /></td>');
+            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].EndTach" /></td>');
+            $('table tr:last').after(row);
+            $('input.data').blur(function (event) {
+                checkAddTableRow(event);
+            });
+        }
+
+    $(document).ready(function () {
+        $("tr.data").remove();
+        addTableRow();
+    });
+    </script>
 }

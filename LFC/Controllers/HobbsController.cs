@@ -28,11 +28,12 @@ namespace LFC.Controllers
 
         public ActionResult Tach(HobbsViewModel hobbs)
         {
-            hobbs.TachEntries = new List<TachEntry>(10);
+            var entries = new List<TachEntry>(10);
             for (var i = 0; i < 10; i++)
             {
-                hobbs.TachEntries.Add(new TachEntry());
+                entries.Add(new TachEntry());
             }
+            hobbs.TachEntries = entries;
             return View(hobbs);
         }
     }

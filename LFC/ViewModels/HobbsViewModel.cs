@@ -29,6 +29,6 @@ namespace LFC.ViewModels
         public double StartHobbs { get; set; }
         [Display(Name="End Hobbs")]
         public double EndHobbs { get; set; }
-        public ICollection<TachEntry> TachEntries { get; set; }
+        public List<TachEntry> TachEntries { get; set; }
     }
 }
