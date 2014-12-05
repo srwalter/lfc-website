@@ -16,6 +16,7 @@ namespace LFC.ViewModels
     }
     public class HobbsViewModel
     {
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
         [Display(Name="N-number")]
         public String AirplaneID { get; set; }
