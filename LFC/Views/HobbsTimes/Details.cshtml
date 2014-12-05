@@ -1,0 +1,42 @@
+﻿@model LFC.Models.HobbsTime
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HobbsTime</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Airplane.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Airplane.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HobbsHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HobbsHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TachHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TachHours)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

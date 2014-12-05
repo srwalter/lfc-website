@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LFC.Models.HobbsTime>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hobbs/Tach Times</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Airplane.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HobbsHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TachHours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Airplane.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HobbsHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TachHours)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { date=item.Date, airplane=item.AirplaneID }) |
+            @Html.ActionLink("Delete", "Delete", new { date = item.Date, airplane = item.AirplaneID })
+        </td>
+    </tr>
+}
+
+</table>

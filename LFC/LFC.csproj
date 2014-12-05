@@ -170,6 +170,7 @@
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FlightLogsController.cs" />
     <Compile Include="Controllers\HobbsController.cs" />
+    <Compile Include="Controllers\HobbsTimesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -388,6 +389,11 @@
     <Content Include="Views\FlightLogs\Index.cshtml" />
     <Content Include="Views\Hobbs\Index.cshtml" />
     <Content Include="Views\Hobbs\Tach.cshtml" />
+    <Content Include="Views\HobbsTimes\Create.cshtml" />
+    <Content Include="Views\HobbsTimes\Delete.cshtml" />
+    <Content Include="Views\HobbsTimes\Details.cshtml" />
+    <Content Include="Views\HobbsTimes\Edit.cshtml" />
+    <Content Include="Views\HobbsTimes\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
