@@ -33,14 +33,16 @@
             <th>Pilot</th>
             <th>Start Tach</th>
             <th>End Tach</th>
+            <th>Delta</th>
         </tr>
         @for (var i = 0; i < Model.TachEntries.Count(); i ++)
         {
         <tr class="data">
             <td>@Html.EditorFor(m => m.TachEntries[i].Date)</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].PilotName, new { htmlAttributes = new { list = "pilots" } })</td>
-            <td>@Html.EditorFor(m => m.TachEntries[i].StartTach)</td>
-            <td>@Html.EditorFor(m => m.TachEntries[i].EndTach)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].StartTach, new { htmlAttributes = new { @class = "starttach" }})</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].EndTach,   new { htmlAttributes = new { @class = "endtach"}})</td>
+            <td class="delta"></td>
         </tr>
         }
     </table>
@@ -53,6 +55,13 @@
 
 @section Scripts {
     <script type="text/javascript">
+        function updateTachDelta(event) {
+            var input = event.target;
+            var start = $(input).parent().parent().find('input.starttach');
+            var end = $(input).parent().parent().find('input.endtach');
+            var delta = $(input).parent().parent().find('td.delta');
+            delta.html(end.val() - start.val());
+        }
         function checkAddTableRow(event) {
             if (event.target.value != "") {
                 $('input.data').off('blur');
@@ -68,11 +77,15 @@
             row = $("<tr class='data'>");
             row.append('<td><input class="data" name="TachEntries[' + maxRow + '].Date" type="datetime" /></td>');
             row.append('<td><input class="data" list="pilots" name="TachEntries[' + maxRow + '].PilotName" /></td>');
-            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].StartTach" /></td>');
-            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].EndTach" /></td>');
+            row.append('<td><input class="data starttach" name="TachEntries[' + maxRow + '].StartTach" /></td>');
+            row.append('<td><input class="data endtach" name="TachEntries[' + maxRow + '].EndTach" /></td>');
+            row.append('<td class="delta"></td>')
             $('table tr:last').after(row);
             $('input.data').blur(function (event) {
                 checkAddTableRow(event);
+            });
+            $('input.starttach').add('input.endtach').off('change').change(function (event) {
+                updateTachDelta(event);
             });
         }
 
@@ -81,7 +94,14 @@
         if (input.val() == "") {
             $("tr.data").remove();
             addTableRow();
+        } else {
+            $('table tr:last').find('input').addClass('data').blur(function (event) {
+                checkAddTableRow(event);
+            });
         }
+        $('input.starttach').add('input.endtach').change(function (event) {
+            updateTachDelta(event);
+        }).change();
     });
     </script>
 }
