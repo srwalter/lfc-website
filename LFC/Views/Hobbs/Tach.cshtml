@@ -79,13 +79,16 @@
             var total = 0;
             var deltas = $('td.delta');
             deltas.each(function (i, elem) {
-                total += parseInt($(elem).html());
+                var val = $(elem).html();
+                if (val == "")
+                    return;
+                total += parseInt(val);
             });
             $('#total').html(total);
         }
         function checkAddTableRow(event) {
-            if (event.target.value != "") {
-                $('input.data').off('blur');
+            if (event.target.value == "") {
+                $('input.data').off('focus');
                 $('input.data').removeClass('data');
                 addTableRow();
             }
@@ -101,8 +104,8 @@
             row.append('<td><input class="data starttach" name="TachEntries[' + maxRow + '].StartTach" /></td>');
             row.append('<td><input class="data endtach" name="TachEntries[' + maxRow + '].EndTach" /></td>');
             row.append('<td class="delta"></td>')
-            $('table tr:last').after(row);
-            $('input.data').blur(function (event) {
+            $('table tr:last').before(row);
+            $('input.endtach.data').focus(function (event) {
                 checkAddTableRow(event);
             });
             $('input.starttach').add('input.endtach').off('change').change(function (event) {
@@ -116,9 +119,14 @@
             $("tr.data").remove();
             addTableRow();
         } else {
-            $('table tr:last').find('input').addClass('data').blur(function (event) {
+            var lastrow = $('table tr:last');
+            var lastrow_html = lastrow.html();
+            lastrow.remove();
+            $('table tr:last').find('input').addClass('data');
+            $('table tr:last').find('input.endtach').focus(function (event) {
                 checkAddTableRow(event);
             });
+            $('table tr:last').after(lastrow_html);
         }
         $('input.starttach').add('input.endtach').change(function (event) {
             updateTachDelta(event);
