@@ -147,6 +147,10 @@ namespace LFC.Models
                 {
                     actions.Add("Pitot/static inspection is due soon");
                 }
+                if (DateTime.Now >= GPSExpires)
+                {
+                    actions.Add("GPS Database is expired");
+                }
                 return actions;
             }
         }
