@@ -1,8 +1,26 @@
 ﻿@model LFC.ViewModels.HobbsViewModel
 
+<datalist id="pilots">
+    @foreach (var u in Model.AllUsers)
+    {
+        <option value="@u.FullName" />
+    }
+</datalist>
+
+<p class="text-danger">
+    @ViewBag.Message
+</p>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.AirplaneID)
+    @Html.HiddenFor(m => m.StartTach)
+    @Html.HiddenFor(m => m.EndTach)
+    @Html.HiddenFor(m => m.StartHobbs)
+    @Html.HiddenFor(m => m.EndHobbs)
 
     <div class="form-horizontal">
         <h4>Tach Entry for @Model.AirplaneID</h4>
@@ -20,7 +38,7 @@
         {
         <tr class="data">
             <td>@Html.EditorFor(m => m.TachEntries[i].Date)</td>
-            <td>@Html.EditorFor(m => m.TachEntries[i].ApplicationUserID)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].PilotName, new { htmlAttributes = new { list = "pilots" } })</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].StartTach)</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].EndTach)</td>
         </tr>
@@ -47,11 +65,11 @@
             $('tr.data').each(function () {
                 maxRow++;
             });
-            row = $("<tr>");
-            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].DateTime" type="datetime" /></td>');
-            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].ApplicationUserID" /></td>');
-            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].StartTach" /></td>');
-            row.append('<td class="data"><input class="data" name="TachEntries[' + maxRow + '].EndTach" /></td>');
+            row = $("<tr class='data'>");
+            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].Date" type="datetime" /></td>');
+            row.append('<td><input class="data" list="pilots" name="TachEntries[' + maxRow + '].PilotName" /></td>');
+            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].StartTach" /></td>');
+            row.append('<td><input class="data" name="TachEntries[' + maxRow + '].EndTach" /></td>');
             $('table tr:last').after(row);
             $('input.data').blur(function (event) {
                 checkAddTableRow(event);
@@ -59,8 +77,11 @@
         }
 
     $(document).ready(function () {
-        $("tr.data").remove();
-        addTableRow();
+        var input = $('#TachEntries_0__PilotName');
+        if (input.val() == "") {
+            $("tr.data").remove();
+            addTableRow();
+        }
     });
     </script>
 }

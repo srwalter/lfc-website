@@ -10,8 +10,7 @@ namespace LFC.ViewModels
     public class TachEntry
     {
         public DateTime Date { get; set; }
-        public String ApplicationUserID { get; set; }
-        public virtual ApplicationUser Pilot { get; set; }
+        public String PilotName { get; set; }
         public double StartTach { get; set; }
         public double EndTach { get; set; }
     }
@@ -30,5 +29,6 @@ namespace LFC.ViewModels
         [Display(Name="End Hobbs")]
         public double EndHobbs { get; set; }
         public List<TachEntry> TachEntries { get; set; }
+        public IEnumerable<ApplicationUser> AllUsers { get; set; }
     }
 }

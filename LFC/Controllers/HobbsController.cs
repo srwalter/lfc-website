@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LFC.DAL;
+using LFC.Models;
 using LFC.ViewModels;
 
 namespace LFC.Controllers
@@ -23,18 +24,40 @@ namespace LFC.Controllers
         [HttpPost]
         public ActionResult Index(HobbsViewModel hobbs)
         {
-            return RedirectToAction("Tach", hobbs);
-        }
+            if (hobbs.TachEntries != null)
+            {
+                foreach (var entry in hobbs.TachEntries) {
+                    if (entry.StartTach == 0.0 && entry.EndTach == 0.0)
+                    {
+                        continue;
+                    }
+                    var pilot = db.Users.Where(x => x.FirstName + " " + x.LastName == entry.PilotName);
+                    if (pilot.Count() == 0)
+                    {
+                        ViewBag.Message = "There is no pilot named '" + entry.PilotName + "'";
+                        hobbs.AllUsers = db.Users.AsEnumerable();
+                        return View("Tach", hobbs);
+                    }
+                    var flightlog = new FlightLog();
+                    flightlog.Date = hobbs.Date;
+                    flightlog.AirplaneID = hobbs.AirplaneID;
+                    flightlog.Pilot = pilot.First();
+                    flightlog.StartTach = entry.StartTach;
+                    flightlog.EndTach = entry.EndTach;
+                    db.FlightLogs.Add(flightlog);
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-        public ActionResult Tach(HobbsViewModel hobbs)
-        {
             var entries = new List<TachEntry>(10);
             for (var i = 0; i < 10; i++)
             {
                 entries.Add(new TachEntry());
             }
             hobbs.TachEntries = entries;
-            return View(hobbs);
+            hobbs.AllUsers = db.Users.AsEnumerable();
+            return View("Tach", hobbs);
         }
     }
 }
