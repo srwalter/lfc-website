@@ -58,7 +58,7 @@ namespace LFC.Controllers
                 airplane.EltBatteryDue = DateTime.Now;
                 airplane.TransponderDue = DateTime.Now;
                 airplane.StaticDue = DateTime.Now;
-                airplane.GPSExprires = DateTime.Now;
+                airplane.GPSExpires = DateTime.Now;
                 airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
                 db.SaveChanges();
