@@ -45,6 +45,20 @@
             <td class="delta"></td>
         </tr>
         }
+        <tr>
+            <td></td>
+            <td>Total</td>
+            <td id="remaining">
+                @{
+                    var total = Model.EndTach - Model.StartTach;
+                    @total
+                }
+            </td>
+            <td>Subtotal</td>
+            <td id="total">
+
+            </td>
+        </tr>
     </table>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -61,6 +75,13 @@
             var end = $(input).parent().parent().find('input.endtach');
             var delta = $(input).parent().parent().find('td.delta');
             delta.html(end.val() - start.val());
+
+            var total = 0;
+            var deltas = $('td.delta');
+            deltas.each(function (i, elem) {
+                total += parseInt($(elem).html());
+            });
+            $('#total').html(total);
         }
         function checkAddTableRow(event) {
             if (event.target.value != "") {
