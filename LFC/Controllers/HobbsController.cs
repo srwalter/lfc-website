@@ -27,7 +27,7 @@ namespace LFC.Controllers
             if (hobbs.TachEntries != null)
             {
                 foreach (var entry in hobbs.TachEntries) {
-                    if (entry.StartTach == 0.0 && entry.EndTach == 0.0)
+                    if (entry.PilotName == null && entry.EndTach == 0.0)
                     {
                         continue;
                     }

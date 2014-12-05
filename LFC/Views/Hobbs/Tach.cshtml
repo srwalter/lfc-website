@@ -69,7 +69,20 @@
 
 @section Scripts {
     <script type="text/javascript">
+        function enlargeTach(input) {
+            var val = parseFloat($(input).val());
+            if (val < 100) {
+                var starttach = $(input).parent().parent().find('input.starttach').val();
+                var hundreds = Math.floor(starttach / 100) * 100;
+                val += parseFloat(hundreds);
+                if (val < starttach)
+                    val += parseFloat(100);
+            }
+            $(input).val(val).change();
+        }
+
         function updateStartTach(event) {
+            enlargeTach(event.target);
             var tach = event.target.value;
             $(event.target).off('blur');
             $('input.data.starttach').val(tach);
@@ -80,7 +93,7 @@
             var start = $(input).parent().parent().find('input.starttach');
             var end = $(input).parent().parent().find('input.endtach');
             var delta = $(input).parent().parent().find('td.delta');
-            delta.html(end.val() - start.val());
+            delta.html((end.val() - start.val()).toFixed(2));
 
             var total = 0;
             var deltas = $('td.delta');
@@ -88,19 +101,17 @@
                 var val = $(elem).html();
                 if (val == "")
                     return;
-                total += parseInt(val);
+                total += parseFloat(val);
             });
-            $('#total').html(total);
+            $('#total').html(total.toFixed(2));
         }
 
         function checkAddTableRow(event) {
-            if (event.target.value == "") {
                 var row = $(event.target).parent().parent();
                 var date = $(row).find('input.date').val();
                 $('input.data').off('focus');
                 $('input.data').removeClass('data');
                 addTableRow(date);
-            }
         }
 
         function addTableRow(date) {
@@ -133,22 +144,26 @@
         if (input.val() == "") {
             $("tr.data").remove();
             addTableRow();
+
+            var starttach = $('#StartTach').val();
+            $('input.starttach').val(starttach);
         } else {
             var lastrow = $('table tr:last');
-            var lastrow_html = lastrow.html();
             lastrow.remove();
+
+            $("tr.data").removeClass('data');
             $('table tr:last').find('input').addClass('data');
             $('table tr:last').find('input.endtach').focus(function (event) {
                 checkAddTableRow(event);
             });
-            $('table tr:last').after(lastrow_html);
+            $('tr:last').after(lastrow);
         }
         $('input.starttach').add('input.endtach').change(function (event) {
             updateTachDelta(event);
         }).change();
         $('input.endtach.data').blur(function (event) {
             updateStartTach(event);
-        })
+        });
     });
     </script>
 }
