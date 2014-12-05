@@ -14,6 +14,18 @@ namespace LFC.Controllers
     {
         private LFCContext db = new LFCContext();
 
+        public ActionResult GetHobbs(String id)
+        {
+            var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == id).Select(x => x.HobbsHours).Max();
+            return Json(hobbs, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetTach(String id)
+        {
+            var tach = db.HobbsTimes.Where(x => x.AirplaneID == id).Select(x => x.TachHours).Max();
+            return Json(tach, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Hobbs
         public ActionResult Index()
         {

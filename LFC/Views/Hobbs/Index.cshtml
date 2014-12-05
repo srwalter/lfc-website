@@ -63,3 +63,35 @@
         </div>
     </div>
 }
+
+@section Scripts {
+    <script type="text/javascript">
+        function updateHobbs(data, status) {
+            $('#StartHobbs').val(data);
+        }
+
+        function updateTach(data, status) {
+            $('#StartTach').val(data);
+        }
+
+        $(document).ready(function () {
+            $('#AirplaneID').change(function (event) {
+                var value = $(event.target).val();
+                $.ajax({
+                    url: '/Hobbs/GetHobbs/' + value,
+                    type: 'GET',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: updateHobbs
+                });
+                $.ajax({
+                    url: '/Hobbs/GetTach/' + value,
+                    type: 'GET',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: updateTach
+                });
+            })
+        });
+    </script>
+}
