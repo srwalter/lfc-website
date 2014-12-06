@@ -19,7 +19,7 @@ namespace LFC.Controllers
         // GET: HobbsTimes
         public ActionResult Index()
         {
-            var hobbsTimes = db.HobbsTimes.Include(h => h.Airplane);
+            var hobbsTimes = db.HobbsTimes.Include(h => h.Airplane).OrderBy(x => x.Date);
             return View(hobbsTimes.ToList());
         }
 

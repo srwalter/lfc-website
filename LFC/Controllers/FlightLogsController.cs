@@ -20,7 +20,7 @@ namespace LFC.Controllers
         [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
-            var flightLogs = db.FlightLogs.Include(f => f.Airplane).Include(f => f.Pilot);
+            var flightLogs = db.FlightLogs.Include(f => f.Airplane).Include(f => f.Pilot).OrderBy(x => x.Date);
             return View(flightLogs.ToList());
         }
 
