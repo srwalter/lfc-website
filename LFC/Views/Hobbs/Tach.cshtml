@@ -81,11 +81,22 @@
             $(input).val(val).change();
         }
 
+        function enlargeStartTach(event) {
+            var input = event.target;
+            var val = parseFloat($(input).val());
+            if (val < 100) {
+                var fullstart = $(input).parent().parent().find('input.fullstart').val();
+                var hundreds = Math.floor(fullstart / 100) * 100;
+                val += parseFloat(hundreds);
+                $(input).val(val).change();
+            }
+        }
+
         function updateStartTach(event) {
             enlargeTach(event.target);
             var tach = event.target.value;
             $(event.target).off('blur');
-            $('input.data.starttach').val(tach);
+            $('input.data.fullstart').val(tach);
         }
 
         function updateTachDelta(event) {
@@ -125,6 +136,7 @@
             row.append('<td><input class="data starttach" name="TachEntries[' + maxRow + '].StartTach" /></td>');
             row.append('<td><input class="data endtach" name="TachEntries[' + maxRow + '].EndTach" /></td>');
             row.append('<td class="delta"></td>')
+            row.append('<input type="hidden" class="data fullstart" />')
             $('table tr:last').before(row);
             if (date)
                 $('input.data.date').val(date);
@@ -133,7 +145,10 @@
             });
             $('input.endtach.data').blur(function (event) {
                 updateStartTach(event);
-            })
+            });
+            $('input.starttach.data').blur(function (event) {
+                enlargeStartTach(event);
+            });
             $('input.starttach').add('input.endtach').off('change').change(function (event) {
                 updateTachDelta(event);
             });
@@ -146,7 +161,7 @@
             addTableRow();
 
             var starttach = $('#StartTach').val();
-            $('input.starttach').val(starttach);
+            $('input.fullstart').val(starttach);
         } else {
             var lastrow = $('table tr:last');
             lastrow.remove();
