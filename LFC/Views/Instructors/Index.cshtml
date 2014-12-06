@@ -1,0 +1,86 @@
+﻿@model IEnumerable<LFC.Models.Instructor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Instructors</h2>
+
+<p>
+    @{
+        if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Create New", "Create")
+        }
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CFII)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MEI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CFII)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MEI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Available)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.InstructorID })
+@{              
+            if (User.IsInRole("Admin"))
+            {
+                @:|
+                @Html.ActionLink("Edit", "Edit", new { id=item.InstructorID }) @:|
+                @Html.ActionLink("Delete", "Delete", new { id=item.InstructorID })
+            }
+}
+        </td>
+    </tr>
+}
+
+</table>

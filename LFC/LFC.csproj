@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HobbsTimesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
+    <Compile Include="Controllers\InstructorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembersAreaController.cs" />
     <Compile Include="DAL\LFCContext.cs" />
@@ -267,6 +268,10 @@
     <Compile Include="Migrations\201412050858037_GPSTypo.Designer.cs">
       <DependentUpon>201412050858037_GPSTypo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412062251203_Instructor.cs" />
+    <Compile Include="Migrations\201412062251203_Instructor.Designer.cs">
+      <DependentUpon>201412062251203_Instructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -275,6 +280,7 @@
     <Compile Include="Models\FlightLog.cs" />
     <Compile Include="Models\HobbsTime.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -398,6 +404,11 @@
     <Content Include="Views\HobbsTimes\Details.cshtml" />
     <Content Include="Views\HobbsTimes\Edit.cshtml" />
     <Content Include="Views\HobbsTimes\Index.cshtml" />
+    <Content Include="Views\Instructors\Create.cshtml" />
+    <Content Include="Views\Instructors\Delete.cshtml" />
+    <Content Include="Views\Instructors\Details.cshtml" />
+    <Content Include="Views\Instructors\Edit.cshtml" />
+    <Content Include="Views\Instructors\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412050858037_GPSTypo.resx">
       <DependentUpon>201412050858037_GPSTypo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062251203_Instructor.resx">
+      <DependentUpon>201412062251203_Instructor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

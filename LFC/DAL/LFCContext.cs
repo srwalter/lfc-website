@@ -33,5 +33,7 @@ namespace LFC.DAL
         public System.Data.Entity.DbSet<LFC.Models.FlightLog> FlightLogs { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.HobbsTime> HobbsTimes { get; set; }
+
+        public System.Data.Entity.DbSet<LFC.Models.Instructor> Instructors { get; set; }
     }
 }
