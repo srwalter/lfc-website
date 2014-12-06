@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201412062251203_Instructor.Designer.cs">
       <DependentUpon>201412062251203_Instructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412062327464_OptionalZip.cs" />
+    <Compile Include="Migrations\201412062327464_OptionalZip.Designer.cs">
+      <DependentUpon>201412062327464_OptionalZip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -306,7 +310,6 @@
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Garmin430W.jpg" />
-    <Content Include="Content\instruct.html" />
     <Content Include="Content\logo.gif" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\logo_small.gif" />
@@ -488,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412062251203_Instructor.resx">
       <DependentUpon>201412062251203_Instructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412062327464_OptionalZip.resx">
+      <DependentUpon>201412062327464_OptionalZip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

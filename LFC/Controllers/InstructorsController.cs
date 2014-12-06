@@ -18,7 +18,7 @@ namespace LFC.Controllers
         // GET: Instructors
         public ActionResult Index()
         {
-            return View(db.Instructors.ToList());
+            return View(db.Instructors.OrderBy(x => x.LastName).ToList());
         }
 
         // GET: Instructors/Details/5

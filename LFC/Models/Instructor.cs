@@ -23,7 +23,7 @@ namespace LFC.Models
         public String City { get; set; }
         public String State { get; set; }
         [Display(Name="Zip Code")]
-        public int ZipCode { get; set; }
+        public int? ZipCode { get; set; }
         [Display(Name="Daytime Phone")]
         public String DayPhone { get; set; }
         [Display(Name="Evening Phone")]

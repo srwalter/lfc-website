@@ -141,6 +141,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.InstructorID }) |
+    @if (User.IsInRole("Admin")) {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.InstructorID }) @:|
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
