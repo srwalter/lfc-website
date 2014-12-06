@@ -27,6 +27,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     </div>
+   
+        var total = Model.EndTach - Model.StartTach;
+        <input type="hidden" id="original_total" value="@total" />
+    
     <table>
         <tr>
             <th>Date</th>
@@ -47,12 +51,9 @@
         }
         <tr>
             <td></td>
-            <td>Total</td>
+            <td>Remaining</td>
             <td id="remaining">
-                @{
-                    var total = Model.EndTach - Model.StartTach;
-                    @total
-                }
+                @total
             </td>
             <td>Subtotal</td>
             <td id="total">
@@ -115,6 +116,8 @@
                 total += parseFloat(val);
             });
             $('#total').html(total.toFixed(2));
+            var original_total = parseFloat($('#original_total').val());
+            $('#remaining').html((original_total - total).toFixed(2));
         }
 
         function checkAddTableRow(event) {
