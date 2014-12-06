@@ -179,6 +179,17 @@
         $('input.endtach.data').blur(function (event) {
             updateStartTach(event);
         });
+
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                var input = event.target;
+                var row = $(input).parent().parent();
+                var next_input = row.next().find('input.date');
+                next_input.focus();
+                event.preventDefault();
+                return false;
+            }
+        });
     });
     </script>
 }
