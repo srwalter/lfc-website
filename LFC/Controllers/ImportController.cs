@@ -114,7 +114,7 @@ namespace LFC.Controllers
                 }
                 reader.Close();
 
-                command = new OleDbCommand("SELECT acid, tach_add, engine_overhaul, cur_tach, hun_hour, oil_change, annual_mon, annual_year, elt_mon, elt_year, e_bat_mon, e_bat_year, xpndr_mon, xpndr_year, static_mon, static_year FROM acstats3");
+                command = new OleDbCommand("SELECT acid, tach_add, engine_overhaul, cur_tach, hun_hour, oil_change, annual_mon, annual_year, elt_mon, elt_year, e_bat_mon, e_bat_year, xpndr_mon, xpndr_year, static_mon, static_year, engine_serial, gps_exp FROM acstats3");
                 command.Connection = db;
                 reader = command.ExecuteReader();
                 while (reader.Read())
@@ -143,6 +143,10 @@ namespace LFC.Controllers
                     airplane.StaticDue = new DateTime(year, mon, 28);
                     var user = lfc.Users.First(u => u.UserName == User.Identity.Name);
                     airplane.UpdatedNow(user);
+
+                    airplane.EngineSerial = (String)reader[16];
+                    var gps_exp = (String)reader[17];
+                    airplane.GPSExpires = DateTime.Parse(gps_exp);
                 }
                 reader.Close();
 
