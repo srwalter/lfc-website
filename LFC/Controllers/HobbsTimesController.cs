@@ -41,7 +41,7 @@ namespace LFC.Controllers
         // GET: HobbsTimes/Create
         public ActionResult Create()
         {
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type");
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
             return View();
         }
 

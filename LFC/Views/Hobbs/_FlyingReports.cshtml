@@ -1,0 +1,72 @@
+﻿@model IEnumerable<LFC.ViewModels.FlyingReport>
+<h2>Flying Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plane)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartHobbs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndHobbs)
+        </th>
+        <th>
+            Hobbs Delta
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTach)
+        </th>
+        <th>
+            Tach Delta
+        </th>
+        <th>
+            Ratio Tach/Hobbs
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plane)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartHobbs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndHobbs)
+            </td>
+            <td>
+@{
+                var hobbs_delta = item.EndHobbs - item.StartHobbs;
+                @hobbs_delta
+}
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTach)
+            </td>
+            <td>
+@{
+                var tach_delta = item.EndTach - item.StartTach;
+                @tach_delta
+}
+            </td>
+            <td>
+@{
+                var ratio = tach_delta / hobbs_delta;
+                @ratio
+}
+            </td>
+        </tr>
+    }
+
+</table>

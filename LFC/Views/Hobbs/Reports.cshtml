@@ -1,0 +1,10 @@
+﻿@model LFC.ViewModels.ReportViewModel
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+
+@Html.Partial("_BillingReports", Model.Billing)
+@Html.Partial("_FlyingReports", Model.Flying)

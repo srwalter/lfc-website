@@ -283,6 +283,14 @@
     <Compile Include="Migrations\201412062327464_OptionalZip.Designer.cs">
       <DependentUpon>201412062327464_OptionalZip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412070738126_Billed.cs" />
+    <Compile Include="Migrations\201412070738126_Billed.Designer.cs">
+      <DependentUpon>201412070738126_Billed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412070812412_AirplaneActive.cs" />
+    <Compile Include="Migrations\201412070812412_AirplaneActive.Designer.cs">
+      <DependentUpon>201412070812412_AirplaneActive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -298,6 +306,7 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\HobbsViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\213DS_big.jpg" />
@@ -421,6 +430,9 @@
     <Content Include="Views\Instructors\Edit.cshtml" />
     <Content Include="Views\Instructors\Index.cshtml" />
     <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Hobbs\_BillingReports.cshtml" />
+    <Content Include="Views\Hobbs\_FlyingReports.cshtml" />
+    <Content Include="Views\Hobbs\Reports.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -506,6 +518,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412062327464_OptionalZip.resx">
       <DependentUpon>201412062327464_OptionalZip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070738126_Billed.resx">
+      <DependentUpon>201412070738126_Billed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412070812412_AirplaneActive.resx">
+      <DependentUpon>201412070812412_AirplaneActive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,6 +14,38 @@ namespace LFC.Controllers
     {
         private LFCContext db = new LFCContext();
 
+        [Authorize(Roles="Admin")]
+        public ActionResult Reports()
+        {
+            var flying = new List<FlyingReport>();
+            foreach (var plane in db.Airplanes.Where(x => x.Active == true).ToList()) {
+                var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == plane.AirplaneID).OrderByDescending(x => x.Date).ToList();
+                var report = new FlyingReport();
+                report.Plane = plane.AirplaneID;
+                report.EndHobbs = hobbs[0].HobbsHours;
+                report.EndTach = hobbs[0].TachHours;
+                report.StartHobbs = hobbs[1].HobbsHours;
+                report.StartTach = hobbs[1].TachHours;
+                flying.Add(report);
+            }
+
+            var billing = new List<BillingReport>();
+            foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == false))
+            {
+                var report = new BillingReport();
+                report.BillingName = entry.Pilot.ShortName;
+                report.Date = entry.Date;
+                report.Plane = entry.Airplane.AirplaneID;
+                report.Hours = entry.EndTach - entry.StartTach;
+                billing.Add(report);
+            }
+
+            var model = new ReportViewModel();
+            model.Flying = flying;
+            model.Billing = billing;
+            return View(model);
+        }
+
         public ActionResult GetHobbs(String id)
         {
             var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == id).Select(x => x.HobbsHours).Max();
@@ -27,6 +59,7 @@ namespace LFC.Controllers
         }
 
         // GET: Hobbs
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
@@ -34,6 +67,7 @@ namespace LFC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index(HobbsViewModel hobbs)
         {
             if (hobbs.TachEntries != null)

@@ -12,7 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Airplane.Type)
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Airplane.AirplaneID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HobbsHours)
@@ -26,7 +29,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Airplane.Type)
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HobbsHours)

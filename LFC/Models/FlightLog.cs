@@ -22,6 +22,7 @@ namespace LFC.Models
         public double StartTach {get; set;}
         [Display(Name="End Tach")]
         public double EndTach {get; set;}
+        public bool Billed { get; set; }
 
         public virtual Airplane Airplane {get; set; }
         public virtual ApplicationUser Pilot { get; set; }

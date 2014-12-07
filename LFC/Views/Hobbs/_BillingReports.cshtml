@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LFC.ViewModels.BillingReport>
+
+<h2>Billing Report</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Plane)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hours)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plane)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hours)
+            </td>
+        </tr>
+    }
+
+</table>
