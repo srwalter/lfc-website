@@ -19,6 +19,13 @@ namespace LFC.Controllers
         {
             var flying = new List<FlyingReport>();
             foreach (var plane in db.Airplanes.Where(x => x.Active == true).ToList()) {
+                var logs_for_plane = db.FlightLogs.Where(x => x.AirplaneID == plane.AirplaneID && x.Billed == false);
+                var billed = 0.0;
+                if (logs_for_plane.Count() > 0)
+                {
+                    billed = logs_for_plane.Sum(x => x.EndTach - x.StartTach);
+                }
+
                 var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == plane.AirplaneID).OrderByDescending(x => x.Date).ToList();
                 var report = new FlyingReport();
                 report.Plane = plane.AirplaneID;
@@ -26,6 +33,7 @@ namespace LFC.Controllers
                 report.EndTach = hobbs[0].TachHours;
                 report.StartHobbs = hobbs[1].HobbsHours;
                 report.StartTach = hobbs[1].TachHours;
+                report.BilledTach = billed;
                 flying.Add(report);
             }
 
