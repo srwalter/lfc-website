@@ -8,12 +8,15 @@ using System.Net.Mail;
 using System.Net.Mime;
 
 using LFC.ViewModels;
+using LFC.DAL;
 
 namespace LFC.Controllers
 {
     [Authorize]
     public class EmailController : Controller
     {
+        private LFCContext db = new LFCContext();
+
         // GET: Email
 
         [Authorize(Roles = "Admin")]
@@ -32,8 +35,10 @@ namespace LFC.Controllers
             var view = AlternateView.CreateAlternateViewFromString(model.Body, null, MediaTypeNames.Text.Plain);
             message.AlternateViews.Add(view);
 
-            // XXX
-            message.To.Add("stevenrwalter@gmail.com");
+            foreach (var user in db.Users)
+            {
+                message.To.Add(user.Email);
+            }
 
             var smtp = new SmtpClient();
             try
