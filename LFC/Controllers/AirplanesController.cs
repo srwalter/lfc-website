@@ -19,7 +19,16 @@ namespace LFC.Controllers
         // GET: Airplanes
         public ActionResult Index()
         {
-            return View(db.Airplanes.ToList());
+            IEnumerable<Airplane> planes;
+            if (User.IsInRole("Admin"))
+            {
+                planes = db.Airplanes.ToList();
+            }
+            else
+            {
+                planes = db.Airplanes.Where(x => x.Active == true).ToList();
+            }
+            return View(planes);
         }
 
         // GET: Airplanes/Details/5
@@ -53,6 +62,7 @@ namespace LFC.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Users.First(u => u.UserName == User.Identity.Name);
+                airplane.Active = true;
                 airplane.AnnualDue = DateTime.Now;
                 airplane.EltDue = DateTime.Now;
                 airplane.EltBatteryDue = DateTime.Now;
