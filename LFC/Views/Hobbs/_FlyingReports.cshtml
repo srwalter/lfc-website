@@ -47,7 +47,7 @@
             <td>
 @{
                 var hobbs_delta = item.EndHobbs - item.StartHobbs;
-                @hobbs_delta
+                @hobbs_delta.ToString("F2")
 }
             </td>
 
@@ -60,13 +60,13 @@
             <td>
 @{
                 var tach_delta = item.EndTach - item.StartTach;
-                @tach_delta
+                @String.Format("{0:F2}", tach_delta)
 }
             </td>
             <td>
 @{
                 var ratio = tach_delta / hobbs_delta;
-                @ratio
+                @String.Format("{0:F3}", ratio)
 }
             </td>
             <td>
