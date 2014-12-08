@@ -19,7 +19,7 @@ namespace LFC.Controllers
         {
             var flying = new List<FlyingReport>();
             foreach (var plane in db.Airplanes.Where(x => x.Active == true).ToList()) {
-                var logs_for_plane = db.FlightLogs.Where(x => x.AirplaneID == plane.AirplaneID && x.Billed != null);
+                var logs_for_plane = db.FlightLogs.Where(x => x.AirplaneID == plane.AirplaneID && x.Billed == null);
                 var billed = 0.0;
                 if (logs_for_plane.Count() > 0)
                 {
@@ -38,7 +38,7 @@ namespace LFC.Controllers
             }
 
             var billing = new List<BillingReport>();
-            foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed != null))
+            foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null))
             {
                 var report = new BillingReport();
                 report.BillingName = entry.Pilot.ShortName;
