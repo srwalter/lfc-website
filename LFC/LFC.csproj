@@ -291,6 +291,14 @@
     <Compile Include="Migrations\201412070812412_AirplaneActive.Designer.cs">
       <DependentUpon>201412070812412_AirplaneActive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412080059307_BilledIsDate.cs" />
+    <Compile Include="Migrations\201412080059307_BilledIsDate.Designer.cs">
+      <DependentUpon>201412080059307_BilledIsDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412080139513_BilledIsDate2.cs" />
+    <Compile Include="Migrations\201412080139513_BilledIsDate2.Designer.cs">
+      <DependentUpon>201412080139513_BilledIsDate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -524,6 +532,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412070812412_AirplaneActive.resx">
       <DependentUpon>201412070812412_AirplaneActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412080059307_BilledIsDate.resx">
+      <DependentUpon>201412080059307_BilledIsDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412080139513_BilledIsDate2.resx">
+      <DependentUpon>201412080139513_BilledIsDate2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
