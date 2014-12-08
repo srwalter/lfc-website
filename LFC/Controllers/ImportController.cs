@@ -22,7 +22,7 @@ namespace LFC.Controllers
             var lfc = new LFCContext();
             using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\Steven\\Downloads\\LFC.mdb"))
             {
-                var command = new OleDbCommand("SELECT m_id, flight_date, acid, start, stop FROM FlightLog");
+                var command = new OleDbCommand("SELECT m_id, flight_date, acid, start, stop, billed FROM FlightLog");
                 command.Connection = db;
 
                 db.Open();
@@ -51,6 +51,10 @@ namespace LFC.Controllers
                     log.Pilot = user.First();
                     log.StartTach = (double)reader[3];
                     log.EndTach = (double)reader[4];
+
+                    bool billed = (bool)reader[5];
+                    if (billed)
+                        log.Billed = DateTime.Now;
 
                     lfc.FlightLogs.Add(log);
                 }
