@@ -49,10 +49,10 @@ namespace LFC.Controllers
             var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
             message.AlternateViews.Add(view);
 
-            //foreach (var user in db.Users.Where(x => x.Officer != null))
-            //{
-            //    message.To.Add(user.Email);
-            //}
+            foreach (var user in db.Users.Where(x => x.Officer != null))
+            {
+                message.To.Add(user.Email);
+            }
             message.To.Add("stevenrwalter@gmail.com");
 
             var smtp = new SmtpClient();
@@ -91,9 +91,9 @@ namespace LFC.Controllers
             String asst = (from u in db.Users
                            where u.Officer == ApplicationUser.OfficerTitle.AsstTreasurer
                            select u.Email).First();
-            //message.To.Add(pres);
-            //message.To.Add(treasurer);
-            //message.To.Add(asst);
+            message.To.Add(pres);
+            message.To.Add(treasurer);
+            message.To.Add(asst);
             message.To.Add("stevenrwalter@gmail.com");
 
             var smtp = new SmtpClient();
