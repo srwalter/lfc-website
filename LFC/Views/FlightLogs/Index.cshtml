@@ -22,6 +22,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EndTach)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Billed)
+        </th>
         <th></th>
     </tr>
 
@@ -41,6 +44,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndTach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Billed)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.FlightLogID }) |

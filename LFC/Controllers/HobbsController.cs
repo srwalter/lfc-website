@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.IO;
+
 using LFC.DAL;
 using LFC.Models;
 using LFC.ViewModels;
@@ -14,8 +21,65 @@ namespace LFC.Controllers
     {
         private LFCContext db = new LFCContext();
 
+        private static string RenderViewToString(ControllerContext context,
+            string viewPath, object model)
+        {
+            var viewEngineResult = ViewEngines.Engines.FindPartialView(context, viewPath);
+            var view = viewEngineResult.View;
+            context.Controller.ViewData.Model = model;
+            string result = null;
+
+            using (var sw = new StringWriter())
+            {
+                var ctx = new ViewContext(context, view, context.Controller.ViewData, context.Controller.TempData, sw);
+                view.Render(ctx, sw);
+                result = sw.ToString();
+            }
+            return result;
+        }
+
+        public void SendFlyingReport(IEnumerable<FlyingReport> flying)
+        {
+            var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_FlyingReports.cshtml", flying);
+
+            var message = new MailMessage();
+            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+            message.Subject = "LFC Flying Report";
+            var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
+            message.AlternateViews.Add(view);
+
+            //foreach (var user in db.Users.Where(x => x.Officer != null))
+            //{
+            //    message.To.Add(user.Email);
+            //}
+            message.To.Add("stevenrwalter@gmail.com");
+
+            var smtp = new SmtpClient();
+            smtp.Send(message);
+        }
+
+        public void SendBillingReport(IEnumerable<BillingReport> billing)
+        {
+            var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_BillingReports.cshtml", billing);
+
+            var message = new MailMessage();
+            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+            message.Subject = "LFC Billing Report";
+            var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
+            message.AlternateViews.Add(view);
+
+            //foreach (var user in db.Users.Where(x => x.Officer != null))
+            //{
+            //    message.To.Add(user.Email);
+            //}
+            message.To.Add("stevenrwalter@gmail.com");
+
+            var smtp = new SmtpClient();
+            smtp.Send(message);
+        }
+
         [Authorize(Roles="Admin")]
-        public ActionResult Reports()
+        public ActionResult Reports(bool? send)
         {
             var flying = new List<FlyingReport>();
             foreach (var plane in db.Airplanes.Where(x => x.Active == true).ToList()) {
@@ -51,6 +115,28 @@ namespace LFC.Controllers
             var model = new ReportViewModel();
             model.Flying = flying;
             model.Billing = billing;
+
+            if (send.GetValueOrDefault())
+            {
+                foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null))
+                {
+                    entry.Billed = DateTime.Now;
+                    db.Entry(entry).State = EntityState.Modified;
+                }
+
+                try
+                {
+                    SendFlyingReport(flying);
+                    SendBillingReport(billing);
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Message = "Failed to send: " + e.ToString();
+                    return View(model);
+                }
+                db.SaveChanges();
+                ViewBag.Message = "Reports emailed successfully";
+            }
             return View(model);
         }
 

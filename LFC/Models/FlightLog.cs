@@ -22,6 +22,8 @@ namespace LFC.Models
         public double StartTach { get; set; }
         [Display(Name = "End Tach")]
         public double EndTach { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
         public DateTime? Billed { get; set; }
 
         public virtual Airplane Airplane { get; set; }
