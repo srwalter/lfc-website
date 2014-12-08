@@ -94,10 +94,15 @@
         }
 
         function updateStartTach(event) {
+            if ($(event.target).val() == "")
+                return;
+
             enlargeTach(event.target);
             var tach = event.target.value;
-            $(event.target).off('blur');
-            $('input.data.fullstart').val(tach);
+            if ($('input.data.fullstart').val() == "")
+                $('input.data.fullstart').val(tach);
+            if ($('input.data.starttach').val() == "")
+                $('input.data.starttach').val(tach);
         }
 
         function updateTachDelta(event) {
