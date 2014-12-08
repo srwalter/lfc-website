@@ -78,11 +78,8 @@ namespace LFC.Controllers
 
 
             byte[] bytes = Encoding.ASCII.GetBytes(plain);
-            Attachment attach;
-            using (var stream = new MemoryStream(bytes)) {
-                
-                attach = new Attachment(stream, "billing.txt", "text/plain");
-            }
+            var stream = new MemoryStream(bytes);
+            var attach = new Attachment(stream, "billing.txt", "text/plain");
             message.Attachments.Add(attach);
 
             String pres = (from u in db.Users
