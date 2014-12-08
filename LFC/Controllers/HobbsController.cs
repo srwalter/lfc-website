@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Text;
 
 using System.Net;
 using System.Net.Mail;
@@ -68,10 +69,34 @@ namespace LFC.Controllers
             var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
             message.AlternateViews.Add(view);
 
-            //foreach (var user in db.Users.Where(x => x.Officer != null))
-            //{
-            //    message.To.Add(user.Email);
-            //}
+            var plain = "plane\tm_id\tdate\thours\n";
+            foreach (var entry in billing)
+            {
+                var plane = entry.Plane.Substring(1);
+                plain = plain + String.Format("{0}\t{1}\t{2:MM/dd/yyyy}\t{3:F2}\n", plane, entry.BillingName, entry.Date, entry.Hours);
+            }
+
+
+            byte[] bytes = Encoding.ASCII.GetBytes(plain);
+            Attachment attach;
+            using (var stream = new MemoryStream(bytes)) {
+                
+                attach = new Attachment(stream, "billing.txt", "text/plain");
+            }
+            message.Attachments.Add(attach);
+
+            String pres = (from u in db.Users
+                           where u.Officer == ApplicationUser.OfficerTitle.President
+                           select u.Email).First();
+            String treasurer = (from u in db.Users
+                                where u.Officer == ApplicationUser.OfficerTitle.Treasurer
+                                select u.Email).First();
+            String asst = (from u in db.Users
+                           where u.Officer == ApplicationUser.OfficerTitle.AsstTreasurer
+                           select u.Email).First();
+            //message.To.Add(pres);
+            //message.To.Add(treasurer);
+            //message.To.Add(asst);
             message.To.Add("stevenrwalter@gmail.com");
 
             var smtp = new SmtpClient();
