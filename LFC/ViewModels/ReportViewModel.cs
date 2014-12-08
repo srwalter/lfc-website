@@ -20,20 +20,20 @@ namespace LFC.ViewModels
     {
         public String Plane { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name="Start Hobbs")]
-        public double StartHobbs;
+        [Display(Name = "Start Hobbs")]
+        public double StartHobbs { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name="End Hobbs")]
-        public double EndHobbs;
+        [Display(Name = "End Hobbs")]
+        public double EndHobbs { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name="Start Tach")]
-        public double StartTach;
+        [Display(Name = "Start Tach")]
+        public double StartTach { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name="End Tach")]
-        public double EndTach;
+        [Display(Name = "End Tach")]
+        public double EndTach { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name="Billed Tach")]
-        public double BilledTach;
+        [Display(Name = "Billed Tach")]
+        public double BilledTach { get; set; }
     }
 
     public class ReportViewModel
