@@ -11,6 +11,8 @@ namespace LFC.ViewModels
         public String Plane { get; set; }
         [Display(Name="Billing Name")]
         public String BillingName { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
         [DisplayFormat(DataFormatString="{0:F2}")]
         public double Hours { get; set; }
