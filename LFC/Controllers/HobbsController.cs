@@ -216,7 +216,16 @@ namespace LFC.Controllers
                 hobbsTime.TachHours = hobbs.EndTach;
                 db.HobbsTimes.Add(hobbsTime);
 
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Message = "Failed to save changes: " + e.ToString();
+                    hobbs.AllUsers = db.Users.AsEnumerable();
+                    return View("Tach", hobbs);
+                }
                 return RedirectToAction("Index");
             }
 
