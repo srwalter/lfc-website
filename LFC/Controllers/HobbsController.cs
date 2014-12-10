@@ -229,6 +229,12 @@ namespace LFC.Controllers
                 return RedirectToAction("Index");
             }
 
+            if (!ModelState.IsValid)
+            {
+                ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
+                return View(hobbs);
+            }
+
             var entries = new List<TachEntry>(10);
             for (var i = 0; i < 10; i++)
             {
