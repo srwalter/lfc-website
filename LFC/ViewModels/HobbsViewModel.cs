@@ -14,7 +14,7 @@ namespace LFC.ViewModels
         public DateTime Date { get; set; }
         public String PilotName { get; set; }
         public double StartTach { get; set; }
-        public double EndTach { get; set; }
+        public double? EndTach { get; set; }
     }
     public class HobbsViewModel
     {

@@ -188,8 +188,14 @@ namespace LFC.Controllers
         {
             if (hobbs.TachEntries != null)
             {
+                if (!ModelState.IsValid)
+                {
+                    hobbs.AllUsers = db.Users.AsEnumerable();
+                    return View("Tach", hobbs);
+                }
+
                 foreach (var entry in hobbs.TachEntries) {
-                    if (entry.PilotName == null && entry.EndTach == 0.0)
+                    if (entry.PilotName == null && entry.EndTach == null)
                     {
                         continue;
                     }
@@ -201,11 +207,11 @@ namespace LFC.Controllers
                         return View("Tach", hobbs);
                     }
                     var flightlog = new FlightLog();
-                    flightlog.Date = hobbs.Date;
+                    flightlog.Date = entry.Date;
                     flightlog.AirplaneID = hobbs.AirplaneID;
                     flightlog.Pilot = pilot.First();
                     flightlog.StartTach = entry.StartTach;
-                    flightlog.EndTach = entry.EndTach;
+                    flightlog.EndTach = entry.EndTach.GetValueOrDefault();
                     db.FlightLogs.Add(flightlog);
                 }
 

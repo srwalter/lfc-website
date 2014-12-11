@@ -38,6 +38,7 @@
             <th>Start Tach</th>
             <th>End Tach</th>
             <th>Delta</th>
+            <th></th>
         </tr>
         @for (var i = 0; i < Model.TachEntries.Count(); i ++)
         {
@@ -47,6 +48,12 @@
             <td>@Html.EditorFor(m => m.TachEntries[i].StartTach, new { htmlAttributes = new { @class = "starttach" }})</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].EndTach,   new { htmlAttributes = new { @class = "endtach"}})</td>
             <td class="delta"></td>
+            <td class="text-danger">
+                @Html.ValidationMessageFor(m => m.TachEntries[i].Date)
+                @Html.ValidationMessageFor(m => m.TachEntries[i].PilotName)
+                @Html.ValidationMessageFor(m => m.TachEntries[i].StartTach)
+                @Html.ValidationMessageFor(m => m.TachEntries[i].EndTach)
+            </td>
         </tr>
         }
         <tr>
