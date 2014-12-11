@@ -86,6 +86,8 @@ namespace LFC.Models
         [Display(Name="Maintenance Officer")]
         public virtual ApplicationUser MaintenanceOfficer { get; set; }
         [Display(Name="GPS DB Expires")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}", ApplyFormatInEditMode=true)]
         public DateTime GPSExpires { get; set; }
         [Display(Name="Engine Serial")]
         public String EngineSerial { get; set; }
