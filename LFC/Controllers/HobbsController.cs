@@ -194,7 +194,9 @@ namespace LFC.Controllers
                     return View("Tach", hobbs);
                 }
 
+                var i = -1;
                 foreach (var entry in hobbs.TachEntries) {
+                    i++;
                     if (entry.PilotName == null && entry.EndTach == null)
                     {
                         continue;
@@ -203,6 +205,13 @@ namespace LFC.Controllers
                     if (pilot.Count() == 0)
                     {
                         ViewBag.Message = "There is no pilot named '" + entry.PilotName + "'";
+                        hobbs.AllUsers = db.Users.AsEnumerable();
+                        return View("Tach", hobbs);
+                    }
+                    if (entry.StartTach > entry.EndTach)
+                    {
+                        var key = String.Format("TachEntries[{0}].EndTach", i);
+                        ModelState.AddModelError(key, "End tach must be greater than start tach");
                         hobbs.AllUsers = db.Users.AsEnumerable();
                         return View("Tach", hobbs);
                     }
