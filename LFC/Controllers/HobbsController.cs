@@ -208,7 +208,7 @@ namespace LFC.Controllers
                         hobbs.AllUsers = db.Users.AsEnumerable();
                         return View("Tach", hobbs);
                     }
-                    if (entry.StartTach > entry.EndTach)
+                    if (entry.StartTach > entry.EndTach.GetValueOrDefault())
                     {
                         var key = String.Format("TachEntries[{0}].EndTach", i);
                         ModelState.AddModelError(key, "End tach must be greater than start tach");

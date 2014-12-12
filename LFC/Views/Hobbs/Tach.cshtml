@@ -43,7 +43,7 @@
         @for (var i = 0; i < Model.TachEntries.Count(); i ++)
         {
         <tr class="data">
-            <td>@Html.EditorFor(m => m.TachEntries[i].Date)</td>
+            <td>@Html.EditorFor(m => m.TachEntries[i].Date, new { htmlAttributes = new { @class = "date" } })</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].PilotName, new { htmlAttributes = new { list = "pilots" } })</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].StartTach, new { htmlAttributes = new { @class = "starttach" }})</td>
             <td>@Html.EditorFor(m => m.TachEntries[i].EndTach,   new { htmlAttributes = new { @class = "endtach"}})</td>
@@ -225,8 +225,14 @@
         $('input.starttach').add('input.endtach').change(function (event) {
             updateTachDelta(event);
         }).change();
-        $('input.endtach.data').blur(function (event) {
+        $('input.endtach').blur(function (event) {
             updateStartTach(event);
+        });
+        $('input.starttach').blur(function (event) {
+            enlargeStartTach(event);
+        });
+        $('input.date').blur(function (event) {
+            enlargeDate(event);
         });
 
         $(window).keydown(function (event) {
