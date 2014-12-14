@@ -71,7 +71,15 @@ namespace LFC.Controllers
                 airplane.GPSExpires = DateTime.Now;
                 airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Message = "Failed to send: " + e.ToString();
+                    return View();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -106,7 +114,15 @@ namespace LFC.Controllers
                 var user = db.Users.First(u => u.UserName == User.Identity.Name);
                 airplane.UpdatedNow(user);
                 db.Entry(airplane).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Message = "Failed to send: " + e.ToString();
+                    return View();
+                }
                 return RedirectToAction("Index");
             }
             return View(airplane);
