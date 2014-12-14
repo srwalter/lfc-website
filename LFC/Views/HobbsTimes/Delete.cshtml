@@ -49,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            @Html.HiddenFor(m => m.Date);
-            @Html.HiddenFor(m => m.AirplaneID);
+            @Html.HiddenFor(m => m.Date)
+            @Html.HiddenFor(m => m.AirplaneID)
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
