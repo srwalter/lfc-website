@@ -69,6 +69,11 @@ namespace LFC.Models
         [RegularExpression("\\d\\d\\d\\d\\d")]
         public string ZipCode {get; set; }
 
+        [Display(Name="Certificate Type")]
+        public ApplicationUser.CertificateType CertificateType;
+        [Display(Name="Membership Type")]
+        public ApplicationUser.MembershipType MembershipType;
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 4)]
         [DataType(DataType.Password)]

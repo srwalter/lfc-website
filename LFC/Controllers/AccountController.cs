@@ -261,7 +261,9 @@ namespace LFC.Controllers
                     Address = model.Address,
                     City = model.City,
                     State = model.State,
-                    ZipCode = model.ZipCode
+                    ZipCode = model.ZipCode,
+                    MemberType = model.MembershipType,
+                    Certificate = model.CertificateType,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
