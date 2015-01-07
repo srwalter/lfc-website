@@ -9,8 +9,6 @@ namespace LFC.Models
 {
     public class FlightLog
     {
-        [Key]
-        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)]
         public int FlightLogID { get; set; }
         [Required]
         [Display(Name = "Airplane")]

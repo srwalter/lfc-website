@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201501070638177_FlightLogKey.Designer.cs">
       <DependentUpon>201501070638177_FlightLogKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501070650524_FlightLogKey2.cs" />
+    <Compile Include="Migrations\201501070650524_FlightLogKey2.Designer.cs">
+      <DependentUpon>201501070650524_FlightLogKey2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -574,6 +578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501070638177_FlightLogKey.resx">
       <DependentUpon>201501070638177_FlightLogKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501070650524_FlightLogKey2.resx">
+      <DependentUpon>201501070650524_FlightLogKey2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
