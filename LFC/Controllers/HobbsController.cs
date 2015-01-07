@@ -124,7 +124,8 @@ namespace LFC.Controllers
             }
 
             var billing = new List<BillingReport>();
-            foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null).OrderBy(x => x.Date))
+            var flightlogs = db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null);
+            foreach (var entry in flightlogs.OrderBy(x => x.Airplane.AirplaneID).ThenBy(x => x.Date))
             {
                 var report = new BillingReport();
                 report.BillingName = entry.Pilot.ShortName;
