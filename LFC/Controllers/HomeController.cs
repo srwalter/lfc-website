@@ -26,7 +26,7 @@ namespace LFC.Controllers
         public ActionResult Contact()
         {
             var cvm = new ContactViewModel();
-            cvm.Planes = db.Airplanes.Include("MaintenanceOfficer");
+            cvm.Planes = db.Airplanes.Include("MaintenanceOfficer").Where(x => x.Active == true);
             cvm.Officers = db.Users.Where(x => x.Officer != null).OrderBy(x => x.Officer);
             return View(cvm);
         }
