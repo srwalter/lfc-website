@@ -17,6 +17,14 @@ using LFC.DAL;
 
 namespace LFC.Controllers
 {
+    public class LFCUserManager : UserManager<ApplicationUser>
+    {
+        public LFCUserManager() : base(new UserStore<ApplicationUser>(new LFCContext()))
+        {
+            PasswordValidator = new MinimumLengthValidator(4);
+        }
+    }
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -24,15 +32,14 @@ namespace LFC.Controllers
         private ApplicationUserManager _userManager;
         private RoleManager<IdentityRole> _roleManager;
 
-        public AccountController()
+        public AccountController() : this(new LFCUserManager())
         {
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new LFCContext()));
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager ) : this ()
+        private AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
-            SignInManager = signInManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -47,17 +54,7 @@ namespace LFC.Controllers
             }
         }
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        public UserManager<ApplicationUser> UserManager { get; private set; }
         
         public ActionResult Index(int? page)
         {
