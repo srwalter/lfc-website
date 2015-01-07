@@ -365,7 +365,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\departure_form.pdf" />
     <Content Include="Content\Republic Insurance Endorsement Sheets 20110525.pdf" />
     <Content Include="Content\Republic Insurance Policy 20100515.pdf" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
@@ -375,6 +374,7 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Insurance_Summary_20101115.pdf" />
     <Content Include="Content\Lexington Flying Club Application.pdf" />
+    <Content Include="Content\KLEX departure.doc" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
