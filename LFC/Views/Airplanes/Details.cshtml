@@ -109,11 +109,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EngineTT)
+            Engine Total Time
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EngineTT)
+            @{
+                var engine_tt = Model.CurrentTach + Model.TachAdd - Model.EngineOverhaul;
+            }
+            @engine_tt
         </dd>
 
         <dt>

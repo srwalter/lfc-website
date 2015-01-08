@@ -89,8 +89,6 @@ namespace LFC.Models
         public DateTime GPSExpires { get; set; }
         [Display(Name="Engine Serial")]
         public String EngineSerial { get; set; }
-        [Display(Name="Engine Total Time")]
-        public double EngineTT { get; set; }
         public bool Active { get; set; }
 
         public double CurrentTach
