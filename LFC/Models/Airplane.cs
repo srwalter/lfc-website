@@ -51,8 +51,6 @@ namespace LFC.Models
         public double TachAdd { get; set; }
         [Display(Name="Last Overhaul")]
         public double EngineOverhaul { get; set; }
-        [Display(Name="Current Tach")]
-        public double CurrentTach { get; set; }
         [Display(Name="Next Hundred Hour")]
         public double HundredHour { get; set; }
         [Display(Name="Next Oil Change")]
@@ -94,6 +92,15 @@ namespace LFC.Models
         [Display(Name="Engine Total Time")]
         public double EngineTT { get; set; }
         public bool Active { get; set; }
+
+        public double CurrentTach
+        {
+            get
+            {
+                var logs = this.FlightLogs.OrderByDescending(x => x.Date).ToList();
+                return logs[0].StartTach;
+            }
+        }
 
         public List<String> MaintenanceActions
         {
@@ -165,6 +172,7 @@ namespace LFC.Models
         [Display(Name="Equipment")]
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }
+        public virtual ICollection<FlightLog> FlightLogs { get; set; }
 
         public static List<AirworthinessDirective> PastDueADs (ICollection<AirworthinessDirective> all_ads, double current_tach)
         {

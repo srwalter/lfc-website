@@ -127,7 +127,7 @@ namespace LFC.Controllers
                     var airplane = lfc.Airplanes.Find(acid);
                     airplane.TachAdd = (double)reader[1];
                     airplane.EngineOverhaul = (double)reader[2];
-                    airplane.CurrentTach = (double)reader[3];
+                    //airplane.CurrentTach = (double)reader[3];
                     airplane.HundredHour = (double)reader[4];
                     airplane.OilChange = (int)reader[5];
                     var mon = int.Parse((String)reader[6]);

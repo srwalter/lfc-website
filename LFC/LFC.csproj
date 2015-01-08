@@ -311,6 +311,10 @@
     <Compile Include="Migrations\201501080645038_Remove-Airframe-TT.Designer.cs">
       <DependentUpon>201501080645038_Remove-Airframe-TT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501080654163_Compute-Current-Tach.cs" />
+    <Compile Include="Migrations\201501080654163_Compute-Current-Tach.Designer.cs">
+      <DependentUpon>201501080654163_Compute-Current-Tach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -567,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501080645038_Remove-Airframe-TT.resx">
       <DependentUpon>201501080645038_Remove-Airframe-TT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501080654163_Compute-Current-Tach.resx">
+      <DependentUpon>201501080654163_Compute-Current-Tach.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
