@@ -93,8 +93,6 @@ namespace LFC.Models
         public String EngineSerial { get; set; }
         [Display(Name="Engine Total Time")]
         public double EngineTT { get; set; }
-        [Display(Name="Airframe Total Time")]
-        public double AirframeTT { get; set; }
         public bool Active { get; set; }
 
         public List<String> MaintenanceActions

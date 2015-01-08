@@ -117,11 +117,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AirframeTT)
+            Airframe Total Time
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AirframeTT)
+            @{
+                var time = Model.CurrentTach + Model.TachAdd;
+            }
+            @time
         </dd>
 
         <dt>
