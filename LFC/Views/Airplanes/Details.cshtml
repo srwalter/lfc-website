@@ -114,7 +114,7 @@
 
         <dd>
             @{
-                var engine_tt = Model.CurrentTach + Model.TachAdd - Model.EngineOverhaul;
+                var engine_tt = Model.getCurrentTach() + Model.TachAdd - Model.EngineOverhaul;
             }
             @engine_tt
         </dd>
@@ -125,7 +125,7 @@
 
         <dd>
             @{
-                var time = Model.CurrentTach + Model.TachAdd;
+                var time = Model.getCurrentTach() + Model.TachAdd;
             }
             @time
         </dd>
@@ -251,11 +251,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CurrentTach)
+            Current Tach
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CurrentTach)
+            @Model.getCurrentTach()
         </dd>
 
         <dt>

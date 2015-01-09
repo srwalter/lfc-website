@@ -1,6 +1,6 @@
 ﻿@model LFC.Models.Airplane
 
-@if (Model.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(Model.ADs, Model.CurrentTach).Count > 0)
+@if (Model.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(Model.ADs, Model.getCurrentTach()).Count > 0)
 {
     <h3>Maintenance Actions</h3>
     foreach (var action in Model.MaintenanceActions)
@@ -9,7 +9,7 @@
             @Html.DisplayFor(actionItem => action)
         </h4>
     }
-    foreach (var ad in LFC.Models.Airplane.PastDueADs(Model.ADs, Model.CurrentTach))
+    foreach (var ad in LFC.Models.Airplane.PastDueADs(Model.ADs, Model.getCurrentTach()))
     {
         <h4 class="text-danger">
             Airworthiness directive

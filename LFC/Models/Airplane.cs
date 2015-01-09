@@ -91,13 +91,10 @@ namespace LFC.Models
         public String EngineSerial { get; set; }
         public bool Active { get; set; }
 
-        public double CurrentTach
+        public double getCurrentTach()
         {
-            get
-            {
                 var logs = this.FlightLogs.OrderByDescending(x => x.Date).ToList();
                 return logs[0].StartTach;
-            }
         }
 
         public List<String> MaintenanceActions
@@ -105,11 +102,11 @@ namespace LFC.Models
             get
             {
                 var actions = new List<String>();
-                if (HundredHour > 0 && CurrentTach > HundredHour)
+                if (HundredHour > 0 && getCurrentTach() > HundredHour)
                 {
                     actions.Add("Hundred hour inspection is due");
                 }
-                if (CurrentTach > OilChange)
+                if (getCurrentTach() > OilChange)
                 {
                     actions.Add("Oil change is due");
                 }
