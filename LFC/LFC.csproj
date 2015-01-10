@@ -360,6 +360,7 @@
     <Content Include="Content\logo.gif" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\logo_small.gif" />
+    <Content Include="Content\wings.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -375,6 +376,7 @@
     <Content Include="Content\Insurance_Summary_20101115.pdf" />
     <Content Include="Content\Lexington Flying Club Application.pdf" />
     <Content Include="Content\KLEX departure.doc" />
+    <Content Include="Content\LEXfactsheetGeneral.doc" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -468,6 +470,7 @@
     <Content Include="Views\Hobbs\_BillingReports.cshtml" />
     <Content Include="Views\Hobbs\_FlyingReports.cshtml" />
     <Content Include="Views\Hobbs\Reports.cshtml" />
+    <Content Include="Views\Home\Links.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

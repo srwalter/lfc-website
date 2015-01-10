@@ -23,6 +23,11 @@ namespace LFC.Controllers
             return View();
         }
 
+        public ActionResult Links()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             var cvm = new ContactViewModel();
