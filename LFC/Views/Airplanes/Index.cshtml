@@ -34,9 +34,21 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AirplaneID)
-        </td>
+@if (item.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(item.ADs, item.getCurrentTach()).Count > 0)
+{
+    <td class="alert alert-danger">
+        <div data-toggle="tooltip" data-placement="top" title="Maintenance actions due">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            @Html.ActionLink(item.AirplaneID, "Details", new { id = item.AirplaneID })
+        </div>
+    </td>
+}
+else
+{
+    <td>
+        @Html.DisplayFor(modelItem => item.AirplaneID)
+    </td>
+}
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>
@@ -61,3 +73,11 @@
 }
 
 </table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
