@@ -354,6 +354,14 @@
     @foreach (var item in Model.ADs) {
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(modelItem => item.AirworthinessDirectiveID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.AirworthinessDirectiveID)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(modelItem => item.Description)
         </dt>
 
