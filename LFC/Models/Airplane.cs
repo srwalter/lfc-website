@@ -94,7 +94,7 @@ namespace LFC.Models
         public double getCurrentTach()
         {
                 var logs = this.FlightLogs.OrderByDescending(x => x.Date).ToList();
-                return logs[0].StartTach;
+                return logs[0].EndTach;
         }
 
         public List<String> MaintenanceActions
