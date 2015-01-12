@@ -68,6 +68,11 @@ namespace LFC.Controllers
             }
             int pagesize = 20;
             int pagenumber = (page ?? 1);
+            if (page < 0)
+            {
+                pagenumber = 1;
+                pagesize = 5000;
+            }
             return View(model.ToPagedList(pagenumber, pagesize));
         }
 
