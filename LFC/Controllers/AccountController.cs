@@ -56,12 +56,21 @@ namespace LFC.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
         
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, bool? retired=false)
         {
             var db = new LFCContext();
             var users = db.Users;
             var model = new List<EditUserViewModel>();
-            foreach (var user in users.OrderBy(n => n.LastName))
+            List<ApplicationUser> list;
+            if (retired == true)
+            {
+                list = users.Where(n => n.MemberType == ApplicationUser.MembershipType.Retired).OrderBy(n => n.LastName).ToList();
+            }
+            else
+            {
+                list = users.Where(n => n.MemberType != ApplicationUser.MembershipType.Retired).OrderBy(n => n.LastName).ToList();
+            }
+            foreach (var user in list)
             {
                 var u = new EditUserViewModel(user);
                 model.Add(u);
