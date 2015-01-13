@@ -19,7 +19,7 @@ namespace LFC.Controllers
         // GET: AirworthinessDirectives
         public ActionResult Index()
         {
-            var airworthinessDirectives = db.AirworthinessDirectives.Include(a => a.Airplane);
+            var airworthinessDirectives = db.AirworthinessDirectives.Include(a => a.Airplane).OrderBy(a => a.AirplaneID);
             return View(airworthinessDirectives.ToList());
         }
 
