@@ -356,6 +356,7 @@
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Cessna 172R links of interest to LFC members.htm" />
     <Content Include="Content\Supplies\Air Classics Headset.jpg" />
     <Content Include="Content\Supplies\Archer POH.jpg" />
     <Content Include="Content\Supplies\C150 POH.jpg" />
@@ -429,6 +430,14 @@
     <Content Include="Content\Lexington Flying Club Application.pdf" />
     <Content Include="Content\KLEX departure.doc" />
     <Content Include="Content\LEXfactsheetGeneral.doc" />
+    <Content Include="Content\C172R\172R POH.pdf" />
+    <Content Include="Content\C172R\C172R Transition Guidev0pt3.pdf" />
+    <Content Include="Content\C172R\C172R_Familiarization_Course_D8688A4579304.ppt" />
+    <Content Include="Content\C172R\KAP140Manual.pdf" />
+    <Content Include="Content\C172R\KLN94.pdf" />
+    <Content Include="Content\C172R\KLN94QR.pdf" />
+    <Content Include="Content\C172R\KMD550.pdf" />
+    <Content Include="Content\C172R\KMD550QR.pdf" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
