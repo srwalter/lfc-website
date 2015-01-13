@@ -34,14 +34,14 @@
 
 @foreach (var item in Model) {
     <tr>
-@if (item.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(item.ADs, item.getCurrentTach()).Count > 0)
+@if (item.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(item.ADs).Count > 0)
 {
     var maintenance_actions = "";
     foreach (var action in item.MaintenanceActions)
     {
         maintenance_actions += action + "<br/>";
     }
-    foreach (var ad in LFC.Models.Airplane.PastDueADs(item.ADs, item.getCurrentTach()))
+    foreach (var ad in LFC.Models.Airplane.PastDueADs(item.ADs))
     {
         maintenance_actions += "AD " + ad.AirworthinessDirectiveID + " is due<br/>";
     }

@@ -29,5 +29,19 @@ namespace LFC.Models
         public DateTime? LastDoneDate { get; set; }
 
         public virtual Airplane Airplane { get; set; }
+
+        public bool IsOverdue()
+        {
+            double current_tach = Airplane.getCurrentTach();
+            if (FrequencyHours != null && LastDoneHours + FrequencyHours < current_tach)
+            {
+                return true;
+            }
+            if (FrequencyMonths != null && LastDoneDate.GetValueOrDefault().AddMonths(FrequencyMonths.GetValueOrDefault()) < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

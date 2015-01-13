@@ -169,17 +169,12 @@ namespace LFC.Models
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }
         public virtual ICollection<FlightLog> FlightLogs { get; set; }
 
-        public static List<AirworthinessDirective> PastDueADs (ICollection<AirworthinessDirective> all_ads, double current_tach)
+        public static List<AirworthinessDirective> PastDueADs (ICollection<AirworthinessDirective> all_ads)
         {
                 var ads = new List<AirworthinessDirective>();
                 foreach (var ad in all_ads)
                 {
-                    if (ad.FrequencyHours != null && ad.LastDoneHours + ad.FrequencyHours < current_tach)
-                    {
-                        ads.Add(ad);
-                        continue;
-                    }
-                    if (ad.FrequencyMonths != null && ad.LastDoneDate.GetValueOrDefault().AddMonths(ad.FrequencyMonths.GetValueOrDefault()) < DateTime.Now)
+                    if (ad.IsOverdue())
                     {
                         ads.Add(ad);
                         continue;
