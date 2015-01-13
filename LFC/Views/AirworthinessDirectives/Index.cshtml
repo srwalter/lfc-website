@@ -30,9 +30,21 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    var row_class = "";
+    var span_class = "";
+    var div_attrs = "";
+    if (item.IsOverdue())
+    {
+        row_class = "alert alert-danger";
+        span_class = "glyphicon glyphicon-exclamation-sign";
+        div_attrs = "data-toggle=tooltip data-placement=top data-html=true title=Overdue";
+    }
+    <tr class="@row_class">
         <td>
+            <div @div_attrs>
+            <span class="@span_class"></span>
             @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
+            </div>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AirworthinessDirectiveID)
@@ -60,3 +72,11 @@
 }
 
 </table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
