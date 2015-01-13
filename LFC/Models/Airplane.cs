@@ -94,6 +94,8 @@ namespace LFC.Models
         public double getCurrentTach()
         {
                 var logs = this.FlightLogs.OrderByDescending(x => x.Date).ToList();
+                if (logs.Count == 0)
+                    return 0.0;
                 return logs[0].EndTach;
         }
 
