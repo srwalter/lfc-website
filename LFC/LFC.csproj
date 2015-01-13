@@ -438,6 +438,10 @@
     <Content Include="Content\C172R\KLN94QR.pdf" />
     <Content Include="Content\C172R\KMD550.pdf" />
     <Content Include="Content\C172R\KMD550QR.pdf" />
+    <Content Include="Content\DA40\DA-40 Transition Training Rev 5.pdf" />
+    <Content Include="Content\DA40\DA40 CHECKOUT EXAM 11 1 09.pdf" />
+    <Content Include="Content\DA40\VM 1000 Operators Guide.pdf" />
+    <Content Include="Content\DA40\We did get our marching orders from Avemco for the Diamond Star DA.pdf" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
