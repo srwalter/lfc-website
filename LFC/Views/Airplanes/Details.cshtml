@@ -412,7 +412,7 @@
     </dl>
         if (User.IsInRole("Admin"))
         {
-            @Html.ActionLink("Edit AD", "Edit", "AirworthinessDirective", null, new { id = item.KeyNum })  
+            @Html.ActionLink("Edit AD", "Edit", "AirworthinessDirectives", new { id = item.KeyNum }, null)  
         }
     }
 </div>
