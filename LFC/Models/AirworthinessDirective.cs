@@ -23,7 +23,7 @@ namespace LFC.Models
         public String FrequencyMisc { get; set; }
         [Display(Name = "Last done (hours)")]
         public double? LastDoneHours { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode=true)]
         [Display(Name = "Last done (date)")]
         public DateTime? LastDoneDate { get; set; }

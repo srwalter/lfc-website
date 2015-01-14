@@ -10,7 +10,7 @@ namespace LFC.ViewModels
     public class TachEntry
     {
         [Required]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public String PilotName { get; set; }
         public double StartTach { get; set; }
@@ -18,7 +18,7 @@ namespace LFC.ViewModels
     }
     public class HobbsViewModel
     {
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
         [Required]
         public DateTime Date { get; set; }

@@ -13,7 +13,7 @@ namespace LFC.Models
     {
         [Key]
         [Column(Order=1)]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Date { get; set; }
         [Key]

@@ -16,14 +16,14 @@ namespace LFC.Models
         [Required]
         [Display(Name = "Pilot")]
         public String ApplicationUserID { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Required]
         public DateTime Date { get; set; }
         [Display(Name = "Start Tach")]
         public double StartTach { get; set; }
         [Display(Name = "End Tach")]
         public double EndTach { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
         public DateTime? Billed { get; set; }
 

@@ -55,23 +55,23 @@ namespace LFC.Models
         public double HundredHour { get; set; }
         [Display(Name="Next Oil Change")]
         public double OilChange { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name="Annual Due")]
         public DateTime AnnualDue { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name="ELT Due")]
         public DateTime EltDue { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name="ELT Battery Due")]
         public DateTime EltBatteryDue { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name="Transponder Due")]
         public DateTime TransponderDue { get; set; }
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name="Static Due")]
         public DateTime StaticDue { get; set; }
@@ -84,7 +84,7 @@ namespace LFC.Models
         [Display(Name="Maintenance Officer")]
         public virtual ApplicationUser MaintenanceOfficer { get; set; }
         [Display(Name="GPS DB Expires")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}", ApplyFormatInEditMode=true)]
         public DateTime GPSExpires { get; set; }
         [Display(Name="Engine Serial")]
