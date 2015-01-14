@@ -410,13 +410,17 @@
         </dd>
 
     </dl>
+        if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit AD", "Edit", "AirworthinessDirective", null, new { id = item.KeyNum })  
+        }
     }
 </div>
 }
-<p>
+<p style="padding-top: 2em;">
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.AirplaneID }) @:|
+        @Html.ActionLink("Edit Airplane", "Edit", new { id = Model.AirplaneID }) @:|
     }
     @Html.ActionLink("Back to List", "Index")
 </p>

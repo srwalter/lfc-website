@@ -41,7 +41,7 @@
     {
     <tr>
         <td>@Html.DisplayFor(x => officer.Officer)</td>
-        <td>@Html.DisplayFor(x => officer.FullName)</td>
+        <td>@Html.ActionLink(officer.FullName, "Details", "Account", new { id = officer.UserName }, null)</td>
         <td><a href="mailto:@officer.Email">@officer.Email</a></td>
     </tr>
     }
@@ -53,7 +53,7 @@
         }
         <tr>
             <td>Maintenance Officer for @plane.AirplaneID</td>
-            <td>@plane.MaintenanceOfficer.FullName</td>
+            <td>@Html.ActionLink(plane.MaintenanceOfficer.FullName, "Details", "Account", new { id = plane.MaintenanceOfficer.UserName }, null)</td>
             <td><a href="mailto:@plane.MaintenanceOfficer.Email">@plane.MaintenanceOfficer.Email</a></td>
         </tr>
     }
