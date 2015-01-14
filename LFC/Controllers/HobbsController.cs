@@ -39,7 +39,7 @@ namespace LFC.Controllers
             return result;
         }
 
-        public void SendFlyingReport(IEnumerable<FlyingReport> flying)
+        private void SendFlyingReport(IEnumerable<FlyingReport> flying)
         {
             var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_FlyingReports.cshtml", flying);
 
@@ -59,7 +59,7 @@ namespace LFC.Controllers
             smtp.Send(message);
         }
 
-        public void SendBillingReport(IEnumerable<BillingReport> billing)
+        private void SendBillingReport(IEnumerable<BillingReport> billing)
         {
             var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_BillingReports.cshtml", billing);
 

@@ -39,6 +39,7 @@ namespace LFC.Controllers
         }
 
         // GET: HobbsTimes/Create
+        [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
@@ -49,6 +50,7 @@ namespace LFC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Date,AirplaneID,HobbsHours,TachHours")] HobbsTime hobbsTime)
         {
@@ -64,6 +66,7 @@ namespace LFC.Controllers
         }
 
         // GET: HobbsTimes/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(DateTime date, String airplane)
         {
             if (date == null || airplane == null)
@@ -83,6 +86,7 @@ namespace LFC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Date,AirplaneID,HobbsHours,TachHours")] HobbsTime hobbsTime)
         {
@@ -97,6 +101,7 @@ namespace LFC.Controllers
         }
 
         // GET: HobbsTimes/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(DateTime date, String airplane)
         {
             if (date == null || airplane == null)
@@ -114,6 +119,7 @@ namespace LFC.Controllers
         // POST: HobbsTimes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(DateTime date, String airplane)
         {
             var hobbsTime = db.HobbsTimes.Where(x => x.Date == date && x.AirplaneID == airplane);
