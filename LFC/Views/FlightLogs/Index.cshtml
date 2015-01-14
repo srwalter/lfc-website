@@ -5,6 +5,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm()) {
+    @Html.DropDownList("AirplaneID")
+    <input type="submit" value="Filter" class="btn btn-default" />
+}
 <table class="table">
     <tr>
         <th>

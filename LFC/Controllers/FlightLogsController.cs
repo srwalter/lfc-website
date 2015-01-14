@@ -18,12 +18,17 @@ namespace LFC.Controllers
 
         // GET: FlightLogs
         [Authorize(Roles="Admin")]
-        public ActionResult Index()
+        public ActionResult Index(String AirplaneID)
         {
-            var flightLogs = db.FlightLogs.Include(f => f.Airplane).Include(f => f.Pilot)
-                .OrderBy(x => x.AirplaneID)
+            var flightLogs = db.FlightLogs.Include(f => f.Airplane).Include(f => f.Pilot);
+            if (AirplaneID != null && AirplaneID != "All Planes")
+                flightLogs = flightLogs.Where(x => x.AirplaneID == AirplaneID);
+            flightLogs = flightLogs.OrderBy(x => x.AirplaneID)
                 .ThenBy(x => x.Date)
                 .ThenBy(x => x.EndTach);
+            var planes = db.Airplanes.Select(x => x.AirplaneID).ToList();
+            planes.Insert(0, "All Planes");
+            ViewBag.AirplaneID = new SelectList(planes);
             return View(flightLogs.ToList());
         }
 
