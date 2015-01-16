@@ -93,10 +93,10 @@ namespace LFC.Models
 
         public double getCurrentTach()
         {
-                var logs = this.FlightLogs.OrderByDescending(x => x.Date).ToList();
+                var logs = this.HobbsTimes.OrderByDescending(x => x.Date).ToList();
                 if (logs.Count == 0)
                     return 0.0;
-                return logs[0].EndTach;
+                return logs[0].TachHours;
         }
 
         public List<String> MaintenanceActions
@@ -170,6 +170,7 @@ namespace LFC.Models
         public virtual ICollection<Equipment> InstalledEquipment { get; set; }
         public virtual ICollection<AirworthinessDirective> ADs { get; set; }
         public virtual ICollection<FlightLog> FlightLogs { get; set; }
+        public virtual ICollection<HobbsTime> HobbsTimes { get; set; }
 
         public static List<AirworthinessDirective> PastDueADs (ICollection<AirworthinessDirective> all_ads)
         {
