@@ -319,6 +319,10 @@
     <Compile Include="Migrations\201501080659420_Remove-EngineTT.Designer.cs">
       <DependentUpon>201501080659420_Remove-EngineTT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501160738151_HobbsTime-Billed.cs" />
+    <Compile Include="Migrations\201501160738151_HobbsTime-Billed.Designer.cs">
+      <DependentUpon>201501160738151_HobbsTime-Billed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -649,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501080659420_Remove-EngineTT.resx">
       <DependentUpon>201501080659420_Remove-EngineTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501160738151_HobbsTime-Billed.resx">
+      <DependentUpon>201501160738151_HobbsTime-Billed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -24,5 +24,9 @@ namespace LFC.Models
         public double HobbsHours { get; set; }
         [Display(Name = "Tach Hours")]
         public double TachHours { get; set; }
+
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime? Billed { get; set; }
     }
 }
