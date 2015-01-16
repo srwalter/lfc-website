@@ -112,11 +112,11 @@ namespace LFC.Controllers
                     billed = logs_for_plane.Sum(x => x.EndTach - x.StartTach);
                 }
 
-                var current_hobbs = plane.HobbsTimes.Where(x => x.Billed == null).OrderByDescending(x => x.Date).First();
+                var current_hobbs = plane.HobbsTimes.OrderByDescending(x => x.TachHours).First();
                 var prev_hobbs = current_hobbs;
                 try
                 {
-                    prev_hobbs = plane.HobbsTimes.Where(x => x.Billed.HasValue == true).OrderByDescending(x => x.Date).First();
+                    prev_hobbs = plane.HobbsTimes.Where(x => x.Billed.HasValue == true).OrderByDescending(x => x.TachHours).First();
                 }
                 catch
                 {
