@@ -88,7 +88,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Date,AirplaneID,HobbsHours,TachHours")] HobbsTime hobbsTime)
+        public ActionResult Edit([Bind(Include = "Date,AirplaneID,HobbsHours,TachHours,Billed")] HobbsTime hobbsTime)
         {
             if (ModelState.IsValid)
             {
