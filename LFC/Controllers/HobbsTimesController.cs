@@ -40,15 +40,13 @@ namespace LFC.Controllers
 
         // GET: HobbsTimes/Create
         [Authorize(Roles="Admin")]
-        public ActionResult Create()
+        public ActionResult Create(String AirplaneID)
         {
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", AirplaneID);
             return View();
         }
 
         // POST: HobbsTimes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
@@ -58,10 +56,10 @@ namespace LFC.Controllers
             {
                 db.HobbsTimes.Add(hobbsTime);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Airplanes", new { id = hobbsTime.AirplaneID });
             }
 
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type", hobbsTime.AirplaneID);
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", hobbsTime.AirplaneID);
             return View(hobbsTime);
         }
 

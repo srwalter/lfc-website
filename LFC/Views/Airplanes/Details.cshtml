@@ -256,6 +256,10 @@
 
         <dd>
             @Model.getCurrentTach()
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Update", "Create", "HobbsTimes", new { AirplaneID = Model.AirplaneID }, null);
+            }
         </dd>
 
         <dt>
