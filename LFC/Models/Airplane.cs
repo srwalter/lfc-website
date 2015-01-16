@@ -96,7 +96,7 @@ namespace LFC.Models
                 var logs = this.HobbsTimes.OrderByDescending(x => x.Date).ToList();
                 if (logs.Count == 0)
                     return 0.0;
-                return logs[0].TachHours;
+                return logs[0].TachHours;   
         }
 
         public List<String> MaintenanceActions

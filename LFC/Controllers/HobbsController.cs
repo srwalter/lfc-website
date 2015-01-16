@@ -112,13 +112,21 @@ namespace LFC.Controllers
                     billed = logs_for_plane.Sum(x => x.EndTach - x.StartTach);
                 }
 
-                var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == plane.AirplaneID).OrderByDescending(x => x.Date).ToList();
+                var current_hobbs = plane.HobbsTimes.Where(x => x.Billed == null).OrderByDescending(x => x.Date).First();
+                var prev_hobbs = current_hobbs;
+                try
+                {
+                    prev_hobbs = plane.HobbsTimes.Where(x => x.Billed.HasValue == true).OrderByDescending(x => x.Date).First();
+                }
+                catch
+                {
+                }
                 var report = new FlyingReport();
                 report.Plane = plane.AirplaneID;
-                report.EndHobbs = hobbs[0].HobbsHours;
-                report.EndTach = hobbs[0].TachHours;
-                report.StartHobbs = hobbs[1].HobbsHours;
-                report.StartTach = hobbs[1].TachHours;
+                report.EndHobbs = current_hobbs.HobbsHours;
+                report.EndTach = current_hobbs.TachHours;
+                report.StartHobbs = prev_hobbs.HobbsHours;
+                report.StartTach = prev_hobbs.TachHours;
                 report.BilledTach = billed;
                 flying.Add(report);
             }
@@ -141,8 +149,13 @@ namespace LFC.Controllers
 
             if (send.GetValueOrDefault())
             {
-                foreach (var entry in db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null))
+                foreach (var entry in db.FlightLogs.Where(x => x.Billed == null))
                 {
+                    entry.Billed = DateTime.Now;
+                    db.Entry(entry).State = EntityState.Modified;
+                }
+
+                foreach (var entry in db.HobbsTimes.Where(x => x.Billed == null)) {
                     entry.Billed = DateTime.Now;
                     db.Entry(entry).State = EntityState.Modified;
                 }
