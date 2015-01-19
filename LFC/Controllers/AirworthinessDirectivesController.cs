@@ -48,7 +48,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles="Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AirworthinessDirectiveID,AirplaneID,Description,FrequencyHours,FrequencyMonths,FrequencyMisc,LastDoneHours,LastDoneDate")] AirworthinessDirective airworthinessDirective)
+        public ActionResult Create(AirworthinessDirective airworthinessDirective)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles="Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KeyNum,AirworthinessDirectiveID,AirplaneID,Description,FrequencyHours,FrequencyMonths,FrequencyMisc,LastDoneHours,LastDoneDate")] AirworthinessDirective airworthinessDirective)
+        public ActionResult Edit(AirworthinessDirective airworthinessDirective)
         {
             if (ModelState.IsValid)
             {
