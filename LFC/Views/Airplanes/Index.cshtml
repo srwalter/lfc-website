@@ -29,6 +29,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Rate)
         </th>
+        <th>
+            Current Tach
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OilChange)
+        </th>
         <th></th>
     </tr>
 
@@ -66,6 +75,15 @@ else
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @item.getCurrentTach()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualDue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OilChange)
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.AirplaneID })
