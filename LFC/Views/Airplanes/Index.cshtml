@@ -23,19 +23,19 @@
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
-        <th>
+        <th class="hidden-xs">
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rate)
         </th>
-        <th>
-            Current Tach
-        </th>
-        <th>
+        <th class="visible-lg visible-md">
             @Html.DisplayNameFor(model => model.AnnualDue)
         </th>
-        <th>
+        <th class="hidden-xs">
+            Current Tach
+        </th>
+        <th class="hidden-xs">
             @Html.DisplayNameFor(model => model.OilChange)
         </th>
         <th></th>
@@ -70,19 +70,19 @@ else
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>
-        <td>
+        <td class="hidden-xs">
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rate)
         </td>
-        <td>
-            @item.getCurrentTach()
-        </td>
-        <td>
+        <td class="visible-lg visible-md">
             @Html.DisplayFor(modelItem => item.AnnualDue)
         </td>
-        <td>
+        <td class="hidden-xs">
+            @item.getCurrentTach()
+        </td>
+        <td class="hidden-xs">
             @Html.DisplayFor(modelItem => item.OilChange)
         </td>
         <td>
