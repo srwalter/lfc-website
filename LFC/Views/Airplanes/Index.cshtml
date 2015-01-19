@@ -43,7 +43,7 @@
 
 @foreach (var item in Model) {
     <tr>
-@if (item.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(item.ADs).Count > 0)
+@if (item.MaintenanceActions.Count > 0 || LFC.Models.Airplane.PastDueADs(item.ADs.Where(x => x.Voluntary == false).ToList()).Count > 0)
 {
     var maintenance_actions = "";
     foreach (var action in item.MaintenanceActions)
