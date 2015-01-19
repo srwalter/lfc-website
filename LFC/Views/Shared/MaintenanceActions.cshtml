@@ -11,7 +11,12 @@
     }
     foreach (var ad in LFC.Models.Airplane.PastDueADs(Model.ADs))
     {
-        <h4 class="text-danger">
+        var css = "text-danger";
+        if (ad.Voluntary)
+        {
+            css = "text-warning";
+        }
+        <h4 class="@css">
             Airworthiness directive
             @Html.DisplayFor(adTime => ad.AirworthinessDirectiveID)
             is past due
