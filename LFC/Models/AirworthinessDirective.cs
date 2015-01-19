@@ -27,6 +27,7 @@ namespace LFC.Models
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode=true)]
         [Display(Name = "Last done (date)")]
         public DateTime? LastDoneDate { get; set; }
+        public bool Voluntary { get; set;  }
 
         public virtual Airplane Airplane { get; set; }
 

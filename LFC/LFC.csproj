@@ -323,6 +323,10 @@
     <Compile Include="Migrations\201501160738151_HobbsTime-Billed.Designer.cs">
       <DependentUpon>201501160738151_HobbsTime-Billed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501190657317_Voluntary-ADs.cs" />
+    <Compile Include="Migrations\201501190657317_Voluntary-ADs.Designer.cs">
+      <DependentUpon>201501190657317_Voluntary-ADs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -656,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501160738151_HobbsTime-Billed.resx">
       <DependentUpon>201501160738151_HobbsTime-Billed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501190657317_Voluntary-ADs.resx">
+      <DependentUpon>201501190657317_Voluntary-ADs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
