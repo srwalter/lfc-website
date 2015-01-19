@@ -17,6 +17,7 @@ namespace LFC.Models
         [Display(Name = "Pilot")]
         public String ApplicationUserID { get; set; }
         //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [Required]
         public DateTime Date { get; set; }
         [Display(Name = "Start Tach")]
