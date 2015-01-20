@@ -38,6 +38,9 @@
         <th class="hidden-xs">
             @Html.DisplayNameFor(model => model.OilChange)
         </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.HundredHour)
+        </th>
         <th></th>
     </tr>
 
@@ -84,6 +87,9 @@ else
         </td>
         <td class="hidden-xs">
             @Html.DisplayFor(modelItem => item.OilChange)
+        </td>
+        <td class="hidden-xs">
+            @Html.DisplayFor(modelItem => item.HundredHour)
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.AirplaneID })
