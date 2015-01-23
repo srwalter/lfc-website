@@ -61,7 +61,7 @@ namespace LFC.Models
         public DateTime AnnualDue { get; set; }
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name="ELT Due")]
+        [Display(Name="ELT Inspection Due")]
         public DateTime EltDue { get; set; }
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
