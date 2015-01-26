@@ -365,6 +365,11 @@
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Cessna 172R links of interest to LFC members.htm" />
+    <Content Include="Content\3001W_big.jpg" />
+    <Content Include="Content\3001W_panel_big.jpg" />
+    <Content Include="Content\75903_big.jpg" />
+    <Content Include="Content\75903_panel_big.jpg" />
+    <Content Include="Content\89652_big.jpg" />
     <Content Include="Content\Supplies\Air Classics Headset.jpg" />
     <Content Include="Content\Supplies\Archer POH.jpg" />
     <Content Include="Content\Supplies\C150 POH.jpg" />
