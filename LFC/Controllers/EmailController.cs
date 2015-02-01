@@ -35,9 +35,10 @@ namespace LFC.Controllers
             var view = AlternateView.CreateAlternateViewFromString(model.Body, null, MediaTypeNames.Text.Plain);
             message.AlternateViews.Add(view);
 
+            message.To.Add("LFC_members@lexingtonflyingclub.org");
             foreach (var user in db.Users)
             {
-                message.To.Add(user.Email);
+                message.Bcc.Add(user.Email);
             }
 
             var smtp = new SmtpClient();
