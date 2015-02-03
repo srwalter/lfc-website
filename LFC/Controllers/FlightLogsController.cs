@@ -24,8 +24,7 @@ namespace LFC.Controllers
             if (AirplaneID != null && AirplaneID != "All Planes")
                 flightLogs = flightLogs.Where(x => x.AirplaneID == AirplaneID);
             flightLogs = flightLogs.OrderBy(x => x.AirplaneID)
-                .ThenByDescending(x => x.Date)
-                .ThenBy(x => x.EndTach);
+                .ThenByDescending(x => x.EndTach);
             var planes = db.Airplanes.Select(x => x.AirplaneID).ToList();
             planes.Insert(0, "All Planes");
             ViewBag.AirplaneID = new SelectList(planes);
