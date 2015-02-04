@@ -52,7 +52,9 @@ namespace LFC.Controllers
         public ActionResult Create()
         {
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName");
+            var users = new SelectList(db.Users, "Id", "ShortName").ToList();
+            users.Insert(0, new SelectListItem { Value = "", Text = "PLANE" });
+            ViewBag.ApplicationUserID = users;
             return View();
         }
 
@@ -72,8 +74,9 @@ namespace LFC.Controllers
             }
 
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", flightLog.AirplaneID);
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID);
-            return View(flightLog);
+            var users = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID).ToList();
+            users.Insert(0, new SelectListItem { Value = "", Text = "PLANE" });
+            ViewBag.ApplicationUserID = users; return View(flightLog);
         }
 
         // GET: FlightLogs/Edit/5
@@ -90,8 +93,9 @@ namespace LFC.Controllers
                 return HttpNotFound();
             }
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", flightLog.AirplaneID);
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID);
-            return View(flightLog);
+            var users = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID).ToList();
+            users.Insert(0, new SelectListItem { Value = "", Text = "PLANE" });
+            ViewBag.ApplicationUserID = users; return View(flightLog);
         }
 
         // POST: FlightLogs/Edit/5
@@ -109,8 +113,9 @@ namespace LFC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", flightLog.AirplaneID);
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID);
-            return View(flightLog);
+            var users = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID).ToList();
+            users.Insert(0, new SelectListItem { Value = "", Text = "PLANE" });
+            ViewBag.ApplicationUserID = users; return View(flightLog);
         }
 
         // GET: FlightLogs/Delete/5
