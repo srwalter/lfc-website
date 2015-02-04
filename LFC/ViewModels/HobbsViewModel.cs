@@ -34,6 +34,6 @@ namespace LFC.ViewModels
         [Display(Name="End Hobbs")]
         public double EndHobbs { get; set; }
         public List<TachEntry> TachEntries { get; set; }
-        public IEnumerable<ApplicationUser> AllUsers { get; set; }
+        public List<String> AllUsers { get; set; }
     }
 }

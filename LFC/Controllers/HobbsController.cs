@@ -109,7 +109,7 @@ namespace LFC.Controllers
                 var billed = 0.0;
                 if (logs_for_plane.Count() > 0)
                 {
-                    billed = logs_for_plane.Sum(x => x.EndTach - x.StartTach);
+                    billed = logs_for_plane.Where(x => x.Pilot != null).Sum(x => x.EndTach - x.StartTach);
                 }
 
                 var current_hobbs = plane.HobbsTimes.OrderByDescending(x => x.TachHours).First();
@@ -136,7 +136,10 @@ namespace LFC.Controllers
             foreach (var entry in flightlogs.OrderBy(x => x.Airplane.AirplaneID).ThenBy(x => x.Date))
             {
                 var report = new BillingReport();
-                report.BillingName = entry.Pilot.ShortName;
+                if (entry.Pilot != null)
+                    report.BillingName = entry.Pilot.ShortName;
+                else
+                    report.BillingName = entry.Airplane.AirplaneID;
                 report.Date = entry.Date;
                 report.Plane = entry.Airplane.AirplaneID;
                 report.Hours = entry.EndTach - entry.StartTach;
@@ -204,7 +207,8 @@ namespace LFC.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    hobbs.AllUsers = db.Users.AsEnumerable();
+                    hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                    hobbs.AllUsers.Add("PLANE");
                     return View("Tach", hobbs);
                 }
 
@@ -216,23 +220,28 @@ namespace LFC.Controllers
                         continue;
                     }
                     var pilot = db.Users.Where(x => x.FirstName + " " + x.LastName == entry.PilotName);
-                    if (pilot.Count() == 0)
+                    if (pilot.Count() == 0 && entry.PilotName != "PLANE")
                     {
                         ViewBag.Message = "There is no pilot named '" + entry.PilotName + "'";
-                        hobbs.AllUsers = db.Users.AsEnumerable();
+                        hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                        hobbs.AllUsers.Add("PLANE");
                         return View("Tach", hobbs);
                     }
                     if (entry.StartTach > entry.EndTach.GetValueOrDefault())
                     {
                         var key = String.Format("TachEntries[{0}].EndTach", i);
                         ModelState.AddModelError(key, "End tach must be greater than start tach");
-                        hobbs.AllUsers = db.Users.AsEnumerable();
+                        hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                        hobbs.AllUsers.Add("PLANE");
                         return View("Tach", hobbs);
                     }
                     var flightlog = new FlightLog();
                     flightlog.Date = entry.Date;
                     flightlog.AirplaneID = hobbs.AirplaneID;
-                    flightlog.Pilot = pilot.First();
+                    if (entry.PilotName == "PLANE")
+                        flightlog.Pilot = null;
+                    else
+                        flightlog.Pilot = pilot.First();
                     flightlog.StartTach = entry.StartTach;
                     flightlog.EndTach = entry.EndTach.GetValueOrDefault();
                     db.FlightLogs.Add(flightlog);
@@ -252,7 +261,8 @@ namespace LFC.Controllers
                 catch (Exception e)
                 {
                     ViewBag.Message = "Failed to save changes: " + e.ToString();
-                    hobbs.AllUsers = db.Users.AsEnumerable();
+                    hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                    hobbs.AllUsers.Add("PLANE");
                     return View("Tach", hobbs);
                 }
                 return RedirectToAction("Index");
@@ -270,7 +280,8 @@ namespace LFC.Controllers
                 entries.Add(new TachEntry());
             }
             hobbs.TachEntries = entries;
-            hobbs.AllUsers = db.Users.AsEnumerable();
+            hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+            hobbs.AllUsers.Add("PLANE");
             return View("Tach", hobbs);
         }
     }
