@@ -13,7 +13,6 @@ namespace LFC.Models
         [Required]
         [Display(Name = "Airplane")]
         public String AirplaneID { get; set; }
-        [Required]
         [Display(Name = "Pilot")]
         public String ApplicationUserID { get; set; }
         //[DataType(DataType.Date)]
