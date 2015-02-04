@@ -38,6 +38,10 @@
             @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
         </td>
         <td>
+            @if (item.Pilot == null)
+            {
+                @item.AirplaneID
+            }
             @Html.DisplayFor(modelItem => item.Pilot.ShortName)
         </td>
         <td>
