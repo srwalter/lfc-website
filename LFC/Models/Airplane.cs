@@ -104,13 +104,22 @@ namespace LFC.Models
             get
             {
                 var actions = new List<String>();
-                if (HundredHour > 0 && getCurrentTach() > HundredHour)
+                if (HundredHour > 0)
                 {
-                    actions.Add("Hundred hour inspection is due");
+                    if (getCurrentTach() > HundredHour) {
+                        actions.Add("Hundred hour inspection is due");
+                    }
+                    else if (getCurrentTach() + 15 > HundredHour)
+                    {
+                        actions.Add("Hundred hour inspect is due soon");
+                    }
                 }
                 if (getCurrentTach() > OilChange)
                 {
                     actions.Add("Oil change is due");
+                } else if (getCurrentTach() + 15 > OilChange)
+                {
+                    actions.Add("Oil change is due soon");
                 }
                 if (DateTime.Now >= AnnualDue)
                 {
