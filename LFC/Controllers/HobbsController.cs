@@ -181,13 +181,13 @@ namespace LFC.Controllers
 
         public ActionResult GetHobbs(String id)
         {
-            var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == id).Select(x => x.HobbsHours).Max();
+            var hobbs = db.HobbsTimes.Where(x => x.AirplaneID == id && x.Billed != null).Select(x => x.HobbsHours).Max();
             return Json(hobbs, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetTach(String id)
         {
-            var tach = db.HobbsTimes.Where(x => x.AirplaneID == id).Select(x => x.TachHours).Max();
+            var tach = db.HobbsTimes.Where(x => x.AirplaneID == id && x.Billed != null).Select(x => x.TachHours).Max();
             return Json(tach, JsonRequestBehavior.AllowGet);
         }
 
