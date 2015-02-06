@@ -7,6 +7,10 @@
 </p>
 @using (Html.BeginForm()) {
     @Html.DropDownList("AirplaneID")
+    @:Start Date:
+    @Html.Editor("StartDate")
+    @:End Date:
+    @Html.Editor("EndDate")
     <input type="submit" value="Filter" class="btn btn-default" />
 }
 <table class="table">
