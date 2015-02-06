@@ -139,7 +139,7 @@ namespace LFC.Controllers
                 if (entry.Pilot != null)
                     report.BillingName = entry.Pilot.ShortName;
                 else
-                    report.BillingName = entry.Airplane.AirplaneID;
+                    report.BillingName = entry.Airplane.AirplaneID.Substring(1);
                 report.Date = entry.Date;
                 report.Plane = entry.Airplane.AirplaneID;
                 report.Hours = entry.EndTach - entry.StartTach;
