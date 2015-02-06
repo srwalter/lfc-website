@@ -23,12 +23,12 @@ namespace LFC.Controllers
             var flightLogs = db.FlightLogs.Include(f => f.Airplane).Include(f => f.Pilot);
             if (AirplaneID != null && AirplaneID != "All Planes")
                 flightLogs = flightLogs.Where(x => x.AirplaneID == AirplaneID);
-            if (StartDate != null)
+            if (StartDate != null && StartDate != "")
             {
                 var start = DateTime.Parse(StartDate);
                 flightLogs = flightLogs.Where(x => x.Date > start);
             }
-            if (EndDate != null)
+            if (EndDate != null && EndDate != "")
             {
                 var end = DateTime.Parse(EndDate);
                 flightLogs = flightLogs.Where(x => x.Date < end);
