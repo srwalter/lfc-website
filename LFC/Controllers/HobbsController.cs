@@ -109,7 +109,7 @@ namespace LFC.Controllers
                 var billed = 0.0;
                 if (logs_for_plane.Count() > 0)
                 {
-                    billed = logs_for_plane.Where(x => x.Pilot != null).Sum(x => x.EndTach - x.StartTach);
+                    billed = logs_for_plane.Sum(x => x.EndTach - x.StartTach);
                 }
 
                 var current_hobbs = plane.HobbsTimes.OrderByDescending(x => x.TachHours).First();
