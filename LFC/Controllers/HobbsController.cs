@@ -220,7 +220,7 @@ namespace LFC.Controllers
                         continue;
                     }
                     var pilot = db.Users.Where(x => x.FirstName + " " + x.LastName == entry.PilotName);
-                    if (pilot.Count() == 0 && entry.PilotName != "PLANE")
+                    if (pilot.Count() == 0 && entry.PilotName.ToUpper() != "PLANE")
                     {
                         ViewBag.Message = "There is no pilot named '" + entry.PilotName + "'";
                         hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
