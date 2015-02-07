@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 
+using LFC.Models;
 using LFC.ViewModels;
 using LFC.DAL;
 
@@ -36,11 +37,57 @@ namespace LFC.Controllers
             message.AlternateViews.Add(view);
 
             message.To.Add("LFC_members@lexingtonflyingclub.org");
-            foreach (var user in db.Users)
+            IQueryable<ApplicationUser> users = db.Users;
+
+            switch (model.Recipients)
+            {
+                case Recipients.All:
+                    // nothing to do
+                    break;
+
+                case Recipients.Full:
+                    users = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Full);
+                    break;
+
+                case Recipients.Restricted:
+                    users = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Restricted);
+                    break;
+
+                case Recipients.Special:
+                    users = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Special);
+                    break;
+
+                case Recipients.Inactive:
+                    users = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Inactive);
+                    break;
+
+                case Recipients.Officers:
+                    users = users.Where(x => x.Officer != null);
+                    users = users.Union(db.Airplanes.Where(x => x.Active == true).Select(x => x.MaintenanceOfficer));
+                    break;
+
+                case Recipients.Associate:
+                    users = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Associate);
+                    break;
+
+                case Recipients.MaintenanceOfficers:
+                    users = db.Airplanes.Where(x => x.Active == true).Select(x => x.MaintenanceOfficer);
+                    break;
+
+                case Recipients.SafetyOfficer:
+                    users = users.Where(x => x.Officer == ApplicationUser.OfficerTitle.SafetyOfficer);
+                    break;
+
+                default:
+                    ViewBag.Message = "Error: unsupported recipient type: " + model.Recipients;
+                    return View(model);
+            }
+
+            foreach (var user in users)
             {
                 message.Bcc.Add(user.Email);
             }
-
+            
             var smtp = new SmtpClient();
             try
             {

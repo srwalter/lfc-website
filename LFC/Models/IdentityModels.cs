@@ -26,7 +26,8 @@ namespace LFC.Models
             Restricted,
             Inactive,
             Special,
-            Retired
+            Retired,
+            Associate
         };
         public enum OfficerTitle
         {
