@@ -13,8 +13,10 @@ namespace LFC.ViewModels
         Restricted,
         Special,
         Inactive,
-        Officers,
         Associate,
+        Officers,
+        [Display(Name = "Line Officers")]
+        LineOfficers,
         [Display(Name = "Maintenance Officers")]
         MaintenanceOfficers,
         [Display(Name = "Safety Officer")]

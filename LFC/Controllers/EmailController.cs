@@ -78,6 +78,14 @@ namespace LFC.Controllers
                     users = users.Where(x => x.Officer == ApplicationUser.OfficerTitle.SafetyOfficer);
                     break;
 
+                case Recipients.LineOfficers:
+                    users = users.Where(x => x.Officer != null);
+                    break;
+
+                case Recipients.DiamondFlyers:
+                    users = db.AirplaneCheckouts.Where(x => x.AirplaneID == "N213DS").Select(x => x.Pilot);
+                    break;
+
                 default:
                     ViewBag.Message = "Error: unsupported recipient type: " + model.Recipients;
                     return View(model);
