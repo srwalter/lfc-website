@@ -1,0 +1,28 @@
+﻿@model LFC.Models.AirplaneCheckout
+
+    <div>
+        <h4>AirplaneCheckout</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Airplane.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Airplane.Type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pilot.ShortName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pilot.ShortName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

@@ -23,7 +23,7 @@ namespace LFC.DAL
         {
             base.OnModelCreating(modelBuilder);
         }
-
+        
         public DbSet<Airplane> Airplanes { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.Equipment> Equipments { get; set; }

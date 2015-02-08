@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LFC.Models.AirplaneCheckout>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AirplaneID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pilot.FullName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirplaneID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pilot.FullName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>

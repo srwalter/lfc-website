@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AirplaneCheckoutsController.cs" />
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -559,6 +560,11 @@
     <Content Include="Views\Hobbs\_FlyingReports.cshtml" />
     <Content Include="Views\Hobbs\Reports.cshtml" />
     <Content Include="Views\Home\Links.cshtml" />
+    <Content Include="Views\AirplaneCheckouts\Create.cshtml" />
+    <Content Include="Views\AirplaneCheckouts\Delete.cshtml" />
+    <Content Include="Views\AirplaneCheckouts\Details.cshtml" />
+    <Content Include="Views\AirplaneCheckouts\Edit.cshtml" />
+    <Content Include="Views\AirplaneCheckouts\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

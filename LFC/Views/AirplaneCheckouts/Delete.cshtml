@@ -1,0 +1,34 @@
+﻿@model LFC.Models.AirplaneCheckout
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>AirplaneCheckout</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Airplane.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Airplane.Type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pilot.ShortName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pilot.ShortName)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
