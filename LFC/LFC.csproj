@@ -331,9 +331,14 @@
     <Compile Include="Migrations\201502040925552_BillingToPlane.Designer.cs">
       <DependentUpon>201502040925552_BillingToPlane.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502080540508_AirplaneCheckout.cs" />
+    <Compile Include="Migrations\201502080540508_AirplaneCheckout.Designer.cs">
+      <DependentUpon>201502080540508_AirplaneCheckout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
+    <Compile Include="Models\AirplaneCheckout.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FlightLog.cs" />
@@ -676,6 +681,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502040925552_BillingToPlane.resx">
       <DependentUpon>201502040925552_BillingToPlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502080540508_AirplaneCheckout.resx">
+      <DependentUpon>201502080540508_AirplaneCheckout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
