@@ -44,5 +44,19 @@ namespace LFC.Models
             }
             return false;
         }
+
+        public bool IsNearDue()
+        {
+            double current_tach = Airplane.getCurrentTach();
+            if (FrequencyHours != null && current_tach > LastDoneHours + FrequencyHours - 15)
+            {
+                return true;
+            }
+            if (FrequencyMonths != null && LastDoneDate.GetValueOrDefault().AddMonths(FrequencyMonths.GetValueOrDefault()-1) < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

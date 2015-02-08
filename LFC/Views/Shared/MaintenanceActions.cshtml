@@ -22,5 +22,13 @@
             is past due
         </h4>
     }
+    foreach (var ad in LFC.Models.Airplane.NearDueADs(Model.ADs))
+    {
+        <h4 class="text-warning">
+            Airworthiness directive
+            @Html.DisplayFor(adTime => ad.AirworthinessDirectiveID)
+            is near due
+        </h4>
+    }
     <hr />
 }

@@ -194,5 +194,19 @@ namespace LFC.Models
                 }
                 return ads;
         }
+
+        public static List<AirworthinessDirective> NearDueADs (ICollection<AirworthinessDirective> all_ads)
+        {
+            var ads = new List<AirworthinessDirective>();
+            foreach (var ad in all_ads)
+            {
+                if (ad.IsNearDue())
+                {
+                    ads.Add(ad);
+                    continue;
+                }
+            }
+            return ads;
+        }
     }
 }
