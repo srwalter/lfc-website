@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using LFC.DAL;
@@ -111,6 +112,7 @@ namespace LFC.Models
             this.MemberType = user.MemberType;
             this.Instrument = user.Instrument;
             this.SafetyPilot = user.Safety;
+            this.BadgeExpires = user.BadgeExpires.GetValueOrDefault();
         }
 
         [Required]
@@ -164,6 +166,10 @@ namespace LFC.Models
 
         [Display(Name = "Membership Type")]
         public LFC.Models.ApplicationUser.MembershipType? MemberType { get; set; }
+
+        [Display(Name = "Badge Expires")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime BadgeExpires { get; set; }
     }
 
     public class SelectUserRolesViewModel

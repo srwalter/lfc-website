@@ -65,6 +65,7 @@ namespace LFC.Models
         public MembershipType? MemberType { get; set; }
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }
+        public DateTime? BadgeExpires { get; set; }
 
         public String FullName
         {

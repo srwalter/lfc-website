@@ -336,6 +336,18 @@
     <Compile Include="Migrations\201502080540508_AirplaneCheckout.Designer.cs">
       <DependentUpon>201502080540508_AirplaneCheckout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503280206595_BadgeExpires.cs" />
+    <Compile Include="Migrations\201503280206595_BadgeExpires.Designer.cs">
+      <DependentUpon>201503280206595_BadgeExpires.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503282010411_BadgeExpiresOptional.cs" />
+    <Compile Include="Migrations\201503282010411_BadgeExpiresOptional.Designer.cs">
+      <DependentUpon>201503282010411_BadgeExpiresOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503282013270_BadgeExpiresOptional2.cs" />
+    <Compile Include="Migrations\201503282013270_BadgeExpiresOptional2.Designer.cs">
+      <DependentUpon>201503282013270_BadgeExpiresOptional2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airplane.cs" />
@@ -690,6 +702,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502080540508_AirplaneCheckout.resx">
       <DependentUpon>201502080540508_AirplaneCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503280206595_BadgeExpires.resx">
+      <DependentUpon>201503280206595_BadgeExpires.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503282010411_BadgeExpiresOptional.resx">
+      <DependentUpon>201503282010411_BadgeExpiresOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503282013270_BadgeExpiresOptional2.resx">
+      <DependentUpon>201503282013270_BadgeExpiresOptional2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

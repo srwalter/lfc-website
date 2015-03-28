@@ -118,6 +118,7 @@ namespace LFC.Controllers
                 user.MemberType = model.MemberType;
                 user.Safety = model.SafetyPilot;
                 user.Instrument = model.Instrument;
+                user.BadgeExpires = model.BadgeExpires;
 
                 db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
