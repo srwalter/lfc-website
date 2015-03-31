@@ -578,6 +578,7 @@
     <Content Include="Views\AirplaneCheckouts\Edit.cshtml" />
     <Content Include="Views\AirplaneCheckouts\Index.cshtml" />
     <Content Include="Views\MembersArea\Library.cshtml" />
+    <Content Include="Views\Email\SendTimedEmails.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

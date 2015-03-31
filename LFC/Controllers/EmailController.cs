@@ -61,7 +61,7 @@ namespace LFC.Controllers
             {
                 ViewBag.Message = "Failed to send: " + e.ToString();
             }
-            return View("Index", "MembersArea");
+            return View();
         }
 
         // GET: Email
