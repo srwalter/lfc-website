@@ -28,7 +28,7 @@ namespace LFC.ViewModels
     public class EmailViewModel
     {
         public String Subject { get; set; }
-        public Recipients Recipients { get; set; }
+        public List<Recipients> Recipients { get; set; }
         [DataType(DataType.MultilineText)]
         public String Body { get; set; }
     }

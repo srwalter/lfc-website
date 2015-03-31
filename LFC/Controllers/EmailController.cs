@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Reflection;
 
 using LFC.Models;
 using LFC.ViewModels;
@@ -60,7 +61,7 @@ namespace LFC.Controllers
             {
                 ViewBag.Message = "Failed to send: " + e.ToString();
             }
-            return View("Index");
+            return View("Index", "MembersArea");
         }
 
         // GET: Email
@@ -68,23 +69,16 @@ namespace LFC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            return View();
+            EmailViewModel model = new EmailViewModel();
+            model.Recipients = new List<Recipients> { Recipients.All };
+            return View(model);
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Index(EmailViewModel model)
+        private IQueryable<ApplicationUser> getEmailGroup (Recipients group)
         {
-            var message = new MailMessage();
-            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
-            message.Subject = model.Subject;
-            var view = AlternateView.CreateAlternateViewFromString(model.Body, null, MediaTypeNames.Text.Plain);
-            message.AlternateViews.Add(view);
-
-            message.To.Add("LFC_members@lexingtonflyingclub.org");
             IQueryable<ApplicationUser> users = db.Users;
 
-            switch (model.Recipients)
+            switch (group)
             {
                 case Recipients.All:
                     // nothing to do
@@ -132,14 +126,72 @@ namespace LFC.Controllers
                     break;
 
                 default:
-                    ViewBag.Message = "Error: unsupported recipient type: " + model.Recipients;
-                    return View(model);
+                    ViewBag.Message = "Error: unsupported recipient type: " + group;
+                    return null;
             }
 
-            foreach (var user in users)
+            return users;
+        }
+
+        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+        public class MultipleButtonAttribute : ActionNameSelectorAttribute
+        {
+            public string Name { get; set; }
+            public string Argument { get; set; }
+
+            public override bool IsValidName(ControllerContext controllerContext, string actionName, MethodInfo methodInfo)
             {
-                message.Bcc.Add(user.Email);
+                var isValidName = false;
+                var keyValue = string.Format("{0}:{1}", Name, Argument);
+                var value = controllerContext.Controller.ValueProvider.GetValue(keyValue);
+
+                if (value != null)
+                {
+                    controllerContext.Controller.ControllerContext.RouteData.Values[Name] = Argument;
+                    isValidName = true;
+                }
+
+                return isValidName;
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [MultipleButton(Name = "action", Argument = "AddMore")]
+        public ActionResult AddMore(EmailViewModel model)
+        {
+            model.Recipients.Add(Recipients.All);
+            return View("Index", model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [MultipleButton(Name = "action", Argument = "Send")]
+        public ActionResult Send(EmailViewModel model)
+        {
+            if (model.Body == null)
+            {
+                ViewBag.Message = "Can't send empty message";
+                return View("Index", model);
+            }
+            var message = new MailMessage();
+            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+            message.Subject = model.Subject;
+            var view = AlternateView.CreateAlternateViewFromString(model.Body, null, MediaTypeNames.Text.Plain);
+            message.AlternateViews.Add(view);
+
+            message.To.Add("LFC_members@lexingtonflyingclub.org");
+
+			foreach (var recipient in model.Recipients) {
+			    var users = getEmailGroup(recipient);
+			    if (users == null)
+			    {
+				    return View(model);
+			    }
+			    foreach (var user in users)
+			    {
+				    message.Bcc.Add(user.Email);
+			    }
+			}
             
             var smtp = new SmtpClient();
             try
@@ -149,7 +201,7 @@ namespace LFC.Controllers
             catch (Exception e)
             {
                 ViewBag.Message = "Failed to send: " + e.ToString();
-                return View(model);
+                return View("Index", model);
             }
 
             return RedirectToAction("Index", "MembersArea");

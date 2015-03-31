@@ -1,6 +1,6 @@
 ﻿@model LFC.ViewModels.EmailViewModel
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Send", "Email"))
 {
     @Html.AntiForgeryToken()
 
@@ -11,11 +11,26 @@
             @ViewBag.Message
         </p>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @for (var i = 0; i < Model.Recipients.Count(); i++)
+        {
         <div class="form-group">
-            @Html.LabelFor(model => model.Recipients, htmlAttributes: new { @class = "control-label col-md-2" })
+            @if (i == 0)
+            {
+                @Html.LabelFor(model => model.Recipients, htmlAttributes: new { @class = "control-label col-md-2" })
+            }
+            else
+            {
+                <span class="col-md-2"></span>    
+            }
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Recipients, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Recipients, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.Recipients[i], new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Recipients[i], "", new { @class = "text-danger" })
+            </div>
+        </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add More" name="action:AddMore" class="btn btn-default" />
             </div>
         </div>
         <div class="form-group">
@@ -36,7 +51,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Send" class="btn btn-default" />
+                <input type="submit" value="Send" name="action:Send" class="btn btn-default" />
             </div>
         </div>
     </div>
