@@ -577,6 +577,7 @@
     <Content Include="Views\AirplaneCheckouts\Details.cshtml" />
     <Content Include="Views\AirplaneCheckouts\Edit.cshtml" />
     <Content Include="Views\AirplaneCheckouts\Index.cshtml" />
+    <Content Include="Views\MembersArea\Library.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

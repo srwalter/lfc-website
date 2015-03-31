@@ -14,5 +14,9 @@ namespace LFC.Controllers
         {
             return View();
         }
+
+        public ActionResult Library() {
+            return View();
+        }
     }
 }
