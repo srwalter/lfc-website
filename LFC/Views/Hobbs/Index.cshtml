@@ -76,8 +76,8 @@
         }
 
         $(document).ready(function () {
-            $('#AirplaneID').change(function (event) {
-                var value = $(event.target).val();
+            var update = function (target) {
+                var value = $(target).val();
                 $.ajax({
                     url: '/Hobbs/GetHobbs/' + value,
                     type: 'GET',
@@ -92,7 +92,13 @@
                     dataType: 'json',
                     success: updateTach
                 });
-            })
+            }
+            
+            $('#AirplaneID').change(function (event) {
+                update(event.target);
+            });
+            update('#AirplaneID');
+
         });
     </script>
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
