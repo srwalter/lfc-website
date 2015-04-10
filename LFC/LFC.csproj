@@ -348,8 +348,29 @@
     <Compile Include="Migrations\201503282013270_BadgeExpiresOptional2.Designer.cs">
       <DependentUpon>201503282013270_BadgeExpiresOptional2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504102246233_ActiveAlerts.cs" />
+    <Compile Include="Migrations\201504102246233_ActiveAlerts.Designer.cs">
+      <DependentUpon>201504102246233_ActiveAlerts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504102257282_ActiveAlert2.cs" />
+    <Compile Include="Migrations\201504102257282_ActiveAlert2.Designer.cs">
+      <DependentUpon>201504102257282_ActiveAlert2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504102301025_ActiveAlert3.cs" />
+    <Compile Include="Migrations\201504102301025_ActiveAlert3.Designer.cs">
+      <DependentUpon>201504102301025_ActiveAlert3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504102307487_AllDuckedUp.cs" />
+    <Compile Include="Migrations\201504102307487_AllDuckedUp.Designer.cs">
+      <DependentUpon>201504102307487_AllDuckedUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504102308212_ActiveAlert-DoOver.cs" />
+    <Compile Include="Migrations\201504102308212_ActiveAlert-DoOver.Designer.cs">
+      <DependentUpon>201504102308212_ActiveAlert-DoOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActiveAlert.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\AirplaneCheckout.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
@@ -713,6 +734,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503282013270_BadgeExpiresOptional2.resx">
       <DependentUpon>201503282013270_BadgeExpiresOptional2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102246233_ActiveAlerts.resx">
+      <DependentUpon>201504102246233_ActiveAlerts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102257282_ActiveAlert2.resx">
+      <DependentUpon>201504102257282_ActiveAlert2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102301025_ActiveAlert3.resx">
+      <DependentUpon>201504102301025_ActiveAlert3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102307487_AllDuckedUp.resx">
+      <DependentUpon>201504102307487_AllDuckedUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102308212_ActiveAlert-DoOver.resx">
+      <DependentUpon>201504102308212_ActiveAlert-DoOver.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
