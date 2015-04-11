@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LFC.Models.ActiveAlert>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AirplaneID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AirplaneID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { type=item.Type, airplane = item.AirplaneID })
+            </td>
+        </tr>
+    }
+    
+    </table>

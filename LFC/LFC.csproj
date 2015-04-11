@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActiveAlertsController.cs" />
     <Compile Include="Controllers\AirplaneCheckoutsController.cs" />
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
@@ -600,6 +601,9 @@
     <Content Include="Views\AirplaneCheckouts\Index.cshtml" />
     <Content Include="Views\MembersArea\Library.cshtml" />
     <Content Include="Views\Email\SendTimedEmails.cshtml" />
+    <Content Include="Views\ActiveAlerts\Create.cshtml" />
+    <Content Include="Views\ActiveAlerts\Delete.cshtml" />
+    <Content Include="Views\ActiveAlerts\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
