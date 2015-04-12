@@ -11,13 +11,16 @@ namespace LFC.Models
     {
         public enum AlertType
         {
+            [Display(Name="Oil Change")]
             OilChange,
+            [Display(Name="Hundred Hour")]
             HundredHour,
             AD,
             Transponder,
             Static,
             Annual,
             ELT,
+            [Display(Name="ELT Battery")]
             ELTBattery,
         };
 

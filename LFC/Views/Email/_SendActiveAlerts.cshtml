@@ -1,0 +1,48 @@
+﻿@model LFC.ViewModels.AlertEmail
+
+@using LFC.Models;
+
+<h2>
+    Maintenance Alert for
+    @Html.DisplayFor(x => x.AirplaneID)
+</h2>
+
+Aircraft has the following imminent issues:
+
+<ul>
+    @foreach (var item in model.Alerts)
+    {
+        String desc = "";
+        switch (item)
+        {
+            case ActiveAlert.AlertType.AD:
+                desc = "An Airworthiness Directive is due in the next 10 hours";
+                break;
+            case ActiveAlert.AlertType.Annual:
+                desc = "The Annual Inspection is due in the next 30 days";
+                break;
+            case ActiveAlert.AlertType.ELT:
+                desc = "The ELT Inspection is due in the next 30 days";
+                break;
+            case ActiveAlert.AlertType.ELTBattery:
+                desc = "The ELT Battery is due in the next 30 days";
+                break;
+            case ActiveAlert.AlertType.HundredHour:
+                desc = "The Hundred Hour Inspection is due in the next 10 hours";
+                break;
+            case ActiveAlert.AlertType.OilChange:
+                desc = "An oil change is due in the next 10 hours";
+                break;
+            case ActiveAlert.AlertType.Static:
+                desc = "The Pitot/Static Inspection is due in the next 30 days";
+                break;
+            case ActiveAlert.AlertType.Transponder:
+                desc = "The Transponder Inspection is due in the next 30 days";
+                break;
+        }
+        <li>@desc</li>
+    }
+
+This email will re-send daily until the issue is resolved or the alert is deleted.  The alert can be deleted
+    @Html.ActionLink("here", "Index", "ActiveAlerts", new { plane = Model.AirplaneID }, null)
+</ul>

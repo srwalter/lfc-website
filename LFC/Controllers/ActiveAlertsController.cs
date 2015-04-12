@@ -16,9 +16,11 @@ namespace LFC.Controllers
         private LFCContext db = new LFCContext();
 
         // GET: ActiveAlerts
-        public ActionResult Index()
+        public ActionResult Index(String plane)
         {
             var activeAlerts = db.ActiveAlerts.Include(a => a.Airplane);
+            if (plane != null)
+                activeAlerts = activeAlerts.Where(x => x.AirplaneID == plane);
             return View(activeAlerts.ToList());
         }
         

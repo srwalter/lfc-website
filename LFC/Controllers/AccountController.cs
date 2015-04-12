@@ -85,6 +85,38 @@ namespace LFC.Controllers
             return View(model.ToPagedList(pagenumber, pagesize));
         }
 
+        public ActionResult CSV()
+        {
+            String data = "Last Name,First Name,Middle Initial,Username,Membership Type,Billing Name,Home Phone,Office Phone,Officer,Badge Expires,City,States,ZIP,Address\r\n";
+            var db = new LFCContext();
+
+            foreach (var u in db.Users)
+            {
+                data += u.LastName + ",";
+                data += u.FirstName + ",";
+                data += u.MiddleInitial + ",";
+                data += u.UserName + ",";
+                data += u.MemberType + ",";
+                data += u.ShortName + ",";
+                data += u.HomeTel + ",";
+                data += u.OfficeTel + ",";
+                data += u.Officer + ",";
+                data += u.BadgeExpires + ",";
+                data += u.City + ",";
+                data += u.State + ",";
+                data += u.ZipCode + ",";
+                data += u.Address;
+                data += "\r\n";
+            }
+
+            return new ContentResult
+            {
+                ContentType = "text/csv",
+                Content = data,
+                ContentEncoding = System.Text.Encoding.UTF8
+            };
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {

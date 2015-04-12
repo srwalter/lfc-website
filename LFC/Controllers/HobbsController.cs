@@ -22,26 +22,9 @@ namespace LFC.Controllers
     {
         private LFCContext db = new LFCContext();
 
-        private static string RenderViewToString(ControllerContext context,
-            string viewPath, object model)
-        {
-            var viewEngineResult = ViewEngines.Engines.FindPartialView(context, viewPath);
-            var view = viewEngineResult.View;
-            context.Controller.ViewData.Model = model;
-            string result = null;
-
-            using (var sw = new StringWriter())
-            {
-                var ctx = new ViewContext(context, view, context.Controller.ViewData, context.Controller.TempData, sw);
-                view.Render(ctx, sw);
-                result = sw.ToString();
-            }
-            return result;
-        }
-
         private void SendFlyingReport(IEnumerable<FlyingReport> flying)
         {
-            var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_FlyingReports.cshtml", flying);
+            var html = LFCContext.RenderViewToString(ControllerContext, "~/Views/Hobbs/_FlyingReports.cshtml", flying);
 
             var message = new MailMessage();
             message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
@@ -61,7 +44,7 @@ namespace LFC.Controllers
 
         private void SendBillingReport(IEnumerable<BillingReport> billing)
         {
-            var html = RenderViewToString(ControllerContext, "~/Views/Hobbs/_BillingReports.cshtml", billing);
+            var html = LFCContext.RenderViewToString(ControllerContext, "~/Views/Hobbs/_BillingReports.cshtml", billing);
 
             var message = new MailMessage();
             message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
