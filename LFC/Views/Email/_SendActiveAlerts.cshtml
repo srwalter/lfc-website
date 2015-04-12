@@ -10,7 +10,7 @@
 Aircraft has the following imminent issues:
 
 <ul>
-    @foreach (var item in model.Alerts)
+    @foreach (var item in Model.Alerts)
     {
         String desc = "";
         switch (item)
@@ -43,6 +43,10 @@ Aircraft has the following imminent issues:
         <li>@desc</li>
     }
 
-This email will re-send daily until the issue is resolved or the alert is deleted.  The alert can be deleted
-    @Html.ActionLink("here", "Index", "ActiveAlerts", new { plane = Model.AirplaneID }, null)
 </ul>
+
+This email will re-send daily until the issue is resolved or the alert is deleted.  The alert can be deleted
+@{
+    var url = "http://www.lexingtonflyingclub.org/ActiveAlerts/Index?plane=" + Model.AirplaneID;
+}
+<a href="@url">here</a>

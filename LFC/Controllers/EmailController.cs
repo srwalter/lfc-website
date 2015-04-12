@@ -50,12 +50,53 @@ namespace LFC.Controllers
             }
         }
 
+        private void QueueNewAlerts()
+        {
+
+        }
+
+        public void SendActiveAlerts()
+        {
+            var alertsByPlane = db.ActiveAlerts.GroupBy(x => x.Airplane);
+            foreach (var alerts in alertsByPlane)
+            {
+                AlertEmail model = new AlertEmail();
+                model.AirplaneID = alerts.Key.AirplaneID;
+                model.Alerts = alerts.Select(x => x.Type).ToList();
+
+                var html = LFCContext.RenderViewToString(ControllerContext, "~/Views/Email/_SendActiveAlerts.cshtml", model);
+
+                var message = new MailMessage();
+                message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+                message.Subject = "Aircraft Maintenance Alert for " + alerts.Key.AirplaneID;
+                var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
+                message.AlternateViews.Add(view);
+
+                var db2 = new LFCContext();
+                String pres = (from u in db2.Users
+                               where u.Officer == ApplicationUser.OfficerTitle.President
+                               select u.Email).First();
+                String safety = (from u in db2.Users
+                               where u.Officer == ApplicationUser.OfficerTitle.SafetyOfficer
+                               select u.Email).First();
+                message.To.Add(alerts.Key.MaintenanceOfficer.Email);
+                message.CC.Add(pres);
+                message.CC.Add(safety);
+                message.To.Add("stevenrwalter@gmail.com");
+
+                var smtp = new SmtpClient();
+                smtp.Send(message);
+            }
+        }
+
         [AllowAnonymous]
         public ActionResult SendTimedEmails()
         {
             try
             {
                 SendBadgeReminders();
+                QueueNewAlerts();
+                SendActiveAlerts();
             }
             catch (Exception e)
             {
