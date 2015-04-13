@@ -43,6 +43,7 @@ namespace LFC.Controllers
                                     select u.Email).First();
                 message.CC.Add(pres);
                 message.CC.Add(treasurer);
+                message.CC.Add("stevenrwalter@gmail.com");
                 message.To.Add(x.Email);
 
                 ViewBag.Message += x.Email;
@@ -50,9 +51,39 @@ namespace LFC.Controllers
             }
         }
 
+        private void CheckAirplaneMaintenance(Airplane plane, ActiveAlert.AlertType type, DateTime due)
+        {
+            var deadline = DateTime.Now.AddDays(30);
+            if (due.Date == deadline.Date)
+            {
+                var alert = new ActiveAlert
+                {
+                    Airplane = plane,
+                    Type = type
+                };
+                db.ActiveAlerts.Add(alert);
+            }
+            else if (due > deadline)
+            {
+                var alert = db.ActiveAlerts.Find(type, plane.AirplaneID);
+                if (alert != null)
+                {
+                    db.ActiveAlerts.Remove(alert);
+                }
+            }
+        }
+
         private void QueueNewAlerts()
         {
-
+            foreach (var plane in db.Airplanes.ToList())
+            {
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Transponder, plane.TransponderDue);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Static, plane.StaticDue);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Annual, plane.AnnualDue);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELTBattery, plane.EltBatteryDue);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELT, plane.EltDue);
+            }
+            db.SaveChanges();
         }
 
         public void SendActiveAlerts()

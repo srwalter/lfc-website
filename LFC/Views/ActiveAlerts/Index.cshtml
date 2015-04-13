@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<LFC.Models.ActiveAlert>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+<h3>Maintenance Alerts</h3>
     <table class="table">
         <tr>
             <th>
@@ -25,7 +23,7 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { type=item.Type, airplane = item.AirplaneID })
+                @Html.ActionLink("Mute Alert", "Delete", new { type=item.Type, airplane = item.AirplaneID })
             </td>
         </tr>
     }
