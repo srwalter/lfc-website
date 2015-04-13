@@ -103,6 +103,22 @@ namespace LFC.Controllers
             return View(airplane);
         }
 
+        private void CheckHourlyMaintenance(Airplane plane, double prev_time, double new_time, ActiveAlert.AlertType type)
+        {
+            var tach = plane.getCurrentTach();
+
+            var old_delta = prev_time - tach;
+            var new_delta = new_time - tach;
+            if (old_delta < 10.0 && new_delta > 10.0)
+            {
+                var alert = db.ActiveAlerts.Find(type, plane.AirplaneID);
+                if (alert != null)
+                {
+                    db.ActiveAlerts.Remove(alert);
+                }
+            }
+        }
+
         // POST: Airplanes/Edit/5
         [HttpPost]
         [Authorize(Roles = "Admin")]
@@ -111,6 +127,11 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var old = db.Airplanes.Find(airplane.AirplaneID);
+                CheckHourlyMaintenance(old, old.HundredHour, airplane.HundredHour, ActiveAlert.AlertType.HundredHour);
+                CheckHourlyMaintenance(old, old.OilChange, airplane.OilChange, ActiveAlert.AlertType.OilChange);
+                db.Entry(old).State = EntityState.Detached;
+
                 var user = db.Users.First(u => u.UserName == User.Identity.Name);
                 airplane.UpdatedNow(user);
                 db.Entry(airplane).State = EntityState.Modified;
