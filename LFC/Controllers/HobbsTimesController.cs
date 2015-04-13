@@ -46,6 +46,26 @@ namespace LFC.Controllers
             return View();
         }
 
+        private void CheckHourlyMaintenance(HobbsTime times, double due, ActiveAlert.AlertType type)
+        {
+            var plane = db.Airplanes.Find(times.AirplaneID);
+            var old_tach = plane.getCurrentTach();
+            var new_tach = times.TachHours;
+
+            var old_delta = due - old_tach;
+            var new_delta = due - new_tach;
+
+            if (old_delta > 10.0 && new_delta < 10.0)
+            {
+                var alert = new ActiveAlert
+                {
+                    Airplane = plane,
+                    Type = type
+                };
+                db.ActiveAlerts.Add(alert);
+            }
+        }
+
         // POST: HobbsTimes/Create
         [HttpPost]
         [Authorize(Roles = "Admin")]
@@ -54,6 +74,15 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var plane = db.Airplanes.Find(hobbsTime.AirplaneID);
+                CheckHourlyMaintenance(hobbsTime, plane.OilChange, ActiveAlert.AlertType.OilChange);
+                CheckHourlyMaintenance(hobbsTime, plane.HundredHour, ActiveAlert.AlertType.HundredHour);
+                foreach (var ad in plane.ADs)
+                {
+                    if (ad.FrequencyHours == null)
+                        continue;
+                    CheckHourlyMaintenance(hobbsTime, (ad.LastDoneHours + ad.FrequencyHours).GetValueOrDefault(), ActiveAlert.AlertType.AD);
+                }
                 db.HobbsTimes.Add(hobbsTime);
                 db.SaveChanges();
                 return RedirectToAction("Details", "Airplanes", new { id = hobbsTime.AirplaneID });
