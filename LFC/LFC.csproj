@@ -384,6 +384,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AlertEmail.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\HobbsViewModel.cs" />
@@ -606,6 +607,7 @@
     <Content Include="Views\ActiveAlerts\Delete.cshtml" />
     <Content Include="Views\ActiveAlerts\Index.cshtml" />
     <Content Include="Views\Email\_SendActiveAlerts.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

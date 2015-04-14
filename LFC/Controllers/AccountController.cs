@@ -10,10 +10,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataProtection;
 using PagedList;
 
 using LFC.Models;
 using LFC.DAL;
+using LFC.ViewModels;
 
 namespace LFC.Controllers
 {
@@ -21,7 +23,9 @@ namespace LFC.Controllers
     {
         public LFCUserManager() : base(new UserStore<ApplicationUser>(new LFCContext()))
         {
+            var provider = new DpapiDataProtectionProvider("LFC");
             PasswordValidator = new MinimumLengthValidator(4);
+            UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(provider.Create("Reset"));
         }
     }
 
@@ -366,12 +370,10 @@ namespace LFC.Controllers
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -384,6 +386,30 @@ namespace LFC.Controllers
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
+        }
+
+        [Authorize(Roles="Admin")]
+        public ActionResult ChangePassword (String username)
+        {
+            var model = new ChangePasswordAdminViewModel();
+            model.UserID = username;
+            return View(model);
+        }
+
+        [Authorize(Roles="Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword (ChangePasswordAdminViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = model.UserID;
+                var user = await UserManager.FindByNameAsync(model.UserID);
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                await UserManager.ResetPasswordAsync(user.Id, code, model.NewPassword);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         //
