@@ -109,12 +109,9 @@ namespace LFC.Controllers
                 data += "\r\n";
             }
 
-            return new ContentResult
-            {
-                ContentType = "text/csv",
-                Content = data,
-                ContentEncoding = System.Text.Encoding.UTF8
-            };
+            var result = new FileContentResult(System.Text.Encoding.UTF8.GetBytes(data), "text/csv");
+            result.FileDownloadName = "LFCMembers.csv";
+            return result;
         }
 
         [Authorize(Roles = "Admin")]
