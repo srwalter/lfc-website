@@ -11,6 +11,7 @@ using System.Reflection;
 using LFC.Models;
 using LFC.ViewModels;
 using LFC.DAL;
+using System.Data.Entity;
 
 namespace LFC.Controllers
 {
@@ -24,8 +25,7 @@ namespace LFC.Controllers
             var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.";
             var smtp = new SmtpClient();
 
-            var deadline = DateTime.Now.AddDays(30);
-            var users = db.Users.Where(x => (x.BadgeExpires ?? DateTime.MaxValue) == deadline).ToList();
+            var users = db.Users.Where(x => DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 30).ToList();
             foreach (var x in users)
             {
                 var message = new MailMessage();
