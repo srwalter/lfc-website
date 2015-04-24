@@ -22,7 +22,7 @@ namespace LFC.Controllers
 
         private void SendBadgeReminders()
         {
-            var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.";
+            var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.  Once your badge is renewed, please Reply-All to this email with the updated expiration date";
             var smtp = new SmtpClient();
 
             var users = db.Users.Where(x => DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 30).ToList();
