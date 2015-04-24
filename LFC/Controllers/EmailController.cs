@@ -110,7 +110,10 @@ namespace LFC.Controllers
                 String safety = (from u in db2.Users
                                where u.Officer == ApplicationUser.OfficerTitle.SafetyOfficer
                                select u.Email).First();
-                message.To.Add(alerts.Key.MaintenanceOfficer.Email);
+                String maint = (from a in db2.Airplanes
+                                where a.AirplaneID == model.AirplaneID
+                                select a.MaintenanceOfficer.Email).First();
+                message.To.Add(maint);
                 message.CC.Add(pres);
                 message.CC.Add(safety);
                 message.To.Add("stevenrwalter@gmail.com");
