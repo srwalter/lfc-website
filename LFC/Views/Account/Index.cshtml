@@ -4,6 +4,29 @@
 
 <h2>Members List</h2>
 
+@if (User.IsInRole("Admin")) {
+    <dl class="dl-horizontal">
+    <dt>Restricted members</dt>
+    <dd>@ViewBag.RestrictedMembers</dd>
+    
+    <dt>Associate members</dt>
+    <dd>@ViewBag.AssociateMembers</dd>
+
+    <dt>Special members</dt>
+    <dd>@ViewBag.SpecialMembers</dd>
+
+    <dt>Full members</dt>
+    <dd>@ViewBag.FullMembers</dd>
+
+    <dt>Inactive members</dt>
+    <dd>@ViewBag.InactiveMembers</dd>
+
+    <dt>Waitlist members</dt>
+    <dd>@ViewBag.WaitlistMembers</dd>
+
+    </dl>
+}
+
 @if (Model.PageCount > 1)
 {
     @Html.ActionLink("View All Members", "Index", new { page = -1 })

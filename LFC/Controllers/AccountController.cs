@@ -64,6 +64,14 @@ namespace LFC.Controllers
         {
             var db = new LFCContext();
             var users = db.Users;
+
+            ViewBag.AssociateMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Associate).Count();
+            ViewBag.FullMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Full).Count();
+            ViewBag.InactiveMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Inactive).Count();
+            ViewBag.RestrictedMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Restricted).Count();
+            ViewBag.WaitlistMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Waitlist).Count();
+            ViewBag.SpecialMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Special).Count();
+
             var model = new List<EditUserViewModel>();
             List<ApplicationUser> list;
             if (retired == true)
