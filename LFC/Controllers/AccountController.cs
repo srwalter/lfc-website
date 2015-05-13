@@ -138,12 +138,13 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit (EditUserViewModel model)
+        public async Task<ActionResult> Edit (String id, EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var db = new LFCContext();
-                var user = db.Users.First(u => u.UserName == model.UserName);
+                var user = db.Users.First(u => u.UserName == id);
+                user.UserName = model.UserName;
                 user.Email = model.Email;
                 user.ShortName = model.ShortName;
                 user.LastName = model.LastName;

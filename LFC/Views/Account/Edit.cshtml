@@ -10,6 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.Hidden("id", Model.UserName)
     
     <div class="form-horizontal">
         <h4>Update member information</h4>
