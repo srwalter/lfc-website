@@ -369,6 +369,10 @@
     <Compile Include="Migrations\201504102308212_ActiveAlert-DoOver.Designer.cs">
       <DependentUpon>201504102308212_ActiveAlert-DoOver.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505251515314_FuelReceipt.cs" />
+    <Compile Include="Migrations\201505251515314_FuelReceipt.Designer.cs">
+      <DependentUpon>201505251515314_FuelReceipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -377,6 +381,7 @@
     <Compile Include="Models\AirworthinessDirective.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FlightLog.cs" />
+    <Compile Include="Models\FuelReceipt.cs" />
     <Compile Include="Models\HobbsTime.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Instructor.cs" />
@@ -757,6 +762,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504102308212_ActiveAlert-DoOver.resx">
       <DependentUpon>201504102308212_ActiveAlert-DoOver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505251515314_FuelReceipt.resx">
+      <DependentUpon>201505251515314_FuelReceipt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
