@@ -178,6 +178,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FlightLogsController.cs" />
+    <Compile Include="Controllers\FuelReceiptsController.cs" />
     <Compile Include="Controllers\HobbsController.cs" />
     <Compile Include="Controllers\HobbsTimesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -613,6 +614,11 @@
     <Content Include="Views\ActiveAlerts\Index.cshtml" />
     <Content Include="Views\Email\_SendActiveAlerts.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\FuelReceipts\Create.cshtml" />
+    <Content Include="Views\FuelReceipts\Delete.cshtml" />
+    <Content Include="Views\FuelReceipts\Details.cshtml" />
+    <Content Include="Views\FuelReceipts\Edit.cshtml" />
+    <Content Include="Views\FuelReceipts\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

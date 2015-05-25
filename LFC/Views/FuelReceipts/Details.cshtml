@@ -1,0 +1,66 @@
+﻿@model LFC.Models.FuelReceipt
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>FuelReceipt</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Airplane.Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Airplane.Type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pilot.ShortName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pilot.ShortName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gallons)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Gallons)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Dollars)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Dollars)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FuelReceiptID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
