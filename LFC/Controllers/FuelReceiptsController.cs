@@ -51,13 +51,18 @@ namespace LFC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FuelReceiptID,ApplicationUserID,AirplaneID,Date,Gallons,Dollars")] FuelReceipt fuelReceipt, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "FuelReceiptID,ApplicationUserID,AirplaneID,Date,Gallons,Dollars")] FuelReceipt fuelReceipt, HttpPostedFileBase image)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && image != null)
             {
                 db.FuelReceipts.Add(fuelReceipt);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+
+            if (image == null)
+            {
+                ViewBag.Message = "Must Attach Receipt Photo";
             }
 
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
