@@ -1,36 +1,24 @@
 ﻿@model LFC.Models.FuelReceipt
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>FuelReceipt</h4>
+        <h4>Fuel Receipt</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Airplane.Type)
+                @Html.DisplayNameFor(model => model.Airplane.AirplaneID)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Airplane.Type)
+                @Html.DisplayFor(model => model.Airplane.AirplaneID)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.Pilot.ShortName)
+                @Html.DisplayNameFor(model => model.Pilot.FullName)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Pilot.ShortName)
+                @Html.DisplayFor(model => model.Pilot.FullName)
             </dd>
     
             <dt>
@@ -68,5 +56,3 @@
             </div>
         }
     </div>
-</body>
-</html>

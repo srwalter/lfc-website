@@ -41,7 +41,7 @@ namespace LFC.Controllers
         // GET: FuelReceipts/Create
         public ActionResult Create()
         {
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type");
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
             ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName");
             return View();
         }
@@ -51,7 +51,7 @@ namespace LFC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FuelReceiptID,ApplicationUserID,AirplaneID,Date,Gallons,Dollars")] FuelReceipt fuelReceipt)
+        public ActionResult Create([Bind(Include = "FuelReceiptID,ApplicationUserID,AirplaneID,Date,Gallons,Dollars")] FuelReceipt fuelReceipt, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace LFC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type", fuelReceipt.AirplaneID);
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
             ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
             return View(fuelReceipt);
         }
@@ -77,7 +77,7 @@ namespace LFC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type", fuelReceipt.AirplaneID);
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
             ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
             return View(fuelReceipt);
         }
@@ -95,7 +95,7 @@ namespace LFC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "Type", fuelReceipt.AirplaneID);
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
             ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
             return View(fuelReceipt);
         }

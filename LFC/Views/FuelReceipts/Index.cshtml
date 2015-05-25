@@ -1,24 +1,12 @@
 ﻿@model IEnumerable<LFC.Models.FuelReceipt>
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Airplane.Type)
+                @Html.DisplayNameFor(model => model.Airplane.AirplaneID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pilot.ShortName)
@@ -38,7 +26,7 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Airplane.Type)
+                @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pilot.ShortName)
@@ -61,5 +49,3 @@
     }
     
     </table>
-</body>
-</html>
