@@ -200,6 +200,10 @@ namespace LFC.Controllers
                     users = db.AirplaneCheckouts.Where(x => x.AirplaneID == "N213DS").Select(x => x.Pilot);
                     break;
 
+                case Recipients.BadgeHolders:
+                    users = users.Where(n => n.BadgeExpires > new DateTime(2000, 1, 1));
+                    break;
+
                 default:
                     ViewBag.Message = "Error: unsupported recipient type: " + group;
                     return null;

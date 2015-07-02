@@ -97,6 +97,29 @@ namespace LFC.Controllers
             return View(model.ToPagedList(pagenumber, pagesize));
         }
 
+        public ActionResult BadgeHolders(int? page)
+        {
+            var db = new LFCContext();
+            var users = db.Users;
+
+            var model = new List<EditUserViewModel>();
+            List<ApplicationUser> list;
+            list = users.Where(n => n.BadgeExpires > new DateTime(2000, 1, 1)).OrderBy(n => n.LastName).ToList();
+            foreach (var user in list)
+            {
+                var u = new EditUserViewModel(user);
+                model.Add(u);
+            }
+            int pagesize = 20;
+            int pagenumber = (page ?? 1);
+            if (page < 0)
+            {
+                pagenumber = 1;
+                pagesize = 5000;
+            }
+            return View("Index", model.ToPagedList(pagenumber, pagesize));
+        }
+
         public ActionResult CSV()
         {
             String data = "Last Name,First Name,Middle Initial,Username,Membership Type,Billing Name,Home Phone,Office Phone,Officer,Badge Expires,City,States,ZIP,Address\r\n";

@@ -23,6 +23,8 @@ namespace LFC.ViewModels
         SafetyOfficer,
         [Display(Name = "Diamond Flyers")]
         DiamondFlyers,
+        [Display(Name = "Badge Holders")]
+        BadgeHolders,
     }
 
     public class EmailViewModel
