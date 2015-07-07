@@ -508,6 +508,7 @@
     <Content Include="Content\DA40\DA40 CHECKOUT EXAM 11 1 09.pdf" />
     <Content Include="Content\DA40\VM 1000 Operators Guide.pdf" />
     <Content Include="Content\DA40\We did get our marching orders from Avemco for the Diamond Star DA.pdf" />
+    <Content Include="Content\Preheat Procedure.pdf" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
