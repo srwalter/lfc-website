@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\EmailIndividualController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\FlightLogsController.cs" />
     <Compile Include="Controllers\FuelReceiptsController.cs" />
@@ -392,6 +393,7 @@
     <Compile Include="ViewModels\AlertEmail.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\EmailIndividualViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\HobbsViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
@@ -620,6 +622,7 @@
     <Content Include="Views\FuelReceipts\Details.cshtml" />
     <Content Include="Views\FuelReceipts\Edit.cshtml" />
     <Content Include="Views\FuelReceipts\Index.cshtml" />
+    <Content Include="Views\EmailIndividual\Index.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
