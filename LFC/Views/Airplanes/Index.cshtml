@@ -23,9 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
-        <th class="hidden-xs">
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Rate)
         </th>
@@ -40,6 +37,9 @@
         </th>
         <th class="hidden-xs">
             @Html.DisplayNameFor(model => model.HundredHour)
+        </th>
+        <th class="hidden-xs">
+            @Html.DisplayNameFor(model => model.GPSExpires)
         </th>
         <th></th>
     </tr>
@@ -79,9 +79,6 @@ else
         <td>
             @Html.DisplayFor(modelItem => item.Type)
         </td>
-        <td class="hidden-xs">
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rate)
         </td>
@@ -96,6 +93,9 @@ else
         </td>
         <td class="hidden-xs">
             @Html.DisplayFor(modelItem => item.HundredHour)
+        </td>
+        <td class="hidden-xs">
+            @Html.DisplayFor(modelItem => item.GPSExpires)
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.AirplaneID })
