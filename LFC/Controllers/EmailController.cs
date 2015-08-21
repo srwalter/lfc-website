@@ -247,6 +247,8 @@ namespace LFC.Controllers
         [MultipleButton(Name = "action", Argument = "Send")]
         public ActionResult Send(EmailViewModel model)
         {
+            // XXX: add support for attachments?
+
             if (model.Body == null)
             {
                 ViewBag.Message = "Can't send empty message";
