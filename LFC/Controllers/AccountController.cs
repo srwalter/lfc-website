@@ -122,7 +122,7 @@ namespace LFC.Controllers
 
         public ActionResult CSV()
         {
-            String data = "Last Name,First Name,Middle Initial,Username,Membership Type,Billing Name,Home Phone,Office Phone,Officer,Badge Expires,City,States,ZIP,Address\r\n";
+            String data = "Last Name,First Name,Middle Initial,Username,Email,Membership Type,Billing Name,Home Phone,Office Phone,Officer,Badge Expires,City,States,ZIP,Address\r\n";
             var db = new LFCContext();
 
             foreach (var u in db.Users)
@@ -131,6 +131,7 @@ namespace LFC.Controllers
                 data += u.FirstName + ",";
                 data += u.MiddleInitial + ",";
                 data += u.UserName + ",";
+                data += u.Email + ",";
                 data += u.MemberType + ",";
                 data += u.ShortName + ",";
                 data += u.HomeTel + ",";
