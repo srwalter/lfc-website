@@ -43,7 +43,7 @@
     @:of
     @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, retired = ViewBag.RetiredOnly }))
 }
 
 <table class="table">
@@ -122,5 +122,5 @@
     @:of
     @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, retired = ViewBag.RetiredOnly }))
 }

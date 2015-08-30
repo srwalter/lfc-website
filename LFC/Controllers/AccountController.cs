@@ -71,6 +71,7 @@ namespace LFC.Controllers
             ViewBag.RestrictedMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Restricted).Count();
             ViewBag.WaitlistMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Waitlist).Count();
             ViewBag.SpecialMembers = users.Where(x => x.MemberType == ApplicationUser.MembershipType.Special).Count();
+            ViewBag.RetiredOnly = retired;
 
             var model = new List<EditUserViewModel>();
             List<ApplicationUser> list;
