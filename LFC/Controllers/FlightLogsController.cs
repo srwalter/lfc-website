@@ -103,7 +103,7 @@ namespace LFC.Controllers
                 return HttpNotFound();
             }
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", flightLog.AirplaneID);
-            var users = new SelectList(db.Users, "Id", "ShortName", flightLog.ApplicationUserID).ToList();
+            var users = new SelectList(db.Users.OrderBy(x => x.LastName), "Id", "ShortName", flightLog.ApplicationUserID).ToList();
             users.Insert(0, new SelectListItem { Value = "", Text = "PLANE" });
             ViewBag.ApplicationUserID = users; return View(flightLog);
         }
