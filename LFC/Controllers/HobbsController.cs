@@ -190,7 +190,7 @@ namespace LFC.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                    hobbs.AllUsers = db.Users.Select(x => x.ShortName + " - " + x.FirstName + " " + x.LastName).ToList();
                     hobbs.AllUsers.Add("PLANE");
                     return View("Tach", hobbs);
                 }
@@ -202,11 +202,13 @@ namespace LFC.Controllers
                     {
                         continue;
                     }
-                    var pilot = db.Users.Where(x => x.FirstName + " " + x.LastName == entry.PilotName);
+                    var name_parts = entry.PilotName.Split(null);
+                    var short_name = name_parts[0];
+                    var pilot = db.Users.Where(x => x.ShortName == short_name);
                     if (pilot.Count() == 0 && entry.PilotName.ToUpper() != "PLANE")
                     {
-                        ViewBag.Message = "There is no pilot named '" + entry.PilotName + "'";
-                        hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                        ViewBag.Message = "Cannot find a pilot named '" + name_parts[0] + "'";
+                        hobbs.AllUsers = db.Users.Select(x => x.ShortName + " - " + x.FirstName + " " + x.LastName).ToList();
                         hobbs.AllUsers.Add("PLANE");
                         return View("Tach", hobbs);
                     }
@@ -214,7 +216,7 @@ namespace LFC.Controllers
                     {
                         var key = String.Format("TachEntries[{0}].EndTach", i);
                         ModelState.AddModelError(key, "End tach must be greater than start tach");
-                        hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                        hobbs.AllUsers = db.Users.Select(x => x.ShortName + " - " + x.FirstName + " " + x.LastName).ToList();
                         hobbs.AllUsers.Add("PLANE");
                         return View("Tach", hobbs);
                     }
@@ -244,7 +246,7 @@ namespace LFC.Controllers
                 catch (Exception e)
                 {
                     ViewBag.Message = "Failed to save changes: " + e.ToString();
-                    hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+                    hobbs.AllUsers = db.Users.Select(x => x.ShortName + " - " + x.FirstName + " " + x.LastName).ToList();
                     hobbs.AllUsers.Add("PLANE");
                     return View("Tach", hobbs);
                 }
@@ -263,7 +265,7 @@ namespace LFC.Controllers
                 entries.Add(new TachEntry());
             }
             hobbs.TachEntries = entries;
-            hobbs.AllUsers = db.Users.Select(x => x.FirstName + " " + x.LastName).ToList();
+            hobbs.AllUsers = db.Users.Select(x => x.ShortName + " - " + x.FirstName + " " + x.LastName).ToList();
             hobbs.AllUsers.Add("PLANE");
             return View("Tach", hobbs);
         }
