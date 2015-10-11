@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -511,6 +512,7 @@
     <Content Include="Content\DA40\VM 1000 Operators Guide.pdf" />
     <Content Include="Content\DA40\We did get our marching orders from Avemco for the Diamond Star DA.pdf" />
     <Content Include="Content\Preheat Procedure.pdf" />
+    <Content Include="Content\Checkout and BFR Form.pdf" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
