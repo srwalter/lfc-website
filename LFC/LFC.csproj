@@ -495,7 +495,6 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\Insurance_Summary_20101115.pdf" />
     <Content Include="Content\Lexington Flying Club Application.pdf" />
     <Content Include="Content\KLEX departure.doc" />
     <Content Include="Content\LEXfactsheetGeneral.doc" />
@@ -513,6 +512,7 @@
     <Content Include="Content\DA40\We did get our marching orders from Avemco for the Diamond Star DA.pdf" />
     <Content Include="Content\Preheat Procedure.pdf" />
     <Content Include="Content\Checkout and BFR Form.pdf" />
+    <Content Include="Content\Insurance_Summary_20151015.pdf" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
