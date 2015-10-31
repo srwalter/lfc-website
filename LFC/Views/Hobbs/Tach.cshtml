@@ -11,7 +11,7 @@
     @ViewBag.Message
 </p>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("", "Hobbs", FormMethod.Post, new { autocomplete = false }))
 {
     @Html.AntiForgeryToken()
     
