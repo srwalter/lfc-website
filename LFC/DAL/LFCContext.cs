@@ -60,5 +60,7 @@ namespace LFC.DAL
         public System.Data.Entity.DbSet<LFC.Models.ActiveAlert> ActiveAlerts { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.FuelReceipt> FuelReceipts { get; set; }
+
+        public System.Data.Entity.DbSet<LFC.Models.Copilot> Copilots { get; set; }
     }
 }

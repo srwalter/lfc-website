@@ -376,12 +376,17 @@
     <Compile Include="Migrations\201505251515314_FuelReceipt.Designer.cs">
       <DependentUpon>201505251515314_FuelReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511142052438_Copilots.cs" />
+    <Compile Include="Migrations\201511142052438_Copilots.Designer.cs">
+      <DependentUpon>201511142052438_Copilots.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\AirplaneCheckout.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
+    <Compile Include="Models\Copilot.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FlightLog.cs" />
     <Compile Include="Models\FuelReceipt.cs" />
@@ -777,6 +782,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505251515314_FuelReceipt.resx">
       <DependentUpon>201505251515314_FuelReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511142052438_Copilots.resx">
+      <DependentUpon>201511142052438_Copilots.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
