@@ -12,7 +12,8 @@ namespace LFC.Models
     {
         public int CopilotID { get; set; }
         public String ApplicationUserID { get; set; }
-        //public Airplane Airplane { get; set; }
+        public Airplane Airplane { get; set; }
+        [Display(Name = "Date and Time")]
         public DateTime Date { get; set; }
         [Display(Name = "Estimated Duration (Hours)")]
         public double Duration { get; set; }
