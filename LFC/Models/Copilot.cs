@@ -13,6 +13,7 @@ namespace LFC.Models
         public int CopilotID { get; set; }
         [Display(Name ="Pilot")]
         public String ApplicationUserID { get; set; }
+        [Required]
         public String AirplaneID { get; set; }
         [Display(Name = "Instrument Rating Required")]
         public bool InstrumentRequired { get; set; }

@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using LFC.DAL;
 using LFC.Models;
 
+using System.Net.Mail;
+using System.Net.Mime;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
@@ -17,6 +20,48 @@ namespace LFC.Controllers
     public class CopilotsController : Controller
     {
         private LFCContext db = new LFCContext();
+
+        private void SendEmailsFor(Copilot copilot)
+        {
+            string format = @"An LFC member is looking for a copilot for an upcoming flight:
+
+    Pilot: {0}
+    Plane: {1}
+    Date: {2}
+    Duration: {3} hours;
+
+If you're interested in being the copilot, reply to this email to contact the pilot.
+
+{4}
+
+You're recieving this message because you are listed as being willing to serve as a safety pilot in the LFC database.
+";
+            var link = "http://www.lexingtonflyingclub.org/Copilots/Details/" + copilot.CopilotID.ToString();
+            var body = String.Format(format, copilot.Pilot.FullName, copilot.AirplaneID, copilot.Date, copilot.Duration, link);
+            var smtp = new SmtpClient();
+
+            var users = db.Users.Where(x => x.Safety == true);
+            if (copilot.InstrumentRequired)
+            {
+                users = users.Where(x => x.Instrument == true);
+            }
+
+            foreach (var x in users)
+            {
+                var message = new MailMessage();
+                message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+                message.ReplyToList.Add(new MailAddress(copilot.Pilot.Email, copilot.Pilot.FullName));
+                message.Subject = "LFC Copilot Request";
+
+                var view = AlternateView.CreateAlternateViewFromString(body, null, MediaTypeNames.Text.Plain);
+                message.AlternateViews.Add(view);
+
+                message.CC.Add("stevenrwalter@gmail.com");
+                message.To.Add(x.Email);
+                
+                smtp.Send(message);
+            }
+        }
 
         // GET: Copilots
         public ActionResult Index()
@@ -63,6 +108,10 @@ namespace LFC.Controllers
                 copilot.ApplicationUserID = User.Identity.GetUserId();
                 db.Copilots.Add(copilot);
                 db.SaveChanges();
+
+                copilot = db.Copilots.Include("Pilot").First(x => x.CopilotID == copilot.CopilotID);
+                SendEmailsFor(copilot);
+
                 return RedirectToAction("Index");
             }
             
