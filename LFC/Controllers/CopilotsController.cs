@@ -56,7 +56,7 @@ You're recieving this message because you are listed as being willing to serve a
                 var view = AlternateView.CreateAlternateViewFromString(body, null, MediaTypeNames.Text.Plain);
                 message.AlternateViews.Add(view);
 
-                message.CC.Add("stevenrwalter@gmail.com");
+                //message.CC.Add("stevenrwalter@gmail.com");
                 message.To.Add(x.Email);
                 
                 smtp.Send(message);
