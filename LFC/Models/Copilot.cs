@@ -14,6 +14,8 @@ namespace LFC.Models
         [Display(Name ="Pilot")]
         public String ApplicationUserID { get; set; }
         public String AirplaneID { get; set; }
+        [Display(Name = "Instrument Rating Required")]
+        public bool InstrumentRequired { get; set; }
         [Display(Name = "Date and Time")]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }

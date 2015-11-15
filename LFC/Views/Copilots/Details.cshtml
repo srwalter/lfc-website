@@ -1,27 +1,31 @@
 ﻿@model LFC.Models.Copilot
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
     <div>
         <h4>Copilot</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl>
             <dt>
-                @Html.DisplayNameFor(model => model.Pilot.ShortName)
+                @Html.DisplayNameFor(model => model.Pilot.FullName)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Pilot.ShortName)
+                @Html.DisplayFor(model => model.Pilot.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AirplaneID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AirplaneID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InstrumentRequired)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InstrumentRequired)
             </dd>
     
             <dt>
@@ -46,5 +50,3 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.CopilotID }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-</body>
-</html>

@@ -391,6 +391,10 @@
     <Compile Include="Migrations\201511142305325_Copilot-AirplaneID.Designer.cs">
       <DependentUpon>201511142305325_Copilot-AirplaneID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511150048290_Copilot-Add-IFR.cs" />
+    <Compile Include="Migrations\201511150048290_Copilot-Add-IFR.Designer.cs">
+      <DependentUpon>201511150048290_Copilot-Add-IFR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -809,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511142305325_Copilot-AirplaneID.resx">
       <DependentUpon>201511142305325_Copilot-AirplaneID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150048290_Copilot-Add-IFR.resx">
+      <DependentUpon>201511150048290_Copilot-Add-IFR.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

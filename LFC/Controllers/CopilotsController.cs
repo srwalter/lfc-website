@@ -94,7 +94,7 @@ namespace LFC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "CopilotID,ApplicationUserID,Date,Duration,AirplaneID")] Copilot copilot)
+        public ActionResult Edit([Bind(Include = "CopilotID,ApplicationUserID,Date,Duration,AirplaneID,InstrumentRequired")] Copilot copilot)
         {
             if (ModelState.IsValid)
             {
