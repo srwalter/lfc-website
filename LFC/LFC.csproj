@@ -387,6 +387,10 @@
     <Compile Include="Migrations\201511142250314_Copilot-Add-Airplane.Designer.cs">
       <DependentUpon>201511142250314_Copilot-Add-Airplane.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511142305325_Copilot-AirplaneID.cs" />
+    <Compile Include="Migrations\201511142305325_Copilot-AirplaneID.Designer.cs">
+      <DependentUpon>201511142305325_Copilot-AirplaneID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -802,6 +806,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511142250314_Copilot-Add-Airplane.resx">
       <DependentUpon>201511142250314_Copilot-Add-Airplane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511142305325_Copilot-AirplaneID.resx">
+      <DependentUpon>201511142305325_Copilot-AirplaneID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

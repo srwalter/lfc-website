@@ -43,6 +43,7 @@ namespace LFC.Controllers
         // GET: Copilots/Create
         public ActionResult Create()
         {
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
             return View();
         }
 
@@ -51,9 +52,13 @@ namespace LFC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CopilotID,Date,Duration")] Copilot copilot)
+        public ActionResult Create([Bind(Include = "CopilotID,Date,Duration,AirplaneID")] Copilot copilot)
         {
-            if (ModelState.IsValid)
+            if (copilot.Date.Hour == 0 && copilot.Date.Minute == 0)
+            {
+                ViewBag.Message = "Specify a time and a date";
+            }
+            else if (ModelState.IsValid)
             {
                 copilot.ApplicationUserID = User.Identity.GetUserId();
                 db.Copilots.Add(copilot);
@@ -61,6 +66,7 @@ namespace LFC.Controllers
                 return RedirectToAction("Index");
             }
             
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", copilot.AirplaneID);
             return View(copilot);
         }
 
@@ -72,12 +78,13 @@ namespace LFC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Copilot copilot = db.Copilots.Find(id);
+            Copilot copilot = db.Copilots.Include("Airplane").First(x => x.CopilotID == id);
             if (copilot == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", copilot.ApplicationUserID);
+            ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", copilot.AirplaneID);
             return View(copilot);
         }
 
@@ -87,7 +94,7 @@ namespace LFC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "CopilotID,ApplicationUserID,Date,Duration")] Copilot copilot)
+        public ActionResult Edit([Bind(Include = "CopilotID,ApplicationUserID,Date,Duration,AirplaneID")] Copilot copilot)
         {
             if (ModelState.IsValid)
             {

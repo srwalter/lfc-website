@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LFC.Models.Copilot>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Pilot Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Airplane)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pilot.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Airplane.AirplaneID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.CopilotID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.CopilotID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CopilotID })
+            </td>
+        </tr>
+    }
+    
+    </table>
