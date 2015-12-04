@@ -537,6 +537,7 @@
     <Content Include="Content\Preheat Procedure.pdf" />
     <Content Include="Content\Checkout and BFR Form.pdf" />
     <Content Include="Content\Insurance_Summary_20151015.pdf" />
+    <Content Include="Content\FlightLog.doc" />
     <None Include="Properties\PublishProfiles\lexingtonflyingclub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
