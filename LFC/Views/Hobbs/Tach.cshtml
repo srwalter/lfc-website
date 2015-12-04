@@ -83,6 +83,10 @@
             return !isNaN(date.getTime());
         }
 
+        function dateToString(date) {
+            return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+        }
+
         function enlargeDate(event) {
             var input = event.target;
             var val = $(input).val();
@@ -91,7 +95,7 @@
                 return;
 
             var date = new Date(val);
-            if (!isValidDate(date)) {
+            if (!isValidDate(date) || val != dateToString(date)) {
                 var now = new Date();
                 now.setTime(Date.now());
                 var month = parseInt(val).toString();
@@ -104,7 +108,7 @@
             if (!isValidDate(date)) {
                 return;
             }
-            val = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+            val = dateToString(date);
             $(input).val(val);
         }
 
