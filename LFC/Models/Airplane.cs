@@ -125,7 +125,7 @@ namespace LFC.Models
                 {
                     actions.Add("Annual inspection is due");
                 }
-                else if (DateTime.Now.AddDays(14) >= AnnualDue)
+                else if (DateTime.Now.AddDays(30) >= AnnualDue)
                 {
                     actions.Add("Annual inspection is due soon");
                 }
