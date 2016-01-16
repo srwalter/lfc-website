@@ -747,7 +747,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2015 19:43:48</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/07/2016 16:54:07</publishTime>
+      <publishTime>01/07/2016 16:59:44</publishTime>
     </File>
     <File Include="Views/Home/Join.cshtml">
       <publishTime>10/16/2015 08:55:23</publishTime>
@@ -789,7 +789,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2015 17:47:24</publishTime>
     </File>
     <File Include="Views/MembersArea/Library.cshtml">
-      <publishTime>12/22/2015 10:04:03</publishTime>
+      <publishTime>01/12/2016 18:50:02</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/SelectRoleEditorViewModel.cshtml">
       <publishTime>08/07/2015 19:43:48</publishTime>
