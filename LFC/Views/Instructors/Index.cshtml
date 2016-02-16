@@ -93,3 +93,10 @@
 }
 
 </table>
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Retired Instructors", "Index", "Instructors", new { retired = true }, null)
+    }
+}

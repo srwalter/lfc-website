@@ -16,9 +16,9 @@ namespace LFC.Controllers
         private LFCContext db = new LFCContext();
 
         // GET: Instructors
-        public ActionResult Index()
+        public ActionResult Index(bool? retired=false)
         {
-            return View(db.Instructors.OrderBy(x => x.LastName).ToList());
+            return View(db.Instructors.OrderBy(x => x.LastName).Where(x => x.Retired == retired).ToList());
         }
 
         // GET: Instructors/Details/5
@@ -83,7 +83,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InstructorID,FirstName,LastName,CFII,MEI,ASEL,ASES,OtherRatings,Address,City,State,ZipCode,DayPhone,EveningPhone,CellPhone,Email,Available")] Instructor instructor)
+        public ActionResult Edit([Bind(Include = "InstructorID,FirstName,LastName,CFII,MEI,ASEL,ASES,OtherRatings,Address,City,State,ZipCode,DayPhone,EveningPhone,CellPhone,Email,Available,Retired")] Instructor instructor)
         {
             if (ModelState.IsValid)
             {
