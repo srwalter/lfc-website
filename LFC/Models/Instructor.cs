@@ -32,5 +32,6 @@ namespace LFC.Models
         public String CellPhone { get; set; }
         public String Email { get; set; }
         public String Available { get; set; }
+        public bool Retired { get; set; }
     }
 }
