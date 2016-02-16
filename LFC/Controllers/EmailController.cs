@@ -25,7 +25,8 @@ namespace LFC.Controllers
             var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.  If a badge is not renewed within 30 days post expiration,  a new badge ($50) and background check will be required.  Additionally, you will be unable to access the ramp for a week or more.  Once your badge is renewed, please Reply-All to this email with the updated expiration date";
             var smtp = new SmtpClient();
 
-            var users = db.Users.Where(x => DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 30 || DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 60).ToList();
+            var users = db.Users.Where(x => DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 30 || DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 60)
+                .Where(x => x.MemberType != ApplicationUser.MembershipType.Retired).ToList();
             foreach (var x in users)
             {
                 var message = new MailMessage();

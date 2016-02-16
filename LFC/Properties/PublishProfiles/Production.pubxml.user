@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2015 13:01:00</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>12/22/2015 10:06:22</publishTime>
+      <publishTime>02/15/2016 21:38:43</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>12/22/2015 10:06:22</publishTime>
+      <publishTime>02/15/2016 21:38:43</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>08/07/2015 20:03:39</publishTime>
@@ -549,7 +549,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2015 19:43:48</publishTime>
     </File>
     <File Include="Views/Account/Edit.cshtml">
-      <publishTime>08/07/2015 19:43:48</publishTime>
+      <publishTime>02/15/2016 21:34:16</publishTime>
     </File>
     <File Include="Views/Account/ForgotPassword.cshtml">
       <publishTime>08/07/2015 19:43:48</publishTime>
@@ -738,7 +738,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2015 19:43:48</publishTime>
     </File>
     <File Include="Views/Home/Bylaws.cshtml">
-      <publishTime>01/07/2016 16:56:34</publishTime>
+      <publishTime>01/27/2016 08:37:08</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>08/07/2015 19:43:48</publishTime>
@@ -804,7 +804,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/07/2015 19:43:48</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/22/2015 10:02:08</publishTime>
+      <publishTime>01/17/2016 08:03:29</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>08/07/2015 19:43:48</publishTime>
