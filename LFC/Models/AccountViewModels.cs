@@ -135,7 +135,7 @@ namespace LFC.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        public ApplicationUser.OfficerTitle? Officer;
+        public ApplicationUser.OfficerTitle? Officer { get; set; }
 
         [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
         [Display(Name = "Home Telephone")]
