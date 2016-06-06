@@ -11,6 +11,7 @@ namespace LFC.Models
     {
         [Key]
         [DataType(DataType.MultilineText)]
+        [MaxLength(1024)]
         public String Body { get; set; }
     }
 }

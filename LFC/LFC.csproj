@@ -408,6 +408,10 @@
     <Compile Include="Migrations\201606060343062_AddBillingEmail.Designer.cs">
       <DependentUpon>201606060343062_AddBillingEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606060505106_IncreaseMaxLength.cs" />
+    <Compile Include="Migrations\201606060505106_IncreaseMaxLength.Designer.cs">
+      <DependentUpon>201606060505106_IncreaseMaxLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -855,6 +859,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606060343062_AddBillingEmail.resx">
       <DependentUpon>201606060343062_AddBillingEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606060505106_IncreaseMaxLength.resx">
+      <DependentUpon>201606060505106_IncreaseMaxLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
