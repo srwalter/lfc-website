@@ -20,6 +20,31 @@ namespace LFC.Controllers
     {
         private LFCContext db = new LFCContext();
 
+        private void SendBillingReminders()
+        {
+            if (db.BillingEmails.Count() == 0)
+                return;
+
+            var html = db.BillingEmails.First().Body;
+
+            var message = new MailMessage();
+            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+            message.Subject = "LFC Monthly Billing Reminder";
+            var view = AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html);
+            message.AlternateViews.Add(view);
+
+            var db2 = new LFCContext();
+            var users = db2.Users.Where(x => x.MemberType != ApplicationUser.MembershipType.Retired);
+            message.To.Add("info@lexingtonflyingclub.org");
+            foreach (var user in users)
+            {
+                message.Bcc.Add(user.Email);
+            }
+
+            var smtp = new SmtpClient();
+            smtp.Send(message);
+        }
+
         private void SendBadgeReminders()
         {
             var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.  If a badge is not renewed within 30 days post expiration,  a new badge ($50) and background check will be required.  Additionally, you will be unable to access the ramp for a week or more.  Once your badge is renewed, please Reply-All to this email with the updated expiration date";
@@ -132,6 +157,10 @@ namespace LFC.Controllers
                 SendBadgeReminders();
                 QueueNewAlerts();
                 SendActiveAlerts();
+                if (DateTime.Now.Day == 25)
+                {
+                    SendBillingReminders();
+                }
             }
             catch (Exception e)
             {
