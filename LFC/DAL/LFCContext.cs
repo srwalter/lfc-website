@@ -62,5 +62,7 @@ namespace LFC.DAL
         public System.Data.Entity.DbSet<LFC.Models.FuelReceipt> FuelReceipts { get; set; }
 
         public System.Data.Entity.DbSet<LFC.Models.Copilot> Copilots { get; set; }
+
+        public System.Data.Entity.DbSet<LFC.Models.BillingEmail> BillingEmails { get; set; }
     }
 }

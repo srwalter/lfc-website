@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AirplaneCheckoutsController.cs" />
     <Compile Include="Controllers\AirplanesController.cs" />
     <Compile Include="Controllers\AirworthinessDirectivesController.cs" />
+    <Compile Include="Controllers\BillingEmailsController.cs" />
     <Compile Include="Controllers\CopilotsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmailIndividualController.cs" />
@@ -403,12 +404,17 @@
     <Compile Include="Migrations\201602160300011_RetiredInstructor.Designer.cs">
       <DependentUpon>201602160300011_RetiredInstructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606060343062_AddBillingEmail.cs" />
+    <Compile Include="Migrations\201606060343062_AddBillingEmail.Designer.cs">
+      <DependentUpon>201606060343062_AddBillingEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\AirplaneCheckout.cs" />
     <Compile Include="Models\AirworthinessDirective.cs" />
+    <Compile Include="Models\BillingEmail.cs" />
     <Compile Include="Models\Copilot.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FlightLog.cs" />
@@ -675,6 +681,7 @@
     <Content Include="Views\Copilots\Details.cshtml" />
     <Content Include="Views\Copilots\Edit.cshtml" />
     <Content Include="Views\Copilots\Index.cshtml" />
+    <Content Include="Views\BillingEmails\Edit.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -845,6 +852,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602160300011_RetiredInstructor.resx">
       <DependentUpon>201602160300011_RetiredInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606060343062_AddBillingEmail.resx">
+      <DependentUpon>201606060343062_AddBillingEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
