@@ -157,7 +157,7 @@ namespace LFC.Controllers
                 SendBadgeReminders();
                 QueueNewAlerts();
                 SendActiveAlerts();
-                if (DateTime.Now.Day == 25)
+                if (DateTime.Now.Day == 28)
                 {
                     SendBillingReminders();
                 }
