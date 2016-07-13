@@ -186,7 +186,7 @@ namespace LFC.Controllers
             switch (group)
             {
                 case Recipients.All:
-                    // nothing to do
+                    users = users.Where(x => x.MemberType != ApplicationUser.MembershipType.Retired);
                     break;
 
                 case Recipients.Full:
