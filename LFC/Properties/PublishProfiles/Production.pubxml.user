@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>06/28/2016 22:11:35</publishTime>
+      <publishTime>07/12/2016 22:36:12</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>06/28/2016 22:11:35</publishTime>
+      <publishTime>07/12/2016 22:36:12</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>06/12/2014 10:28:08</publishTime>
@@ -792,7 +792,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/05/2016 20:54:39</publishTime>
     </File>
     <File Include="Views/MembersArea/Library.cshtml">
-      <publishTime>06/14/2016 21:11:17</publishTime>
+      <publishTime>07/12/2016 22:38:10</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/SelectRoleEditorViewModel.cshtml">
       <publishTime>05/09/2016 08:05:56</publishTime>

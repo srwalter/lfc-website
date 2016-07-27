@@ -412,6 +412,10 @@
     <Compile Include="Migrations\201606060505106_IncreaseMaxLength.Designer.cs">
       <DependentUpon>201606060505106_IncreaseMaxLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607270635383_AddBadgeID.cs" />
+    <Compile Include="Migrations\201607270635383_AddBadgeID.Designer.cs">
+      <DependentUpon>201607270635383_AddBadgeID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -862,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606060505106_IncreaseMaxLength.resx">
       <DependentUpon>201606060505106_IncreaseMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607270635383_AddBadgeID.resx">
+      <DependentUpon>201607270635383_AddBadgeID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

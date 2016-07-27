@@ -67,6 +67,7 @@ namespace LFC.Models
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }
         public DateTime? BadgeExpires { get; set; }
+        public String BadgeID { get; set; }
 
         public String FullName
         {
