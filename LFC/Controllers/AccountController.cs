@@ -186,6 +186,7 @@ namespace LFC.Controllers
                 user.Safety = model.SafetyPilot;
                 user.Instrument = model.Instrument;
                 user.BadgeExpires = model.BadgeExpires;
+                user.BadgeID = model.BadgeID;
                 user.Officer = model.Officer;
 
                 db.Entry(user).State = System.Data.Entity.EntityState.Modified;

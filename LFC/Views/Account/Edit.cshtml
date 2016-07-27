@@ -159,6 +159,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.BadgeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BadgeID, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BadgeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.BadgeExpires, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BadgeExpires, new { @class = "form-control" })

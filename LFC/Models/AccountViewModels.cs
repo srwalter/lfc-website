@@ -113,6 +113,7 @@ namespace LFC.Models
             this.Instrument = user.Instrument;
             this.SafetyPilot = user.Safety;
             this.BadgeExpires = user.BadgeExpires.GetValueOrDefault();
+            this.BadgeID = user.BadgeID;
         }
 
         [Required]
@@ -166,6 +167,9 @@ namespace LFC.Models
 
         [Display(Name = "Membership Type")]
         public LFC.Models.ApplicationUser.MembershipType? MemberType { get; set; }
+
+        [Display(Name = "Badge ID")]
+        public String BadgeID { get; set; }
 
         [Display(Name = "Badge Expires")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
