@@ -186,6 +186,8 @@ namespace LFC.Controllers
                 user.Safety = model.SafetyPilot;
                 user.Instrument = model.Instrument;
                 user.BadgeExpires = model.BadgeExpires;
+                if (user.BadgeID != model.BadgeID)
+                    user.BadgeIdUpdated = DateTime.Now;
                 user.BadgeID = model.BadgeID;
                 user.Officer = model.Officer;
 
