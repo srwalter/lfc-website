@@ -64,6 +64,7 @@ namespace LFC.Models
         public bool Instrument { get; set; }
         [Display(Name="Membership Type")]
         public MembershipType? MemberType { get; set; }
+        [Display(Name ="Safety Pilot")]
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }
         public DateTime? BadgeExpires { get; set; }

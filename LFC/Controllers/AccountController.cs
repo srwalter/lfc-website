@@ -200,8 +200,7 @@ namespace LFC.Controllers
         {
             var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
-            var model = new EditUserViewModel(user);
-            return View(model);
+            return View(user);
         }
 
         [Authorize(Roles = "Admin")]

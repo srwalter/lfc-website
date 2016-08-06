@@ -1,5 +1,4 @@
-﻿@model LFC.Models.EditUserViewModel
-
+﻿@model LFC.Models.ApplicationUser
 @{
     ViewBag.Title = "Details";
 }
@@ -134,11 +133,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SafetyPilot)
+            @Html.DisplayNameFor(model => model.Safety)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SafetyPilot)
+            @Html.DisplayFor(model => model.Safety)
         </dd>
 
         <dt>
@@ -147,6 +146,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.MemberType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BadgeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BadgeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BadgeIdUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BadgeIdUpdated)
         </dd>
 
         <dt>
