@@ -68,6 +68,8 @@ namespace LFC.Models
         public OfficerTitle? Officer { get; set; }
         public DateTime? BadgeExpires { get; set; }
         public String BadgeID { get; set; }
+        [Display(Name = "Badge ID Updated")]
+        public DateTime BadgeIdUpdated { get; set; }
 
         public String FullName
         {

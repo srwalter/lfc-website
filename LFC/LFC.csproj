@@ -416,6 +416,10 @@
     <Compile Include="Migrations\201607270635383_AddBadgeID.Designer.cs">
       <DependentUpon>201607270635383_AddBadgeID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608060140185_BadgeIdUpdated.cs" />
+    <Compile Include="Migrations\201608060140185_BadgeIdUpdated.Designer.cs">
+      <DependentUpon>201608060140185_BadgeIdUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -869,6 +873,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607270635383_AddBadgeID.resx">
       <DependentUpon>201607270635383_AddBadgeID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608060140185_BadgeIdUpdated.resx">
+      <DependentUpon>201608060140185_BadgeIdUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
