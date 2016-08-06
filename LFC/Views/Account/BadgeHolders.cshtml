@@ -1,0 +1,45 @@
+﻿@model List<LFC.Models.ApplicationUser>
+
+<h2>Badge List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].MiddleInitial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].BadgeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].BadgeExpires)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleInitial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BadgeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BadgeExpires)
+        </td>
+    </tr>
+}
+
+</table>
