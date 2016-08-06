@@ -150,10 +150,13 @@ namespace LFC.Controllers
             result.FileDownloadName = "LFCMembers.csv";
             return result;
         }
-
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult Edit(string id)
         {
+            if (!User.IsInRole("Admin") && User.Identity.GetUserId() != id)
+            {
+                return RedirectToAction("Index");
+            }
             var db = new LFCContext();
             var user = db.Users.First(u => u.UserName == id);
             var model = new EditUserViewModel(user);
@@ -161,10 +164,13 @@ namespace LFC.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit (String id, EditUserViewModel model)
         {
+            if (!User.IsInRole("Admin") && User.Identity.GetUserId() != id)
+            {
+                return RedirectToAction("Index");
+            }
             if (ModelState.IsValid)
             {
                 var db = new LFCContext();
