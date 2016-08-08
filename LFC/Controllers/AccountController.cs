@@ -98,6 +98,7 @@ namespace LFC.Controllers
             return View(model.ToPagedList(pagenumber, pagesize));
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult BadgeHolders()
         {
             var db = new LFCContext();
@@ -140,7 +141,7 @@ namespace LFC.Controllers
         
         public ActionResult Edit(string id)
         {
-            if (!User.IsInRole("Admin") && User.Identity.GetUserId() != id)
+            if (!User.IsInRole("Admin") && User.Identity.GetUserName() != id)
             {
                 return RedirectToAction("Index");
             }
@@ -154,7 +155,7 @@ namespace LFC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit (String id, EditUserViewModel model)
         {
-            if (!User.IsInRole("Admin") && User.Identity.GetUserId() != id)
+            if (!User.IsInRole("Admin") && User.Identity.GetUserName() != id)
             {
                 return RedirectToAction("Index");
             }
@@ -162,9 +163,14 @@ namespace LFC.Controllers
             {
                 var db = new LFCContext();
                 var user = db.Users.First(u => u.UserName == id);
-                user.UserName = model.UserName;
+                if (User.IsInRole("Admin"))
+                {
+                    user.UserName = model.UserName;
+                    user.ShortName = model.ShortName;
+                    user.MemberType = model.MemberType;
+                    user.Officer = model.Officer;
+                }
                 user.Email = model.Email;
-                user.ShortName = model.ShortName;
                 user.LastName = model.LastName;
                 user.MiddleInitial = model.MiddleInitial;
                 user.FirstName = model.FirstName;
@@ -175,14 +181,12 @@ namespace LFC.Controllers
                 user.State = model.State;
                 user.ZipCode = model.ZipCode;
                 user.Certificate = model.Certificate;
-                user.MemberType = model.MemberType;
                 user.Safety = model.SafetyPilot;
                 user.Instrument = model.Instrument;
                 user.BadgeExpires = model.BadgeExpires;
                 if (user.BadgeID != model.BadgeID)
                     user.BadgeIdUpdated = DateTime.Now;
                 user.BadgeID = model.BadgeID;
-                user.Officer = model.Officer;
 
                 db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();

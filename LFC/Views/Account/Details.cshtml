@@ -3,6 +3,8 @@
     ViewBag.Title = "Details";
 }
 
+@using Microsoft.AspNet.Identity;
+
 <h2>Details</h2>
 
 <div>
@@ -148,21 +150,25 @@
             @Html.DisplayFor(model => model.MemberType)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BadgeID)
-        </dt>
+        @if (User.IsInRole("Admin") || User.Identity.GetUserName() == Model.UserName)
+        {
 
-        <dd>
-            @Html.DisplayFor(model => model.BadgeID)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BadgeID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BadgeIdUpdated)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BadgeID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BadgeIdUpdated)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BadgeIdUpdated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BadgeIdUpdated)
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.BadgeExpires)
@@ -171,6 +177,7 @@
         <dd>
             @Html.DisplayFor(model => model.BadgeExpires)
         </dd>
+        
     </dl>
 </div>
 <p>
