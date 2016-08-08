@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>08/08/2016 21:59:10</publishTime>
+      <publishTime>08/09/2016 08:33:16</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>08/08/2016 21:59:10</publishTime>
+      <publishTime>08/09/2016 08:33:16</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>06/12/2014 10:28:08</publishTime>
@@ -537,7 +537,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/09/2016 08:05:54</publishTime>
     </File>
     <File Include="Views/Account/BadgeHolders.cshtml">
-      <publishTime>08/05/2016 19:17:10</publishTime>
+      <publishTime>08/09/2016 08:31:46</publishTime>
     </File>
     <File Include="Views/Account/ChangePassword.cshtml">
       <publishTime>05/09/2016 08:05:54</publishTime>
