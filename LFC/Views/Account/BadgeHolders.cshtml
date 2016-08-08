@@ -19,6 +19,9 @@
         <th>
             @Html.DisplayNameFor(model => model[0].BadgeExpires)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].BadgeIdUpdated)
+        </th>
         <th></th>
     </tr>
 
@@ -38,6 +41,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BadgeExpires)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BadgeIdUpdated)
         </td>
     </tr>
 }

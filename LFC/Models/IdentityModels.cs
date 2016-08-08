@@ -67,6 +67,8 @@ namespace LFC.Models
         [Display(Name ="Safety Pilot")]
         public bool Safety { get; set; }
         public OfficerTitle? Officer { get; set; }
+        [Display(Name = "Badge Expires")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? BadgeExpires { get; set; }
         public String BadgeID { get; set; }
         [Display(Name = "Badge ID Updated")]
