@@ -209,11 +209,14 @@ namespace LFC.Models
             return ads;
         }
 
-        public double TachHoursPerMonth()
+        public double TachHoursPerMonth(int? desired_month=null)
         {
             var logs = this.HobbsTimes.OrderBy(x => x.Date);
             double hours = 0.0;
             double days = 0.0;
+
+            if (!desired_month.HasValue)
+                desired_month = DateTime.Now.Month;
 
             DateTime? last_date = null;
             double last_hours = 0.0;
@@ -222,7 +225,7 @@ namespace LFC.Models
             {
                 if (last_date.HasValue && last_date.Value.Month != log.Date.Month)
                 {
-                    if (last_date.Value.Month <= DateTime.Now.Month && log.Date.Month >= (DateTime.Now.Month+1) % 12 && log.TachHours > last_hours)
+                    if (last_date.Value.Month <= desired_month && log.Date.Month >= (desired_month+1) % 12 && log.TachHours > last_hours)
                     {
                         hours += log.TachHours - last_hours;
                         days += (log.Date - last_date.Value).Days;

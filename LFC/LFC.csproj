@@ -699,6 +699,7 @@
     <Content Include="Views\Copilots\Index.cshtml" />
     <Content Include="Views\BillingEmails\Edit.cshtml" />
     <Content Include="Views\Account\BadgeHolders.cshtml" />
+    <Content Include="Views\Airplanes\HoursPerMonth.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>

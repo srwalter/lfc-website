@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LFC.Models.Airplane>
+
+@{
+    ViewBag.Title = "Hours per Month";
+}
+
+<h2>Hours per Month</h2>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AirplaneID)
+        </th>
+        <th>
+            Month
+        </th>
+        <th>
+            Hours Per Month
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    for (var i = 1; i <= 12; i++)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirplaneID)
+        </td>
+        <td>
+            @i
+        </td>
+        <td>
+            @item.TachHoursPerMonth(i)
+        </td>
+    </tr>
+    }
+}
+
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

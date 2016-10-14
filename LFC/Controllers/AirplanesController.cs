@@ -31,6 +31,13 @@ namespace LFC.Controllers
             return View(planes);
         }
 
+        public ActionResult HoursPerMonth()
+        {
+            var planes = db.Airplanes.Where(x => x.Active == true).ToList();
+            return View(planes);
+        }
+
+
         // GET: Airplanes/Details/5
         public ActionResult Details(string id)
         {
