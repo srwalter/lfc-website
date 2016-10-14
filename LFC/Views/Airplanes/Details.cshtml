@@ -271,12 +271,29 @@
         </dd>
 
         <dt>
+            Date (Estimated)
+        </dt>
+
+        <dd>
+            @Model.EstimatedMaintenanceDate(Model.HundredHour).GetDateTimeFormats('D')[1]
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.OilChange)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.OilChange)
         </dd>
+        
+        <dt>
+            Date (Estimated)
+        </dt>
+
+        <dd>
+            @Model.EstimatedMaintenanceDate(Model.OilChange).GetDateTimeFormats('D')[1]
+        </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.AnnualDue)

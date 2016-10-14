@@ -249,5 +249,16 @@ namespace LFC.Models
             }
         }
 
+        public DateTime EstimatedMaintenanceDate (double future_tach)
+        {
+            if (getCurrentTach() > future_tach)
+                return DateTime.Now;
+
+            double delta = future_tach - getCurrentTach();
+            double hours_per_month = TachHoursPerMonth();
+            int days = (int)(delta / hours_per_month * 30);
+
+            return DateTime.Now.AddDays(days);
+        }
     }
 }
