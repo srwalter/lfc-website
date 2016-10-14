@@ -208,5 +208,43 @@ namespace LFC.Models
             }
             return ads;
         }
+
+        public double TachHoursPerMonth()
+        {
+            var logs = this.HobbsTimes.OrderBy(x => x.Date);
+            double hours = 0.0;
+            double days = 0.0;
+
+            DateTime? last_date = null;
+            double last_hours = 0.0;
+
+            foreach (var log in logs)
+            {
+                if (last_date.HasValue && last_date.Value.Month != log.Date.Month)
+                {
+                    if (last_date.Value.Month <= DateTime.Now.Month && log.Date.Month >= (DateTime.Now.Month+1) % 12 && log.TachHours > last_hours)
+                    {
+                        hours += log.TachHours - last_hours;
+                        days += (log.Date - last_date.Value).Days;
+                    }
+                }
+
+                if (!last_date.HasValue || last_date.Value.Month != log.Date.Month)
+                {
+                    last_date = log.Date;
+                    last_hours = log.TachHours;
+                }
+            }
+
+            if (days > 0.0)
+            {
+                return hours * 30.0 / days;
+            }
+            else
+            {
+                return 0.0;
+            }
+        }
+
     }
 }
