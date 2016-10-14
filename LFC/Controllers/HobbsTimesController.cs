@@ -17,9 +17,11 @@ namespace LFC.Controllers
         private LFCContext db = new LFCContext();
 
         // GET: HobbsTimes
-        public ActionResult Index()
+        public ActionResult Index(String plane="")
         {
-            var hobbsTimes = db.HobbsTimes.Include(h => h.Airplane).OrderBy(x => x.Date);
+            IQueryable<HobbsTime> hobbsTimes = db.HobbsTimes.Include(h => h.Airplane).OrderBy(x => x.Date);
+            if (plane != "")
+                hobbsTimes = hobbsTimes.Where(x => x.AirplaneID == plane);
             return View(hobbsTimes.ToList());
         }
 
