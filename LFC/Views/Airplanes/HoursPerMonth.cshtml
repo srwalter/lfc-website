@@ -9,33 +9,30 @@
 </p>
 <table class="table">
     <tr>
+        <th>Month</th>
+        @foreach (var item in Model)
+        {
         <th>
-            @Html.DisplayNameFor(model => model.AirplaneID)
+            @Html.DisplayFor(x => item.AirplaneID)
         </th>
-        <th>
-            Month
-        </th>
-        <th>
-            Hours Per Month
-        </th>
+        }
     </tr>
 
-@foreach (var item in Model) {
-    for (var i = 1; i <= 12; i++)
+    @for (var i = 1; i <= 12; i++)
     {
+        String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AirplaneID)
+            @months[i-1]
         </td>
+        @foreach (var plane in Model)
+        {
         <td>
-            @i
+            @String.Format("{0:F2}", plane.TachHoursPerMonth(i))
         </td>
-        <td>
-            @item.TachHoursPerMonth(i)
-        </td>
+        }
     </tr>
     }
-}
 
 </table>
 
