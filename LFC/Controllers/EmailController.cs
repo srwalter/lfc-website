@@ -45,6 +45,57 @@ namespace LFC.Controllers
             smtp.Send(message);
         }
 
+        private void SendPredictiveMaint()
+        {
+            var planes = db.Airplanes.ToList();
+            foreach (var plane in planes)
+            {
+                var smtp = new SmtpClient();
+                var lookahead = DateTime.Now.AddDays(30);
+                bool hundred_hour = false;
+                bool oil_change = false;
+
+                if (plane.EstimatedMaintenanceDate(plane.HundredHour) == lookahead)
+                {
+                    hundred_hour = true;
+                }
+                if (plane.EstimatedMaintenanceDate(plane.OilChange) == lookahead)
+                {
+                    oil_change = true;
+                }
+                
+                if (oil_change || hundred_hour)
+                {
+                    var body = "This is an automated message.  Based on current tach hours and average flying amounts, aircraft " + plane.AirplaneID + " is estimated to need maintenance on or about " + lookahead.GetDateTimeFormats('D')[1] + ".\n\n";
+                    body += "Maintenance expected: \n\n";
+                    if (oil_change)
+                        body += "Oil change\n\n";
+                    if (hundred_hour)
+                        body += "100 hour inspection\n\n";
+                    body += "\n";
+                    
+                    var message = new MailMessage();
+                    message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+                    message.Subject = "LFC Upcoming Aircraft Maintenance for " + plane.AirplaneID;
+
+                    var view = AlternateView.CreateAlternateViewFromString(body, null, MediaTypeNames.Text.Plain);
+                    message.AlternateViews.Add(view);
+
+                    String pres = (from u in db.Users
+                                   where u.Officer == ApplicationUser.OfficerTitle.President
+                                   select u.Email).First();
+                    var db2 = new LFCContext();
+                    String maint = (from a in db2.Airplanes
+                                    where a.AirplaneID == plane.AirplaneID
+                                    select a.MaintenanceOfficer.Email).First();
+                    message.CC.Add(pres);
+                    message.CC.Add(maint);
+                    message.CC.Add("stevenrwalter@gmail.com");
+                    smtp.Send(message);
+                }
+            }
+        }
+
         private void SendBadgeReminders()
         {
             var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30 days.  Please ensure you renew it before it expires to avoid paying a penalty.  If a badge is not renewed within 30 days post expiration,  a new badge ($50) and background check will be required.  Additionally, you will be unable to access the ramp for a week or more.  Once your badge is renewed, please Reply-All to this email with the updated expiration date.\n\nIf you are not planning to renew the badge, you must return the badge to the airport operations department as soon as practical.  If a badge expires and is not turned in within 90 days of the expiration date,  the airport will fine the flying club $150 and you will lose your $150 deposit that the flying club holds...";
@@ -155,6 +206,7 @@ namespace LFC.Controllers
             try
             {
                 SendBadgeReminders();
+                SendPredictiveMaint();
                 QueueNewAlerts();
                 SendActiveAlerts();
                 if (DateTime.Now.Day == 25)
