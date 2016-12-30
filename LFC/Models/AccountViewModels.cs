@@ -173,7 +173,7 @@ namespace LFC.Models
 
         [Display(Name = "Badge Expires")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime BadgeExpires { get; set; }
+        public DateTime? BadgeExpires { get; set; }
     }
 
     public class SelectUserRolesViewModel
