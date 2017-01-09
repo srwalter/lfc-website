@@ -35,7 +35,7 @@ namespace LFC.Models
             President,
             Secretary,
             Treasurer,
-            [Display(Name="Assistant Treasurer")]
+            [Display(Name="VP-Administration")]
             AsstTreasurer,
             [Display(Name="Safety Officer")]
             SafetyOfficer,
