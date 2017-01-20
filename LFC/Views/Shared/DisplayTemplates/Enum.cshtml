@@ -1,19 +1,34 @@
-﻿
-@using System.ComponentModel.DataAnnotations
-@model Enum
+﻿@model Enum
 
-@{
-    if (Model != null)
+@if (EnumHelper.IsValidForEnumHelper(ViewData.ModelMetadata))
+{
+    // Display Enum using same names (from [Display] attributes) as in editors
+    string displayName = null;
+    foreach (SelectListItem item in EnumHelper.GetSelectList(ViewData.ModelMetadata, (Enum)Model))
     {
-        var field = Model.GetType().GetMember(Model.ToString()).FirstOrDefault();
-        DisplayAttribute[] display = (DisplayAttribute[])field.GetCustomAttributes(typeof(DisplayAttribute), false);
-        if (display.Count() > 0)
+        if (item.Selected)
         {
-            @display.First().Name
+            displayName = item.Text ?? item.Value;
+        }
+    }
+
+    // Handle the unexpected case that nothing is selected
+    if (String.IsNullOrEmpty(displayName))
+    {
+        if (Model == null)
+        {
+            displayName = String.Empty;
         }
         else
         {
-            @Model.ToString()
+            displayName = Model.ToString();
         }
     }
+
+    @Html.DisplayTextFor(model => displayName)
+}
+else
+{
+    // This Enum type is not supported.  Fall back to the text.
+    @Html.DisplayTextFor(model => model)
 }
