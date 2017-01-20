@@ -304,7 +304,7 @@ namespace LFC.Controllers
                             user.Officer = ApplicationUser.OfficerTitle.Treasurer;
                             break;
                         case 4:
-                            user.Officer = ApplicationUser.OfficerTitle.AsstTreasurer;
+                            user.Officer = ApplicationUser.OfficerTitle.VPAdministration;
                             break;
                         case 5:
                             user.Officer = ApplicationUser.OfficerTitle.SafetyOfficer;

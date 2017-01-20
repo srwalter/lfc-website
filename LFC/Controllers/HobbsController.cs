@@ -72,7 +72,7 @@ namespace LFC.Controllers
                                 where u.Officer == ApplicationUser.OfficerTitle.Treasurer
                                 select u.Email).First();
             String asst = (from u in db.Users
-                           where u.Officer == ApplicationUser.OfficerTitle.AsstTreasurer
+                           where u.Officer == ApplicationUser.OfficerTitle.VPAdministration
                            select u.Email).First();
             message.To.Add(pres);
             message.To.Add(treasurer);
