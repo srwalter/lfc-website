@@ -55,11 +55,11 @@ namespace LFC.Controllers
                 bool hundred_hour = false;
                 bool oil_change = false;
 
-                if (plane.EstimatedMaintenanceDate(plane.HundredHour) == lookahead)
+                if (Math.Abs((plane.EstimatedMaintenanceDate(plane.HundredHour) - lookahead).TotalHours) <= 24)
                 {
                     hundred_hour = true;
                 }
-                if (plane.EstimatedMaintenanceDate(plane.OilChange) == lookahead)
+                if (Math.Abs((plane.EstimatedMaintenanceDate(plane.OilChange) - lookahead).TotalHours) <= 24)
                 {
                     oil_change = true;
                 }
