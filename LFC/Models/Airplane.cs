@@ -99,6 +99,14 @@ namespace LFC.Models
                 return logs[0].TachHours;   
         }
 
+        public DateTime? getCurrentTachDate()
+        {
+            var logs = this.HobbsTimes.OrderByDescending(x => x.Date).ToList();
+            if (logs.Count == 0)
+                return null;
+            return logs[0].Date;
+        }
+
         public List<String> MaintenanceActions
         {
             get
@@ -254,11 +262,15 @@ namespace LFC.Models
             if (getCurrentTach() > future_tach)
                 return DateTime.Now;
 
-            double delta = future_tach - getCurrentTach();
-            double hours_per_month = TachHoursPerMonth();
-            int days = (int)(delta / hours_per_month * 30);
-
-            return DateTime.Now.AddDays(days);
+            DateTime? date = getCurrentTachDate();
+            if (date.HasValue)
+            {
+                double delta = future_tach - getCurrentTach();
+                double hours_per_month = TachHoursPerMonth();
+                int days = (int)(delta / hours_per_month * 30);
+                return date.Value.AddDays(days);
+            }
+            return DateTime.Now;
         }
     }
 }
