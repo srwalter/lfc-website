@@ -33,5 +33,6 @@ namespace LFC.Models
         public String Email { get; set; }
         public String Available { get; set; }
         public bool Retired { get; set; }
+        public bool DiamondApproved { get; set; }
     }
 }

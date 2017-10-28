@@ -424,6 +424,10 @@
     <Compile Include="Migrations\201609010501229_Optional-Badge-Updated.Designer.cs">
       <DependentUpon>201609010501229_Optional-Badge-Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710281924169_DiamondApprovedInstructors.cs" />
+    <Compile Include="Migrations\201710281924169_DiamondApprovedInstructors.Designer.cs">
+      <DependentUpon>201710281924169_DiamondApprovedInstructors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -886,6 +890,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609010501229_Optional-Badge-Updated.resx">
       <DependentUpon>201609010501229_Optional-Badge-Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710281924169_DiamondApprovedInstructors.resx">
+      <DependentUpon>201710281924169_DiamondApprovedInstructors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
