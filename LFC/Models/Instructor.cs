@@ -33,6 +33,7 @@ namespace LFC.Models
         public String Email { get; set; }
         public String Available { get; set; }
         public bool Retired { get; set; }
+        [Display(Name ="Approved for DA-40")]
         public bool DiamondApproved { get; set; }
     }
 }

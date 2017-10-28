@@ -49,6 +49,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Available)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiamondApproved)
+        </th>
         <th></th>
     </tr>
 
@@ -77,6 +80,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Available)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiamondApproved)
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id = item.InstructorID })

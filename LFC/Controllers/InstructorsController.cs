@@ -83,7 +83,7 @@ namespace LFC.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "InstructorID,FirstName,LastName,CFII,MEI,ASEL,ASES,OtherRatings,Address,City,State,ZipCode,DayPhone,EveningPhone,CellPhone,Email,Available,Retired")] Instructor instructor)
+        public ActionResult Edit([Bind(Include = "InstructorID,FirstName,LastName,CFII,MEI,ASEL,ASES,OtherRatings,Address,City,State,ZipCode,DayPhone,EveningPhone,CellPhone,Email,Available,Retired,DiamondApproved")] Instructor instructor)
         {
             if (ModelState.IsValid)
             {
