@@ -20,7 +20,7 @@ namespace LFC.Controllers
         public ActionResult FlightLogs()
         {
             var lfc = new LFCContext();
-            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\srwalter\\Downloads\\LFC.mdb"))
+            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\steve\\Downloads\\LFC.mdb"))
             {
                 var command = new OleDbCommand("SELECT m_id, flight_date, acid, start, stop, billed FROM FlightLog");
                 command.Connection = db;
@@ -69,7 +69,7 @@ namespace LFC.Controllers
         public ActionResult Airplanes()
         {
             var lfc = new LFCContext();
-            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\srwalter\\Downloads\\LFC.mdb"))
+            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\steve\\Downloads\\LFC.mdb"))
             {
                 var command = new OleDbCommand("SELECT acid, type, description, rate FROM Aircraft");
                 command.Connection = db;
@@ -225,7 +225,8 @@ namespace LFC.Controllers
         public async Task<ActionResult> Users()
         {
             var UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\srwalter\\Downloads\\LFC.mdb"))
+            var lfc = new LFCContext();
+            using (var db = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\steve\\Downloads\\LFC.mdb"))
             {
                 var command = new OleDbCommand("SELECT user_id, password, m_id, last, first, middle, home_tel, office_tel, e_mail, address, city, state, zip, license, instrument, mbr_type, safety, officer_id FROM members;");
                 command.Connection = db;
@@ -238,8 +239,12 @@ namespace LFC.Controllers
                     {
                         continue;
                     }
-                    var user = new ApplicationUser();
                     var user_id = (int)reader[0];
+                    if (lfc.Users.Where(u => u.UserName == user_id.ToString()).Count() > 0)
+                    {
+                        continue;
+                    }
+                    var user = new ApplicationUser();
                     user.UserName = user_id.ToString();
                     user.ShortName = (String)reader[2];
                     user.LastName = (String)reader[3];
