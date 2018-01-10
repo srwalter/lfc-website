@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>07/11/2017 22:49:29</publishTime>
+      <publishTime>10/28/2017 12:29:59</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>07/11/2017 22:49:29</publishTime>
+      <publishTime>10/28/2017 12:29:59</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>06/12/2014 10:28:08</publishTime>
@@ -488,6 +488,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>03/25/2017 19:47:22</publishTime>
     </File>
+    <File Include="LFC.mdf">
+      <publishTime>10/28/2017 12:45:50</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>03/25/2017 19:47:26</publishTime>
     </File>
@@ -762,7 +765,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2017 19:47:26</publishTime>
     </File>
     <File Include="Views/Home/Links.cshtml">
-      <publishTime>03/25/2017 19:47:26</publishTime>
+      <publishTime>10/28/2017 12:20:41</publishTime>
     </File>
     <File Include="Views/Instructors/Create.cshtml">
       <publishTime>03/25/2017 19:47:26</publishTime>
@@ -774,10 +777,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2017 19:47:26</publishTime>
     </File>
     <File Include="Views/Instructors/Edit.cshtml">
-      <publishTime>03/25/2017 19:47:26</publishTime>
+      <publishTime>10/28/2017 12:27:47</publishTime>
     </File>
     <File Include="Views/Instructors/Index.cshtml">
-      <publishTime>03/25/2017 19:47:26</publishTime>
+      <publishTime>10/28/2017 12:25:57</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/25/2017 19:47:26</publishTime>
@@ -825,7 +828,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2017 19:47:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/01/2017 18:24:32</publishTime>
+      <publishTime>10/28/2017 12:30:08</publishTime>
     </File>
   </ItemGroup>
 </Project>
