@@ -20,16 +20,17 @@
                 </button>
         </div>
         <div class="navbar-collapse collapse container-fluid">
-                <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Join", "Join", "Home")</li>
-                    <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
-                    <li><a href="http://www.lexingtonflyingclub.org/Content/newsletter/current.html">Newsletter</a></li>
-                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Bylaws", "Bylaws", "Home")</li>
-                    <li>@Html.ActionLink("Members Area", "Index", "MembersArea")</li>
-                    <li><a href="https://my.schedulemaster.com/">Schedule Master</a></li>
-                </ul>
+            <ul class="nav navbar-nav">
+                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Join", "Join", "Home")</li>
+                <li>@Html.ActionLink("Instructors", "Index", "Instructors")</li>
+                <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                <li><a href="http://www.lexingtonflyingclub.org/Content/newsletter/current.html">Newsletter</a></li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Bylaws", "Bylaws", "Home")</li>
+                <li>@Html.ActionLink("Members Area", "Index", "MembersArea")</li>
+                <li><a href="https://my.schedulemaster.com/">Schedule Master</a></li>
+            </ul>
                 @Html.Partial("_LoginPartial")
         </div>
             </div>
