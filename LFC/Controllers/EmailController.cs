@@ -206,17 +206,24 @@ namespace LFC.Controllers
             try
             {
                 SendBadgeReminders();
-                SendPredictiveMaint();
-                QueueNewAlerts();
-                SendActiveAlerts();
                 if (DateTime.Now.Day == 25)
                 {
                     SendBillingReminders();
                 }
+            } catch (Exception e)
+            {
+                ViewBag.Message += "Failed to send: " + e.ToString();
+            }
+
+            try {
+                SendPredictiveMaint();
+                QueueNewAlerts();
+                SendActiveAlerts();
+
             }
             catch (Exception e)
             {
-                ViewBag.Message = "Failed to send: " + e.ToString();
+                ViewBag.Message += "Failed to send: " + e.ToString();
             }
             return View();
         }
