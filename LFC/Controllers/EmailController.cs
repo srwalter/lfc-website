@@ -128,9 +128,9 @@ namespace LFC.Controllers
             }
         }
 
-        private void CheckAirplaneMaintenance(Airplane plane, ActiveAlert.AlertType type, DateTime due)
+        private void CheckAirplaneMaintenance(Airplane plane, ActiveAlert.AlertType type, DateTime due, int days)
         {
-            var deadline = DateTime.Now.AddDays(30);
+            var deadline = DateTime.Now.AddDays(days);
             if (due.Date == deadline.Date)
             {
                 var alert = new ActiveAlert
@@ -154,11 +154,12 @@ namespace LFC.Controllers
         {
             foreach (var plane in db.Airplanes.ToList())
             {
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Transponder, plane.TransponderDue);
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Static, plane.StaticDue);
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Annual, plane.AnnualDue);
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELTBattery, plane.EltBatteryDue);
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELT, plane.EltDue);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Transponder, plane.TransponderDue, 30);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Static, plane.StaticDue, 30);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Annual, plane.AnnualDue, 30);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELTBattery, plane.EltBatteryDue, 30);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELT, plane.EltDue, 30);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Registration, plane.RegistrationExpires, 60);
             }
             db.SaveChanges();
         }

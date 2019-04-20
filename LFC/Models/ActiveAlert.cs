@@ -22,6 +22,7 @@ namespace LFC.Models
             ELT,
             [Display(Name="ELT Battery")]
             ELTBattery,
+            Registration,
         };
 
         [Key, Column(Order = 1)]

@@ -39,6 +39,9 @@ Aircraft has the following imminent issues:
             case ActiveAlert.AlertType.Transponder:
                 desc = "The Transponder Inspection is due in the next 30 days";
                 break;
+            case ActiveAlert.AlertType.Registration:
+                desc = "The aircraft registration expires in the next 60 days";
+                break;
         }
         <li>@desc</li>
     }

@@ -615,10 +615,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2019 23:04:32</publishTime>
     </File>
     <File Include="Views/Airplanes/Details.cshtml">
-      <publishTime>02/11/2019 23:04:32</publishTime>
+      <publishTime>04/20/2019 13:04:13</publishTime>
     </File>
     <File Include="Views/Airplanes/Edit.cshtml">
-      <publishTime>02/11/2019 23:04:32</publishTime>
+      <publishTime>04/20/2019 13:04:13</publishTime>
     </File>
     <File Include="Views/Airplanes/HoursPerMonth.cshtml">
       <publishTime>02/11/2019 23:04:32</publishTime>
