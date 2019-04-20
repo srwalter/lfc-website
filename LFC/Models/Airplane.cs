@@ -176,6 +176,14 @@ namespace LFC.Models
                 {
                     actions.Add("GPS Database is expired");
                 }
+                if (DateTime.Now >= RegistrationExpires)
+                {
+                    actions.Add("Aircraft Registration is expired!");
+                }
+                else if (DateTime.Now.AddDays(60) >= RegistrationExpires)
+                {
+                    actions.Add("Aircraft Registration expires soon");
+                }
                 return actions;
             }
         }
