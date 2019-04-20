@@ -429,6 +429,10 @@
     <Compile Include="Migrations\201710281924169_DiamondApprovedInstructors.Designer.cs">
       <DependentUpon>201710281924169_DiamondApprovedInstructors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904201657241_AddRegExp.cs" />
+    <Compile Include="Migrations\201904201657241_AddRegExp.Designer.cs">
+      <DependentUpon>201904201657241_AddRegExp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -893,6 +897,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710281924169_DiamondApprovedInstructors.resx">
       <DependentUpon>201710281924169_DiamondApprovedInstructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904201657241_AddRegExp.resx">
+      <DependentUpon>201904201657241_AddRegExp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

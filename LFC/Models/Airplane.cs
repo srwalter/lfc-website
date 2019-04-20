@@ -87,6 +87,9 @@ namespace LFC.Models
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}", ApplyFormatInEditMode=true)]
         public DateTime GPSExpires { get; set; }
+        [Display(Name = "Registration Expires")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime RegistrationExpires { get; set; }
         [Display(Name="Engine Serial")]
         public String EngineSerial { get; set; }
         public bool Active { get; set; }
