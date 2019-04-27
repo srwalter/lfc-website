@@ -38,7 +38,8 @@ namespace LFC.Controllers
             message.To.Add("info@lexingtonflyingclub.org");
             foreach (var user in users)
             {
-                message.Bcc.Add(user.Email);
+                if (user.Email != null)
+                    message.Bcc.Add(user.Email);
             }
 
             var smtp = new SmtpClient();
