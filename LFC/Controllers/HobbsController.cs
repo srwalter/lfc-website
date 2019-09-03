@@ -39,7 +39,12 @@ namespace LFC.Controllers
             message.To.Add("stevenrwalter@gmail.com");
 
             var smtp = new SmtpClient();
-            smtp.Send(message);
+            try
+            {
+                smtp.Send(message);
+            } catch (Exception e) {
+                throw new Exception("Send failed (" + e.ToString() + ") " + smtp.Host);
+            }
         }
 
         private void SendBillingReport(IEnumerable<BillingReport> billing)
@@ -80,7 +85,51 @@ namespace LFC.Controllers
             message.To.Add("stevenrwalter@gmail.com");
 
             var smtp = new SmtpClient();
-            smtp.Send(message);
+            try
+            {
+                smtp.Send(message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Send failed (" + e.ToString() + ") " + smtp.Host);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Download()
+        {
+
+            var billing = new List<BillingReport>();
+            var flightlogs = db.FlightLogs.Include("Airplane").Include("Pilot").Where(x => x.Billed == null);
+            foreach (var entry in flightlogs.OrderBy(x => x.Airplane.AirplaneID).ThenBy(x => x.Date))
+            {
+                var report = new BillingReport();
+                if (entry.Pilot != null)
+                    report.BillingName = entry.Pilot.ShortName;
+                else
+                    report.BillingName = entry.Airplane.AirplaneID.Substring(1);
+                report.Date = entry.Date;
+                report.Plane = entry.Airplane.AirplaneID;
+                report.Hours = entry.EndTach - entry.StartTach;
+                billing.Add(report);
+            }
+
+            var plain = "plane\tm_id\tdate\thours\n";
+            foreach (var entry in billing)
+            {
+                var plane = entry.Plane.Substring(1);
+                plain = plain + String.Format("{0}\t{1}\t{2:MM/dd/yyyy}\t{3:F2}\n", plane, entry.BillingName, entry.Date, entry.Hours);
+            }
+
+            Response.Clear();
+            Response.ClearHeaders();
+            Response.ClearContent();
+            Response.AddHeader("Content-Disposition", "attachment; filename=\"billing.txt\"");
+            Response.AddHeader("Content-Length", plain.Length.ToString());
+            Response.ContentType = "text/plain";
+            Response.Flush();
+
+            return Content(plain);
         }
 
         [Authorize(Roles="Admin")]
