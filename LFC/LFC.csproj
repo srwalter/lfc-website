@@ -437,6 +437,10 @@
     <Compile Include="Migrations\201904201719298_AddRegistrationAlert.Designer.cs">
       <DependentUpon>201904201719298_AddRegistrationAlert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909281522035_EquipmentCode.cs" />
+    <Compile Include="Migrations\201909281522035_EquipmentCode.Designer.cs">
+      <DependentUpon>201909281522035_EquipmentCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActiveAlert.cs" />
@@ -907,6 +911,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904201719298_AddRegistrationAlert.resx">
       <DependentUpon>201904201719298_AddRegistrationAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281522035_EquipmentCode.resx">
+      <DependentUpon>201909281522035_EquipmentCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
