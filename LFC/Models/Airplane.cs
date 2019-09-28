@@ -93,6 +93,8 @@ namespace LFC.Models
         [Display(Name="Engine Serial")]
         public String EngineSerial { get; set; }
         public bool Active { get; set; }
+        [Display(Name = "ICAO Equipment Code")]
+        public String EquipmentCode { get; set; }
 
         public double getCurrentTach()
         {
