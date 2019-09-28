@@ -48,7 +48,7 @@ namespace LFC.Controllers
 
         private void SendPredictiveMaint()
         {
-            var planes = db.Airplanes.ToList();
+            var planes = db.Airplanes.Where(x => x.Active == true).ToList();
             foreach (var plane in planes)
             {
                 var smtp = new SmtpClient();
@@ -153,7 +153,7 @@ namespace LFC.Controllers
 
         private void QueueNewAlerts()
         {
-            foreach (var plane in db.Airplanes.ToList())
+            foreach (var plane in db.Airplanes.Where(x => x.Active == true).ToList())
             {
                 CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Transponder, plane.TransponderDue, 30);
                 CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Static, plane.StaticDue, 30);

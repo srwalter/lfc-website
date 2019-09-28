@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>09/03/2019 18:43:54</publishTime>
+      <publishTime>09/28/2019 11:23:56</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>09/03/2019 18:43:54</publishTime>
+      <publishTime>09/28/2019 11:23:56</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>06/12/2014 10:28:08</publishTime>
@@ -609,16 +609,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2019 23:04:32</publishTime>
     </File>
     <File Include="Views/Airplanes/Create.cshtml">
-      <publishTime>02/11/2019 23:04:32</publishTime>
+      <publishTime>09/28/2019 11:26:00</publishTime>
     </File>
     <File Include="Views/Airplanes/Delete.cshtml">
       <publishTime>02/11/2019 23:04:32</publishTime>
     </File>
     <File Include="Views/Airplanes/Details.cshtml">
-      <publishTime>04/20/2019 13:04:13</publishTime>
+      <publishTime>09/28/2019 11:24:39</publishTime>
     </File>
     <File Include="Views/Airplanes/Edit.cshtml">
-      <publishTime>04/20/2019 13:04:13</publishTime>
+      <publishTime>09/28/2019 11:26:47</publishTime>
     </File>
     <File Include="Views/Airplanes/HoursPerMonth.cshtml">
       <publishTime>02/11/2019 23:04:32</publishTime>
