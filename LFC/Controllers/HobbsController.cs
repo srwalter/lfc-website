@@ -272,7 +272,7 @@ namespace LFC.Controllers
                     var flightlog = new FlightLog();
                     flightlog.Date = entry.Date;
                     flightlog.AirplaneID = hobbs.AirplaneID;
-                    if (entry.PilotName == "PLANE")
+                    if (entry.PilotName.ToUpper() == "PLANE")
                         flightlog.Pilot = null;
                     else
                         flightlog.Pilot = pilot.First();
