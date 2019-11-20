@@ -361,7 +361,10 @@ namespace LFC.Controllers
 			    }
 			    foreach (var user in users)
 			    {
-				    message.Bcc.Add(user.Email);
+                    if (user.Email != null)
+                    {
+                        message.Bcc.Add(user.Email);
+                    }
 			    }
 			}
             
