@@ -76,6 +76,7 @@ namespace LFC.Controllers
                 airplane.TransponderDue = DateTime.Now;
                 airplane.StaticDue = DateTime.Now;
                 airplane.GPSExpires = DateTime.Now;
+                airplane.RegistrationExpires = DateTime.Now;
                 airplane.UpdatedNow(user);
                 db.Airplanes.Add(airplane);
                 try
