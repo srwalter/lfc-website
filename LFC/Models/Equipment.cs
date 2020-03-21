@@ -14,9 +14,29 @@ namespace LFC.Models
             ADF,
             DME,
             GPS,
+            [Display(Name ="WAAS GPS")]
+            GPSWaas,
             Transponder,
             Autopilot,
-            Intercom
+            Intercom,
+            HSI,
+            [Display(Name = "Electronic HSI")]
+            ElectronicHSI,
+            [Display(Name = "Audio Panel")]
+            AudioPanel,
+            [Display(Name = "ADS-B Out")]
+            ADSBOut,
+            [Display(Name = "ADS-B In/Out")]
+            ADSBInOut,
+            EGT,
+            CHT,
+            [Display(Name = "NAV Indicator")]
+            NAVIndicator,
+            [Display(Name = "Glideslope Indicator")]
+            GSIndicator,
+            MFD,
+            [Display(Name = "Engine Monitor")]
+            EngineMonitor
         }
         public int EquipmentID { get; set; }
         public String AirplaneID {get; set; }
