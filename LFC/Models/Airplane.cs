@@ -280,8 +280,11 @@ namespace LFC.Models
             {
                 double delta = future_tach - getCurrentTach();
                 double hours_per_month = TachHoursPerMonth();
-                int days = (int)(delta / hours_per_month * 30);
-                return date.Value.AddDays(days);
+                if (hours_per_month > 0)
+                {
+                    int days = (int)(delta / hours_per_month * 30);
+                    return date.Value.AddDays(days);
+                }
             }
             return DateTime.Now;
         }
