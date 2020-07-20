@@ -29,7 +29,7 @@
 
 @if (Model.PageCount > 1)
 {
-    @Html.ActionLink("View All Members", "Index", new { page = -1 })
+    @Html.ActionLink("View All Members", "Index", new { page = -1, retired = ViewBag.RetiredOnly })
     <br />
     @:Page
     if (Model.PageCount < Model.PageNumber)
