@@ -27,13 +27,18 @@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
-        
-        <div class="form-group">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @foreach (ApplicationUser i in ViewBag.AllUsers)
+
+        @if (ViewBag.Retired == false)
         {
-            <input name="recipients" type="checkbox" value="@i.Email" />@i.FullName<br />
+            @Html.ActionLink("Also Show Retired Members", "Index", new { retired = true })
         }
+
+        <div class="form-group">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @foreach (ApplicationUser i in ViewBag.AllUsers)
+            {
+                <input name="recipients" type="checkbox" value="@i.Email" />@i.FullName<br />
+            }
         </div>
 
         <div class="form-group">

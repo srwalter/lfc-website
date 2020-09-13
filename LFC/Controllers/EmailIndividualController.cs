@@ -18,8 +18,16 @@ namespace LFC.Controllers
 
         // GET: EmailIndividual
         [Authorize(Roles="Admin")]
-        public ActionResult Index() {
-            ViewBag.AllUsers = db.Users.OrderBy(x => x.LastName).ToList();
+        public ActionResult Index(bool? retired=false) {
+            var users = db.Users.OrderBy(x => x.LastName);
+            if (retired == false)
+            {
+                ViewBag.AllUsers = users.Where(x => x.MemberType != Models.ApplicationUser.MembershipType.Retired).ToList();
+            } else
+            {
+                ViewBag.AllUsers = users.ToList();
+            }
+            ViewBag.Retired = retired;
             return View();
         }
 
