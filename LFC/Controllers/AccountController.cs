@@ -99,13 +99,21 @@ namespace LFC.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult BadgeHolders()
+        public ActionResult BadgeHolders(bool? retired=false)
         {
             var db = new LFCContext();
-            var users = db.Users;
-
+            var users = db.Users.Where(n => n.BadgeID != null).OrderBy(x => x.LastName);
             List<ApplicationUser> list;
-            list = users.Where(n => n.BadgeID != null).OrderBy(n => n.LastName).ToList();
+
+            if (retired == false)
+            {
+                list = users.Where(x => x.MemberType != Models.ApplicationUser.MembershipType.Retired).ToList();
+            }
+            else
+            {
+                list = users.ToList();
+            }
+
             return View("BadgeHolders", list);
         }
 

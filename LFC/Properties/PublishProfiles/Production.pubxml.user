@@ -21,10 +21,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/LFC.dll">
-      <publishTime>09/13/2020 14:45:11</publishTime>
+      <publishTime>09/28/2020 17:04:10</publishTime>
     </File>
     <File Include="bin/LFC.pdb">
-      <publishTime>09/13/2020 14:45:11</publishTime>
+      <publishTime>09/28/2020 17:04:10</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>06/12/2014 10:28:08</publishTime>
@@ -540,7 +540,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Views/Account/BadgeHolders.cshtml">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>09/28/2020 17:04:06</publishTime>
     </File>
     <File Include="Views/Account/ChangePassword.cshtml">
       <publishTime>01/06/2020 23:48:56</publishTime>
@@ -669,7 +669,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Views/EmailIndividual/Index.cshtml">
-      <publishTime>09/13/2020 14:44:47</publishTime>
+      <publishTime>09/13/2020 14:46:26</publishTime>
     </File>
     <File Include="Views/Equipment/Create.cshtml">
       <publishTime>01/06/2020 23:48:56</publishTime>
@@ -828,7 +828,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/06/2020 23:56:09</publishTime>
+      <publishTime>09/28/2020 16:59:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

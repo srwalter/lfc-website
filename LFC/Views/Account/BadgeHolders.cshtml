@@ -2,6 +2,8 @@
 
 <h2>Badge List</h2>
 
+@Html.ActionLink("Also Show Retired Members", "BadgeHolders", new { retired = true })
+
 <table class="table">
     <tr>
         <th>
@@ -25,27 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleInitial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BadgeID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BadgeExpires)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BadgeIdUpdated)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleInitial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BadgeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BadgeExpires)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BadgeIdUpdated)
+            </td>
+        </tr>
+    }
 
 </table>
