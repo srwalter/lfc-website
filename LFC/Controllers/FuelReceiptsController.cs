@@ -4,10 +4,14 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
 using LFC.DAL;
 using LFC.Models;
+
+using Microsoft.AspNet.Identity;
 
 namespace LFC.Controllers
 {
@@ -17,12 +21,14 @@ namespace LFC.Controllers
         private LFCContext db = new LFCContext();
 
         // GET: FuelReceipts
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var fuelReceipts = db.FuelReceipts.Include(f => f.Airplane).Include(f => f.Pilot);
             return View(fuelReceipts.ToList());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: FuelReceipts/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,6 +52,35 @@ namespace LFC.Controllers
             return View();
         }
 
+        private void EmailFuelReceipt(FuelReceipt fr, HttpPostedFileBase image)
+        {
+            var message = new MailMessage();
+            message.From = new MailAddress("info@lexingtonflyingclub.org", "Lexington Flying Club");
+            message.Subject = "LFC Fuel Receipt for " + fr.AirplaneID;
+
+            var body = "Pilot: {0}\n" +
+                        "Plane: {1}\n" +
+                        "Date: {2}\n" +
+                        "Dollars: {3}\n" +
+                        "Gallons: {4}\n";
+
+            String tres = (from u in db.Users
+                           where u.Officer == ApplicationUser.OfficerTitle.Treasurer
+                           select u.Email).First();
+            //message.To.Add(tres);
+            message.To.Add("stevenrwalter@gmail.com");
+
+            String pilot = (from u in db.Users
+                            where u.Id == fr.ApplicationUserID
+                            select u.ShortName).First();
+            message.Body = String.Format(body, pilot, fr.AirplaneID, fr.Date, fr.Dollars, fr.Gallons);
+            Attachment data = new Attachment(image.InputStream, image.FileName, MediaTypeNames.Application.Octet);
+            message.Attachments.Add(data);
+
+            var smtp = new SmtpClient();
+            smtp.Send(message);
+        }
+
         // POST: FuelReceipts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -55,9 +90,18 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid && image != null)
             {
+                if (!User.IsInRole("Admin"))
+                {
+                    fuelReceipt.ApplicationUserID = User.Identity.GetUserId();
+                }
+                EmailFuelReceipt(fuelReceipt, image);
                 db.FuelReceipts.Add(fuelReceipt);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                ViewBag.Message = "Fuel receipt submitted successfully";
+                ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
+                ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
+                return View();
             }
 
             if (image == null)
@@ -71,6 +115,7 @@ namespace LFC.Controllers
         }
 
         // GET: FuelReceipts/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,6 +137,7 @@ namespace LFC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "FuelReceiptID,ApplicationUserID,AirplaneID,Date,Gallons,Dollars")] FuelReceipt fuelReceipt)
         {
             if (ModelState.IsValid)
@@ -106,6 +152,7 @@ namespace LFC.Controllers
         }
 
         // GET: FuelReceipts/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -123,6 +170,7 @@ namespace LFC.Controllers
         // POST: FuelReceipts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             FuelReceipt fuelReceipt = db.FuelReceipts.Find(id);
