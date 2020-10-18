@@ -48,7 +48,7 @@ namespace LFC.Controllers
         public ActionResult Create()
         {
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID");
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName");
+            ViewBag.ApplicationUserID = new SelectList(db.Users.OrderBy(x => x.ShortName), "Id", "ShortName", User.Identity.GetUserId());
             return View();
         }
 
@@ -90,17 +90,13 @@ namespace LFC.Controllers
         {
             if (ModelState.IsValid && image != null)
             {
-                if (!User.IsInRole("Admin"))
-                {
-                    fuelReceipt.ApplicationUserID = User.Identity.GetUserId();
-                }
                 EmailFuelReceipt(fuelReceipt, image);
                 db.FuelReceipts.Add(fuelReceipt);
                 db.SaveChanges();
 
                 ViewBag.Message = "Fuel receipt submitted successfully";
                 ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
-                ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
+                ViewBag.ApplicationUserID = new SelectList(db.Users.OrderBy(x => x.ShortName), "Id", "ShortName");
                 return View();
             }
 
@@ -110,7 +106,7 @@ namespace LFC.Controllers
             }
 
             ViewBag.AirplaneID = new SelectList(db.Airplanes, "AirplaneID", "AirplaneID", fuelReceipt.AirplaneID);
-            ViewBag.ApplicationUserID = new SelectList(db.Users, "Id", "ShortName", fuelReceipt.ApplicationUserID);
+            ViewBag.ApplicationUserID = new SelectList(db.Users.OrderBy(x => x.ShortName), "Id", "ShortName");
             return View(fuelReceipt);
         }
 
