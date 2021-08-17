@@ -138,7 +138,11 @@ namespace LFC.Controllers
                 data += u.City + ",";
                 data += u.State + ",";
                 data += u.ZipCode + ",";
-                var addr = u.Address;
+                var addr = "";
+                if (u.Address != null)
+                {
+                    addr = u.Address;
+                }
                 addr.Replace(',', ' ');
                 data += addr + ",";
                 data += u.Certificate + ",";
