@@ -141,9 +141,8 @@ namespace LFC.Controllers
                 var addr = "";
                 if (u.Address != null)
                 {
-                    addr = u.Address;
+                    addr = u.Address.Replace(',', ' ');
                 }
-                addr.Replace(',', ' ');
                 data += addr + ",";
                 data += u.Certificate + ",";
                 data += u.Instrument + ",";

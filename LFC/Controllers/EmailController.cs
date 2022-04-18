@@ -160,7 +160,7 @@ namespace LFC.Controllers
                 CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Annual, plane.AnnualDue, 30);
                 CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELTBattery, plane.EltBatteryDue, 30);
                 CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.ELT, plane.EltDue, 30);
-                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Registration, plane.RegistrationExpires, 60);
+                CheckAirplaneMaintenance(plane, ActiveAlert.AlertType.Registration, plane.RegistrationExpires, 90);
             }
             db.SaveChanges();
         }
