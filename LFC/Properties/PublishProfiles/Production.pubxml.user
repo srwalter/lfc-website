@@ -495,19 +495,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/10/2022 19:14:46</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery-ui.css">
       <publishTime>01/06/2020 23:48:56</publishTime>
@@ -516,28 +516,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Scripts/respond.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/respond.min.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>01/06/2020 23:48:56</publishTime>
+      <publishTime>10/10/2022 12:59:08</publishTime>
     </File>
     <File Include="Views/Account/BadgeHolders.cshtml">
       <publishTime>09/28/2020 17:04:06</publishTime>
@@ -828,7 +828,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/15/2021 10:23:51</publishTime>
+      <publishTime>10/10/2022 13:04:48</publishTime>
     </File>
   </ItemGroup>
 </Project>
