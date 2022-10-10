@@ -92,6 +92,7 @@ namespace LFC.Controllers
                     message.CC.Add(pres);
                     message.CC.Add(maint);
                     message.CC.Add("stevenrwalter@gmail.com");
+                    message.CC.Add("jeff@tbamky.com");
                     smtp.Send(message);
                 }
             }
