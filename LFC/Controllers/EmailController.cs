@@ -197,6 +197,7 @@ namespace LFC.Controllers
                 message.CC.Add(pres);
                 //message.CC.Add(safety);
                 message.To.Add("stevenrwalter@gmail.com");
+                message.CC.Add("jeff@tbamky.com");
 
                 var smtp = new SmtpClient();
                 smtp.Send(message);
