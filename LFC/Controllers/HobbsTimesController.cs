@@ -64,7 +64,17 @@ namespace LFC.Controllers
                     Airplane = plane,
                     Type = type
                 };
-                db.ActiveAlerts.Add(alert);
+                
+                try
+                {
+                    db.ActiveAlerts.Add(alert);
+                    db.SaveChanges();
+                } catch (Exception e)
+                {
+                    // Probably a dup
+                    db.ActiveAlerts.Remove(alert);
+                }
+                
             }
         }
 
