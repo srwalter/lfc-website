@@ -27,6 +27,10 @@ namespace LFC.Controllers
         {
             return View();
         }
+        public ActionResult N89652()
+        {
+            return View();
+        }
 
         public ActionResult Contact()
         {

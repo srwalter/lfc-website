@@ -718,6 +718,7 @@
     <Content Include="Views\BillingEmails\Edit.cshtml" />
     <Content Include="Views\Account\BadgeHolders.cshtml" />
     <Content Include="Views\Airplanes\HoursPerMonth.cshtml" />
+    <Content Include="Views\Home\N89652.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <None Include="Web.Production.config">
       <DependentUpon>Web.config</DependentUpon>
