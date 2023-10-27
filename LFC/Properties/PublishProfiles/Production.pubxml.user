@@ -750,7 +750,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Views/Home/Bylaws.cshtml">
-      <publishTime>10/10/2022 13:07:59</publishTime>
+      <publishTime>09/17/2023 12:08:04</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>09/16/2023 10:17:02</publishTime>
@@ -759,7 +759,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/16/2023 10:10:40</publishTime>
+      <publishTime>09/17/2023 12:08:04</publishTime>
     </File>
     <File Include="Views/Home/Join.cshtml">
       <publishTime>01/06/2020 23:48:56</publishTime>
@@ -804,7 +804,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2020 23:48:56</publishTime>
     </File>
     <File Include="Views/MembersArea/Library.cshtml">
-      <publishTime>09/16/2023 10:19:28</publishTime>
+      <publishTime>10/27/2023 14:27:48</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/SelectRoleEditorViewModel.cshtml">
       <publishTime>01/06/2020 23:48:56</publishTime>
