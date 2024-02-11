@@ -16,7 +16,10 @@
     }
     <li>@Html.ActionLink("Airplane ADs", "Index", "AirworthinessDirectives")</li>
     <li>@Html.ActionLink("Instructor List", "Index", "Instructors")</li>
-    <li>@Html.ActionLink("Member List", "Index", "Account")</li>
+    @if (!User.IsInRole("Instructor"))
+    {
+        <li>@Html.ActionLink("Member List", "Index", "Account")</li>
+    }
     <li>@Html.ActionLink("Request a Copilot", "Create", "Copilots")</li>
     <li>@Html.ActionLink("Club Library", "Library")</li>
 </ul>

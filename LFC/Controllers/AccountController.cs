@@ -249,6 +249,7 @@ namespace LFC.Controllers
         {
             var db = new LFCContext();
             //_roleManager.Create(new IdentityRole("Admin"));
+            //_roleManager.Create(new IdentityRole("Instructor"));
             var user = db.Users.First(u => u.UserName == id);
             var model = new SelectUserRolesViewModel(user);
             return View(model);

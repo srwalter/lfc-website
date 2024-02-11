@@ -145,6 +145,8 @@
     <li><a href="~/Content/newsletter/4-LFC Passenger Briefing Checklist 1.0.pdf">Passenger Briefing Checklist</a></li>
 </ul>
 
+@if (!User.IsInRole("Instructor"))
+{
 <h4>Meeting Minutes</h4>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -823,3 +825,4 @@
         </div>
     </div>
 </div>
+}
