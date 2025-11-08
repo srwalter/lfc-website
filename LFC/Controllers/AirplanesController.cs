@@ -180,10 +180,7 @@ namespace LFC.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Airplane airplane = db.Airplanes.Find(id);
-            foreach (var ad in airplane.ADs)
-            {
-                db.AirworthinessDirectives.Remove(ad);
-            }
+            airplane.ADs.Clear();
             db.Airplanes.Remove(airplane);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -33,6 +33,11 @@ namespace LFC.Models
 
         public bool IsOverdue()
         {
+            if (Airplane == null)
+            {
+                return false;
+            }
+
             double current_tach = Airplane.getCurrentTach();
             if (FrequencyHours != null && LastDoneHours + FrequencyHours < current_tach)
             {

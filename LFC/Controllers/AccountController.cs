@@ -60,7 +60,7 @@ namespace LFC.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
         
-        public ActionResult Index(int? page, bool? retired=false)
+        public ActionResult Index(int? page, bool retired=false)
         {
             var db = new LFCContext();
             var users = db.Users;
@@ -74,19 +74,14 @@ namespace LFC.Controllers
             ViewBag.RetiredOnly = retired;
 
             var model = new List<EditUserViewModel>();
-            List<ApplicationUser> list;
-            if (retired == true)
+
+            foreach (var user in users.OrderBy(n => n.LastName))
             {
-                list = users.Where(n => n.MemberType == ApplicationUser.MembershipType.Retired).OrderBy(n => n.LastName).ToList();
-            }
-            else
-            {
-                list = users.Where(n => n.MemberType != ApplicationUser.MembershipType.Retired).OrderBy(n => n.LastName).ToList();
-            }
-            foreach (var user in list)
-            {
-                var u = new EditUserViewModel(user);
-                model.Add(u);
+                if (retired == (user.MemberType == ApplicationUser.MembershipType.Retired))
+                {
+                    var u = new EditUserViewModel(user);
+                    model.Add(u);
+                }
             }
             int pagesize = 20;
             int pagenumber = (page ?? 1);
