@@ -13,7 +13,7 @@
     <tr>
         <td>@Html.DisplayFor(x => officer.Officer)</td>
         <td>@Html.ActionLink(officer.FullName, "Details", "Account", new { id = officer.UserName }, null)</td>
-        <td><a href="mailto:@officer.Email">@officer.Email</a></td>
+        
     </tr>
     }
     @foreach (var plane in Model.Planes)
@@ -25,7 +25,7 @@
         <tr>
             <td>Maintenance Officer for @plane.AirplaneID</td>
             <td>@Html.ActionLink(plane.MaintenanceOfficer.FullName, "Details", "Account", new { id = plane.MaintenanceOfficer.UserName }, null)</td>
-            <td><a href="mailto:@plane.MaintenanceOfficer.Email">@plane.MaintenanceOfficer.Email</a></td>
+            
         </tr>
     }
 </table>
