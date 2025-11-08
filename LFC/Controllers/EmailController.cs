@@ -100,7 +100,29 @@ namespace LFC.Controllers
 
         private void SendBadgeReminders()
         {
-            var body = "Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30/60 days.  Please ensure you renew it before it expires to get the $15 renewal rate.  If a badge is not renewed within 30 days post expiration, a new badge ($50) and background check will be required. Additionally, you will be unable to access the ramp for a week or more. Once your badge is renewed, please Reply-All to this email with the updated expiration date and new badge number. Send Mike Proctor an email requesting that he email Security letting them know that you are coming apply for your badge renewal.Then make an appointment with Security.They have the necessary forms.Be sure to take your drivers license and your passport; they require two government photo id's.  Renewal cost is $15.00.  If you are not planning to renew the badge, you must return the badge to the airport operations department as soon as practical.  If a badge expires and is not turned in within 90 days of the expiration date, the airport will fine the flying club $150 and you will lose your $150 deposit that the flying club holds… If you have lost your badge, you MUST call Airport Operations and let them know that you have lost your badge.  If, after 30 days post expiration, you have not requested a replacement badge,  the Airport will fine the LFC $150 and you will lose your $150 deposit on file with the Club. Once you renew your badge,  we need to have the new info on file.    You can input the new badge number and expiration date on our club website.  Here is a video showing how to do that. https://www.youtube.com/watch?v=j7kCeX-TCEM Please see these links for more info: https://u5905153.ct.sendgrid.net/ls/click?upn=Lle6oOmgdKtQKy2uiYP1Ggf-2Fdfac3P74zEclP1qpJBzu7Wc62un-2B5LBQYGlGBP0ZePe6z0I0TAEFSVYrBrQuTg-3D-3DVMQU_2w3cP-2FMz-2F-2FZEKWKzZzeJHBkA5N0ZjCSigg5AHQooEsyhL-2Fn7PuOIb8uQLTgCgmr4cBi-2FFz0N5dG8MaJZed4dYp9ohHUwdvxuY5Fpwa9Lrm8-2F75aW3VTW7bc4VpZCrE9Y9HwxAW0vwAZvnZpxGY2a-2BoS0NPo6Q-2FmLjIaCaCPIPc5j59wpCdrnxkpGR-2F74V-2FiMt5t4qTLYt7agItWIsJc3RsRac9fB11czdHwP4t8jUtw-3D https://u5905153.ct.sendgrid.net/ls/click?upn=Lle6oOmgdKtQKy2uiYP1Ggf-2Fdfac3P74zEclP1qpJBzu7Wc62un-2B5LBQYGlGBP0ZP-2FaO6HKcBFWI7lHMewaKzw-3D-3DALH1_2w3cP-2FMz-2F-2FZEKWKzZzeJHBkA5N0ZjCSigg5AHQooEsyhL-2Fn7PuOIb8uQLTgCgmr4cBi-2FFz0N5dG8MaJZed4dYgRfRIr62PWsYQJ4Vm0Embi6zuTGiZno4zZ1IBc3AQPVy1l1JFGaWCcSq-2FnTMZpOx7WhY4wy8EGwhHpzXahr2vh2Una0JGrvqV7oO2IMRbSmFN28DPnlO2GjktAnbkXcWvZRzPGVcyG31sSx9Zl9Hhw-3D";
+            var body = @"Your Airport Operation Area badge for Bluegrass Airport is scheduled to expire in the next 30/60 days. Please ensure you renew it before it expires to get the $15 renewal rate. If a badge is not renewed within 30 days post expiration, a new badge ($50) and background check will be required. Additionally, you will be unable to access the ramp for a week or more.
+
+The Airport just recently drastically changed the Badge process.Under the new “ Air Badge “ system,  you have to log in to the Air Badge system using the link:
+
+https://lex.airportbadges.com
+
+            In that system , you can fill out the necessary forms online to request a new badge or a badge renewal.
+
+Here is a help link that can get you up to speed:
+
+https://help.airbadge.us/new-user-orientation/
+
+            Once you submit the application, the system routs it to me and I’ll do my thing and pass it along to the security office.Assuming all goes well at the Security Office, at that point, the Security will contact you via email to advise you when you can make an appointment to get your badge.Since the new system is based on email, it is SUPER IMPORTANT that you provide an email address that you monitor and will respond to….
+
+Renewal cost is $15.00 and they no longer accept cash(only credit/ debit cards).   You’ll have the option to pay online or with a credit card when you for your appointment.
+
+If you are not planning to renew the badge, let me know.You must then plan to return the badge to the airport operations department as soon as practical.If a badge expires and is not turned in within 90 days of the expiration date, the airport will fine the flying club $150 and you will lose your $150 deposit that the flying club holds…
+
+If you have lost your badge, you MUST call Airport Operations and let them know that you have lost your badge. If, after 30 days post expiration, you have not requested a replacement badge, the Airport will fine the LFC $150 and you will lose your $150 deposit on file with the Club.
+
+Once you renew your badge, we need to have the new info on file. You can input the new badge number and expiration date on our club website. Here is a video showing how to do that.Note: the link takes several seconds to download the file to your device before being available to you to play the video
+
+http://www.lexingtonflyingclub.org/content/newsletter/Updatebadge.mov";
             var smtp = new SmtpClient();
 
             var users = db.Users.Where(x => DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 30 || DbFunctions.DiffDays(DateTime.Now, x.BadgeExpires) == 60)
