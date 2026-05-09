@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -69,7 +69,7 @@ namespace LFC.Controllers
                 {
                     db.ActiveAlerts.Add(alert);
                     db.SaveChanges();
-                } catch (Exception e)
+                } catch
                 {
                     // Probably a dup
                     db.ActiveAlerts.Remove(alert);

@@ -4,7 +4,7 @@
 
 set -e
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(dirname "$0")"
 PROJECT="$ROOT/LFC"
 PUBLISH="$ROOT/publish"
 
@@ -22,8 +22,8 @@ cp -r "$PROJECT/Web.config" "$PROJECT/Web.Production.config" "$PROJECT/Global.as
 cp -r "$PROJECT/App_Start" "$PROJECT/DAL" "$PROJECT/Controllers" "$PROJECT/Models" "$PROJECT/ViewModels" "$PUBLISH/"
 cp -r "$PROJECT/Migrations" "$PUBLISH/"
 cp -r "$PROJECT/Views" "$PUBLISH/"
-cp -r "$PROJECT/Content" "$PROJECT/Scripts" "$PUBLISH/favicon.ico" "$PUBLISH/"
-cp -r "$PROJECT/bin/*" "$PUBLISH/bin/"
+cp -r "$PROJECT/Content" "$PROJECT/Scripts" "$PUBLISH/"
+cp -r "$PROJECT/bin" "$PUBLISH/"
 
 # 4. Deploy via FTP — prompt for password
 read -rsp "FTP password: " FTP_PASSWORD
@@ -32,7 +32,7 @@ echo
 
 lftp -u Lexingtonflyingclub,$FTP_PASSWORD 206.196.6.138 <<EOF
 set ftp:passive-mode yes
-mirror --reverse --parallel=8 --exclude="*.pubxml" --exclude="*.suo" $PUBLISH /
+mirror --reverse --parallel=8 $PUBLISH /
 bye
 EOF
 
