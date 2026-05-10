@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -114,7 +114,7 @@ namespace LFC.Controllers
 
         public ActionResult CSV()
         {
-            String data = "Last Name,First Name,Middle Initial,Username,Email,Membership Type,Billing Name,Home Phone,Office Phone,Officer,Badge Expires,City,States,ZIP,Address,Certificate,Instrument,BadgeID,BadgeIDUpdated\r\n";
+            String data = "Last Name,First Name,Middle Initial,Username,Email,Membership Type,Billing Name,Home Phone,Office Phone,Cell Phone,Officer,Badge Expires,City,States,ZIP,Address,Certificate,Instrument,BadgeID,BadgeIDUpdated\r\n";
             var db = new LFCContext();
 
             foreach (var u in db.Users)
@@ -128,6 +128,7 @@ namespace LFC.Controllers
                 data += u.ShortName + ",";
                 data += u.HomeTel + ",";
                 data += u.OfficeTel + ",";
+                data += u.CellPhone + ",";
                 data += u.Officer + ",";
                 data += u.BadgeExpires + ",";
                 data += u.City + ",";
@@ -188,6 +189,7 @@ namespace LFC.Controllers
                 user.FirstName = model.FirstName;
                 user.HomeTel = model.HomeTel;
                 user.OfficeTel = model.OfficeTel;
+                user.CellPhone = model.CellPhone;
                 user.Address = model.Address;
                 user.City = model.City;
                 user.State = model.State;
@@ -353,6 +355,7 @@ namespace LFC.Controllers
                     FirstName = model.FirstName,
                     HomeTel = model.HomeTel,
                     OfficeTel = model.OfficeTel,
+                    CellPhone = model.CellPhone,
                     Address = model.Address,
                     City = model.City,
                     State = model.State,

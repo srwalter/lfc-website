@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -55,6 +55,8 @@ namespace LFC.Models
         public String HomeTel { get; set; }
         [Display(Name="Office Phone")]
         public String OfficeTel { get; set; }
+        [Display(Name="Cell Phone")]
+        public String CellPhone { get; set; }
         public String Address { get; set; }
         public String City { get; set; }
         public String State { get; set; }

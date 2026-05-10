@@ -1,4 +1,4 @@
-﻿@model LFC.Models.ApplicationUser
+@model LFC.Models.ApplicationUser
 @{
     ViewBag.Title = "Details";
 }
@@ -71,15 +71,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OfficeTel)
-        </dt>
+             @Html.DisplayNameFor(model => model.OfficeTel)
+         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OfficeTel)
-        </dd>
+         <dd>
+             @Html.DisplayFor(model => model.OfficeTel)
+         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
+         <dt>
+             @Html.DisplayNameFor(model => model.CellPhone)
+         </dt>
+
+         <dd>
+             @Html.DisplayFor(model => model.CellPhone)
+         </dd>
+
+         <dt>
+             @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>

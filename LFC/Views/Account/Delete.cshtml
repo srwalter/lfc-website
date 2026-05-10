@@ -1,4 +1,4 @@
-﻿@model LFC.Models.EditUserViewModel
+@model LFC.Models.EditUserViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -65,6 +65,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.OfficeTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellPhone)
         </dd>
 
         <dt>

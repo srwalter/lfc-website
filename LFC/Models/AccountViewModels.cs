@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -58,6 +58,10 @@ namespace LFC.Models
         [Display(Name = "Office Telephone")]
         public string OfficeTel { get; set; }
 
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Cell Telephone")]
+        public string CellPhone { get; set; }
+
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -104,6 +108,7 @@ namespace LFC.Models
             this.Officer = user.Officer;
             this.HomeTel = user.HomeTel;
             this.OfficeTel = user.OfficeTel;
+            this.CellPhone = user.CellPhone;
             this.Address = user.Address;
             this.City = user.City;
             this.State = user.State;
@@ -145,6 +150,10 @@ namespace LFC.Models
         [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
         [Display(Name = "Office Telephone")]
         public string OfficeTel { get; set; }
+
+        [RegularExpression("\\d\\d\\d-\\d\\d\\d-\\d\\d\\d\\d", ErrorMessage = "Use the format XXX-XXX-XXXX")]
+        [Display(Name = "Cell Telephone")]
+        public string CellPhone { get; set; }
 
         [EmailAddress]
         [Display(Name = "Email")]
