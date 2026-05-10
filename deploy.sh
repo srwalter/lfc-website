@@ -18,6 +18,7 @@ msbuild "$ROOT/LFC.sln" /p:Configuration=Production /p:Platform="Any CPU" /v:min
 rm -rf "$PUBLISH"
 mkdir -p "$PUBLISH"
 
+cp $ROOT/Web.config $PROJECT
 cp -r "$PROJECT/Web.config" "$PROJECT/Web.Production.config" "$PROJECT/Global.asax" "$PUBLISH/"
 cp -r "$PROJECT/App_Start" "$PROJECT/DAL" "$PROJECT/Controllers" "$PROJECT/Models" "$PROJECT/ViewModels" "$PUBLISH/"
 cp -r "$PROJECT/Migrations" "$PUBLISH/"
